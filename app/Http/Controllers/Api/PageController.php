@@ -138,6 +138,7 @@ class PageController extends Controller
         $post = Post::select('id','title','slug','image','excerpt','category_id','author', 'content','created_at')
                 ->where('published',1)
                 ->where('category_id',$category->id)
+                ->where('slug', $request->post)
                 ->with('category:id,name,slug')
                 ->with('tags:id,name,post_id')
                 ->first();

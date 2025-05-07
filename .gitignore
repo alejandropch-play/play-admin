@@ -10,7 +10,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-
+/credentials/gc/project-account-service.json
 package-*.json
 public.zip
 yarn.lock

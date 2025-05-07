@@ -510,7 +510,7 @@
     },
     methods: {
       getPost(id) {
-          fetch(`https://apirestful.playgroup.pe/api/admin/press_release_posts/${id}`, {
+          fetch(`http://localhost:5001/api/admin/press_release_posts/${id}`, {
             method: "GET",
             headers: {
               "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S"
@@ -531,7 +531,7 @@
         this.requestServer = true;
 
         try {
-          const res = await fetch(`https://apirestful.playgroup.pe/api/admin/press_release_posts/${this.post.id}`, {
+          const res = await fetch(`http://localhost:5001/api/admin/press_release_posts/${this.post.id}`, {
           method: "DELETE",
           headers: {
               "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S"
@@ -612,7 +612,7 @@
         this.getPost(id);
       },
       getPosts(pagina, desde, search = null) {
-        let url = "https://apirestful.playgroup.pe/api/admin/press_release_posts?page=" + pagina + "&desde=" + desde;
+        let url = "http://localhost:5001/api/admin/press_release_posts?page=" + pagina + "&desde=" + desde;
         if (search) {
           url = url + "&search=" + search;
         }
@@ -684,7 +684,7 @@
   
         try {
           
-          const res = await fetch(`https://apirestful.playgroup.pe/api/admin/press_release_posts/${this.post.id}`, {
+          const res = await fetch(`http://localhost:5001/api/admin/press_release_posts/${this.post.id}`, {
           method: "PUT",
           headers: {
               "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S"
@@ -764,7 +764,7 @@
         console.log(this.post);
 
         try {
-          const res = await fetch(`https://apirestful.playgroup.pe/api/admin/press_release_posts`, {
+          const res = await fetch(`http://localhost:5001/api/admin/press_release_posts`, {
           method: "POST",
           headers: {
               "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S"

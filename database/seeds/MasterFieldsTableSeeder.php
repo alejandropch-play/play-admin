@@ -338,6 +338,18 @@ class MasterFieldsTableSeeder extends Seeder
                 'type'     => 'input',
                 'master_section_id' => 20
             ],
+            [
+                'name' => 'Descripción',
+                'variable' => 'description',
+                'type' => 'input',
+                'master_section_id' => 20
+            ],
+            [
+                'name' => 'Imagen',
+                'variable' => 'image',
+                'type' => 'image',
+                'master_section_id' => 20
+            ],
             //Clientes
             [
                 'name' 		=> 'Título',

@@ -3,7 +3,7 @@
     "/js/manifest.js": "/js/manifest.js",
     "/js/vendor.js": "/js/vendor.js",
     "/js/adn.js": "/js/adn.js",
-    "/js/adn~js/applicants~js/awards~js/category~js/chatbot-messages~js/complaints_book~js/contacts~js/cus~abe8ea22.js": "/js/adn~js/applicants~js/awards~js/category~js/chatbot-messages~js/complaints_book~js/contacts~js/cus~abe8ea22.js",
+    "/js/adn~js/awards~js/customers~js/gallery~js/general~js/players~js/social~js/success-stories~js/testimonials.js": "/js/adn~js/awards~js/customers~js/gallery~js/general~js/players~js/social~js/success-stories~js/testimonials.js",
     "/js/adn~js/awards~js/customers~js/gallery~js/players~js/success-stories~js/testimonials.js": "/js/adn~js/awards~js/customers~js/gallery~js/players~js/success-stories~js/testimonials.js",
     "/js/applicants.js": "/js/applicants.js",
     "/js/applicants~js/category~js/chatbot-messages~js/complaints_book~js/contacts~js/posts~js/press_relea~0bb6207a.js": "/js/applicants~js/category~js/chatbot-messages~js/complaints_book~js/contacts~js/posts~js/press_relea~0bb6207a.js",
@@ -20,7 +20,6 @@
     "/js/departments.js": "/js/departments.js",
     "/js/gallery.js": "/js/gallery.js",
     "/js/general.js": "/js/general.js",
-    "/js/general~js/social.js": "/js/general~js/social.js",
     "/js/login.js": "/js/login.js",
     "/js/pages.js": "/js/pages.js",
     "/js/players.js": "/js/players.js",
@@ -35,6 +34,7 @@
     "/js/testimonials.js": "/js/testimonials.js",
     "/js/users.js": "/js/users.js",
     "/js/work_with_us.js": "/js/work_with_us.js",
+    "/vendors~js/adn~js/applicants~js/awards~js/button-close~js/button-icons~js/button-menu~js/category~js~dda641da.js": "/vendors~js/adn~js/applicants~js/awards~js/button-close~js/button-icons~js/button-menu~js/category~js~dda641da.js",
     "/vendors~js/adn~js/applicants~js/awards~js/category~js/chatbot-messages~js/complaints_book~js/contact~256f5975.js": "/vendors~js/adn~js/applicants~js/awards~js/category~js/chatbot-messages~js/complaints_book~js/contact~256f5975.js",
     "/vendors~js/adn~js/awards~js/customers~js/gallery~js/general~js/players~js/social~js/success-stories~~31384034.js": "/vendors~js/adn~js/awards~js/customers~js/gallery~js/general~js/players~js/social~js/success-stories~~31384034.js",
     "/vendors~js/awards~js/complaints_book~js/customers~js/departments~js/gallery~js/general~js/pages~js/p~da865fba.js": "/vendors~js/awards~js/complaints_book~js/customers~js/departments~js/gallery~js/general~js/pages~js/p~da865fba.js",
@@ -44,6 +44,7 @@
     "/vendors~js/chatbot-messages~js/contacts.js": "/vendors~js/chatbot-messages~js/contacts.js",
     "/vendors~js/complaints_book~js/posts~js/press_releases~js/roles~js/users~js/work_with_us.js": "/vendors~js/complaints_book~js/posts~js/press_releases~js/roles~js/users~js/work_with_us.js",
     "/vendors~js/complaints_book~js/posts~js/press_releases~js/work_with_us.js": "/vendors~js/complaints_book~js/posts~js/press_releases~js/work_with_us.js",
-    "/vendors~js/complaints_book~js/press_releases~js/work_with_us.js": "/vendors~js/complaints_book~js/press_releases~js/work_with_us.js",
-    "/vendors~js/dashboard.js": "/vendors~js/dashboard.js"
+    "/vendors~js/dashboard.js": "/vendors~js/dashboard.js",
+    "/js/press_releases.0cff736d3e9cfadb14d5.hot-update.js": "/js/press_releases.0cff736d3e9cfadb14d5.hot-update.js",
+    "/js/press_releases.e9513a3802cd099c7424.hot-update.js": "/js/press_releases.e9513a3802cd099c7424.hot-update.js"
 }

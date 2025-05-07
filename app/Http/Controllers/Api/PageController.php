@@ -17,13 +17,23 @@ use App\Comment;
 use App\CoolturaADN;
 use App\Cooltura;
 use App\Player;
+use App\Testimonial;
 use Illuminate\Support\Facades\Log;
 
 class PageController extends Controller
 {
     use ApiTrait;
-
+    public function getClientLogos(){
+        try{
+            $customers = Customer::select('name','image')->where('status',1)->orderBy('index')->get();
+            return $this->sendResponse($customers);
+        }catch(\Exception $e){
+            Log::error("Error:", ["err"=>$e]);
+            return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')]) ],500);
+        }
+    }
     public function home(){
+
         $page = $this->getSeoPage(NULL);
         $awards = Award::select('name','image','position','category')->orderBy('index')->get();
         $posts = Post::select('title','slug','thumbnail','category_id')->where('published',1)->with('category:id,name,slug')->orderBy('created_at','desc')->take(6)->get();
@@ -42,6 +52,11 @@ class PageController extends Controller
             "content" => $content
         );
         return $this->sendResponse($data);
+    }
+
+    public function getTestimonials(){
+        $testimonials = Testimonial::orderBy('index')->get();
+        return $this->sendResponse($testimonials);
     }
 
     public function department(Request $request){

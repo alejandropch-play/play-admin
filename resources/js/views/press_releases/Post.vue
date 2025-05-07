@@ -19,7 +19,7 @@
                   </span>
                   <span class="btn-inner--text">Nuevo Post</span>
                 </a>
-  
+
                 <Button
                   :classes="['btn-primary']"
                   :text="'Actualizar'"
@@ -27,7 +27,7 @@
                   :request-server="requestServer"
                   v-if="editBlock"
                 ></Button>
-  
+
                 <Button
                   :classes="['btn-primary']"
                   :text="'Registrar'"
@@ -124,12 +124,12 @@
                 <div class="form-group">
                   <label for="image" class="d-block">
                     <label class="font-weight-bold">Miniatura</label>
-                    
+
                   </label>
 
                   <vue-dropzone
                     ref="ref_thumbnail"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_thumbnail.dropzone,1,1000000,'1000kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_thumbnail.dropzone,1,1024000,'1000kb')"
                     id="id_thumbnail"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -147,7 +147,7 @@
                     for="file"
                   >{{ errors.thumbnail[0] }}</label>
                 </div>
-  
+
   <file-upload
                                                   extensions="jpg,jpeg,png"
                                                   accept="image/png,image/jpeg,image/jpg"
@@ -155,21 +155,21 @@
                                                   :drop="false"
                                                   :multiple="true"
                                                   v-model="post.images"
-                                                  @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','posts')"
+                                                  @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,102400,'100kb','posts')"
                                                   ref="ref_content_images"
                                                   input-id="id_content_images">
                                               </file-upload>
-  
+
                 <div class="form-group mb-0">
                   <label for="image" class="d-block">
                     <label class="font-weight-bold">Imagen</label>
-                    
+
                   </label>
-                  
-  
+
+
                   <vue-dropzone
                     ref="ref_image"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_thumbnail.dropzone,1,1000000,'1000kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_thumbnail.dropzone,1,1024000,'1000kb')"
                     id="id_image"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -191,7 +191,7 @@
             </div>
           </div>
         </div>
-  
+
         <div class="row" v-if="editBlock">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
           <div class="card shadow">
@@ -243,7 +243,7 @@
                       </div>
                     </div>
 
-                    
+
                   </div>
                 </form>
               </div>
@@ -267,7 +267,7 @@
 
                  <vue-dropzone
                   ref="ref_thumbnail"
-                  @vdropzone-file-added="$validatethumbnailDropzone($event,$refs.ref_thumbnail.dropzone,1,100000,'100kb')"
+                  @vdropzone-file-added="$validatethumbnailDropzone($event,$refs.ref_thumbnail.dropzone,1,102400,'100kb')"
                   id="id_thumbnail"
                   :options="dropzoneOptions"
                   :duplicateCheck="true"
@@ -279,7 +279,7 @@
                     >Suelte el archivo aquí o haga click para cargarlo.</h5>
                   </div>
                 </vue-dropzone>
-                
+
                 <label
                   v-if="errors && errors.thumbnail"
                   class="text-danger text-sm d-block mt-2"
@@ -301,7 +301,7 @@
 
                  <vue-dropzone
                   ref="ref_image"
-                  @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_thumbnail.dropzone,1,1000000,'1000kb')"
+                  @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_thumbnail.dropzone,1,1024000,'1000kb')"
                   id="id_image"
                   :options="dropzoneOptions"
                   :duplicateCheck="true"
@@ -313,7 +313,7 @@
                     >Suelte el archivo aquí o haga click para cargarlo.</h5>
                   </div>
                 </vue-dropzone>
-                
+
                 <label
                   v-if="errors && errors.image"
                   class="text-danger text-sm d-block mt-2"
@@ -361,7 +361,7 @@
                   </div>
                 </div>
               </div>
-  
+
               <div class="form-group">
                 <label class="font-weight-bold font-weight-bold">URL</label>
                 <p>
@@ -371,7 +371,7 @@
                   >{{ post.url }}</a>
                 </p>
               </div>
-  
+
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
@@ -397,7 +397,7 @@
                   v-if="post.thumbnail"
                 />
               </div>
-  
+
               <div class="form-group">
                 <label class="font-weight-bold font-weight-bold">Imagen</label>
                 <img
@@ -476,7 +476,7 @@
                                   document.getElementById('id_content_images').click();
                               }
                           },
-                          
+
               container: [
                 ["bold", "italic", "underline", "strike"],
                 ["blockquote"],
@@ -669,11 +669,11 @@
         if (this.$refs.ref_image.dropzone.files[0]) {
           fd.append("image", this.$refs.ref_image.dropzone.files[0]);
         }
-  
+
         if (this.$refs.ref_thumbnail.dropzone.files[0]) {
           fd.append("thumbnail", this.$refs.ref_thumbnail.dropzone.files[0]);
         }
-  
+
         if (this.post.published) {
           fd.append("published", 1);
         } else {
@@ -681,9 +681,9 @@
         }
 
         fd.append("_method", "PUT");
-  
+
         try {
-          
+
           const res = await fetch(`http://localhost:5001/api/admin/press_release_posts/${this.post.id}`, {
           method: "PUT",
           headers: {
@@ -734,10 +734,10 @@
         axios
           .post("posts/" + this.post.id, fd)
           .then(response => {
-            
+
           })
           .catch(error => {
-            
+
           });
 
           */
@@ -747,11 +747,11 @@
         const fd = new FormData();
         fd.append("title", this.post.title);
         fd.append("url", this.post.url);
-        
+
         if (this.$refs.ref_image.dropzone.files[0]) {
           fd.append("image", this.$refs.ref_image.dropzone.files[0]);
         }
-  
+
         if (this.$refs.ref_thumbnail.dropzone.files[0]) {
           fd.append("thumbnail", this.$refs.ref_thumbnail.dropzone.files[0]);
         }
@@ -802,14 +802,14 @@
             });
         }
 
-        
+
 
         } catch (e) {
           console.error(e);
         }
 
         /*
-        
+
         axios
           .post("posts", fd)
           .then(response => {

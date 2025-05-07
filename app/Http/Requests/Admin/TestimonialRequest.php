@@ -25,21 +25,22 @@ class TestimonialRequest extends FormRequest
     {
         $rules = [
             'full_name' => 'required|max:100',
-            'company' => 'required|max:100',
             'message' => 'required',
             'job' => 'required|max:100',
         ];
         switch ($this->method()) {
-            case 'POST':   
+            case 'POST':
                 $rules = array_merge(
                     $rules,
-                    ['image' => 'required']
+                    ['image' => 'required'],
+                    ['company_logo' => 'required'],
                 );
             break;
-            case 'PUT':   
+            case 'PUT':
                 $rules = array_merge(
                     $rules,
-                    ['image' => 'sometimes|required']
+                    ['image' => 'sometimes|required'],
+                    ['company_logo' => 'sometimes|required'],
                 );
             break;
         }

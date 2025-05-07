@@ -33,6 +33,8 @@ Route::namespace('Api')->group(function() {
     });
     Route::prefix('page')->group(function() {
         Route::get('home', 'PageController@home');
+        Route::get('client-logos', 'PageController@getClientLogos');
+        Route::get('testimonials', 'PageController@getTestimonials');
         Route::get('department/{department}', 'PageController@department');
         Route::get('blog', 'PageController@blog');
         Route::get('blog/json', 'PageController@getPosts');

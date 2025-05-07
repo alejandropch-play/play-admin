@@ -208,7 +208,7 @@
                     <img
                       class="img-fluid shadow mx-auto d-block"
                       v-if="testimonial.company_logo"
-                      :src="'https://storage.googleapis.com/playgroup-web/img/testimonials/company_logo/'+testimonial.company_logo"
+                      :src="'https://storage.googleapis.com/playgroup-web/img/testimonials/company-logo/'+testimonial.company_logo"
                       :alt="testimonial.company_logo"
                     />
                   </div>
@@ -344,7 +344,6 @@ export default {
         index: "",
         full_name: "",
         job: "",
-        company: "",
         message: ""
       },
       startBlock: true,
@@ -382,7 +381,6 @@ export default {
           index: "",
           full_name: "",
           job: "",
-          company: "",
           message: ""
         });
       this.$refs["modal-delete"].hide();
@@ -454,7 +452,6 @@ export default {
         index: "",
         full_name: "",
         job: "",
-        company: "",
         message: ""
       };
     },
@@ -477,9 +474,6 @@ export default {
       this.testimonial.job
         ? fd.append("job", this.testimonial.job)
         : fd.append("job", "");
-      this.testimonial.company
-        ? fd.append("company", this.testimonial.company)
-        : fd.append("company", "");
       this.testimonial.message
         ? fd.append("message", this.testimonial.message)
         : fd.append("message", "");
@@ -537,9 +531,6 @@ export default {
       this.testimonial.job
         ? fd.append("job", this.testimonial.job)
         : fd.append("job", "");
-      this.testimonial.company
-        ? fd.append("company", this.testimonial.company)
-        : fd.append("company", "");
       this.testimonial.message
         ? fd.append("message", this.testimonial.message)
         : fd.append("message", "");
@@ -551,6 +542,7 @@ export default {
       if (this.$refs.ref_company_logo.dropzone.files[0]) {
         fd.append("company_logo", this.$refs.ref_company_logo.dropzone.files[0]);
       }
+
       axios
         .post("testimonials", fd)
         .then(response => {

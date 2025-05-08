@@ -57,6 +57,14 @@ class MasterModulesTableSeeder2 extends Seeder
                     'icon' => NULL,
                     'index' => 1
                 ],
+            #Solución de Problemas
+            [
+                    'name' 	=> 'Solución de Problemas',
+                    'slug' 		=> 'solucion-de-problemas',
+                    'parent' 	=> 0,
+                    'icon' 		=> 'fas fa-question-circle',
+                    'index'    => 16
+            ]    
 
         ]);
     }

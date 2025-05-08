@@ -57,7 +57,10 @@ trait ApiTrait {
         if(!$master_page){
             return $this->sendError("Not found");
         }
-        $success_stories = SuccessStory::where('department_id',$master_page->department_id)->orderBy('index')->paginate(9);
+
+        $limit = $request->limit ? $request->limit : 9;
+        
+        $success_stories = SuccessStory::where('department_id',$master_page->department_id)->orderBy('index')->paginate($limit);
         return $success_stories;
     }
 }

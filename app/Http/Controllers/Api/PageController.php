@@ -76,6 +76,20 @@ class PageController extends Controller
         );
         return $this->sendResponse($data);
     }
+    
+    public function successStory(){
+        $master_sections_ids = [];
+
+        $page = $this->getSeoPage('success-stories');
+        $content = $this->getContentPage('success-stories');
+        $main = Department::select('excerpt','title','logo_white','logo')->where('main',1)->first();
+        $data = array(
+            "page" => $page,
+            "content" => $content,
+            "main" => $main
+        );
+        return $this->sendResponse($data);
+    }
 
     public function getPosts(Request $request){
         $search = $request->search;

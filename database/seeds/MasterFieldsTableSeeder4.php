@@ -58,18 +58,75 @@ class MasterFieldsTableSeeder4 extends Seeder
             // ],
             #Trabaja con Nosotros
             [
-                'name' 		=> 'Titulo si hay Ofertas',
-                'variable' 		=> 'title_offers',
-                'type'     => 'input',
+                'name' => 'Titulo si hay Ofertas',
+                'variable' => 'title_offers',
+                'type' => 'input',
                 'master_section_id' => 6
             ],
             [
-                'name' 		=> 'Titulo si no hay Ofertas',
-                'variable' 		=> 'title_no_offers',
-                'type'     => 'input',
+                'name' => 'Titulo si no hay Ofertas',
+                'variable' => 'title_no_offers',
+                'type' => 'input',
                 'master_section_id' => 6
             ],
 
+            ###
+            [
+                'name' => 'Titulo ',
+                'variable' => 'title',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Descripción',
+                'variable' => 'description',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Imagen',
+                'variable' => 'image',
+                'type' => 'image',
+                'master_section_id' => 37
+            ],
+            ###
+            [
+                'name' => 'Titulo ',
+                'variable' => 'title',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción',
+                'variable' => 'description',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Imagen',
+                'variable' => 'image',
+                'type' => 'image',
+                'master_section_id' => 38
+            ],
+            ###
+            [
+                'name' => 'Titulo ',
+                'variable' => 'title',
+                'type' => 'input',
+                'master_section_id' => 39
+            ],
+            [
+                'name' => 'Descripción',
+                'variable' => 'description',
+                'type' => 'input',
+                'master_section_id' => 39
+            ],
+            [
+                'name' => 'Imagen',
+                'variable' => 'image',
+                'type' => 'image',
+                'master_section_id' => 39
+            ],
         ]);
     }
 }

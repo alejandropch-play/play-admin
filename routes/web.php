@@ -78,7 +78,8 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::get('informacion/json/pages/section/{section}', 'Information\PagesController@getPageSectionFields')->name('pages.json.get-page-sections-fields');
     Route::post('informacion/pages', 'Information\PagesController@updateSection')->name('pages.update-section');
     Route::post('informacion/pages/image', 'Information\PagesController@storeImage')->name('pages.store-image');
-    
+    Route::post('informacion/json/pages/agregar/{section}','Information\PagesController@postAddMore')->name('page.add-more');
+
     #Social Networks
     Route::get('informacion/redes-sociales', 'Information\SocialController@index')->name('information.social')->middleware('permission:informacion/redes-sociales');
     Route::get('informacion/json/social', 'Information\SocialController@getNetworks')->name('information.social.json.get-networks')->middleware('permission:informacion/redes-sociales');
@@ -168,6 +169,16 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::get('json/success-stories/{story}', 'SuccessStoriesController@getSuccessStory')->name('success-stories.json.get-success-story')->middleware('permission:casos-de-exito');
     Route::delete('success-stories/{story}', 'SuccessStoriesController@delete')->name('success-stories.delete')->middleware('permission:casos-de-exito');
     Route::put('success-stories/{story}', 'SuccessStoriesController@update')->name('success-stories.update')->middleware('permission:casos-de-exito');
+
+    #SuccessStories
+    Route::get('solucion-de-problemas', 'TroubleshootingController@index')->name('troubleshooting')->middleware('permission:solucion-de-problemas');
+    Route::post('troubleshooting', 'TroubleshootingController@create')->name('troubleshooting.create')->middleware('permission:solucion-de-problemas');
+    Route::get('json/troubleshooting ', 'TroubleshootingController@getSuccessStories')->name('troubleshooting.json.get-troubleshooting')->middleware('permission:solucion-de-problemas');
+    Route::put('troubleshooting/order', 'TroubleshootingController@order')->name('troubleshooting.order')->middleware('permission:solucion-de-problemas');
+    Route::get('json/troubleshooting/{solution}', 'TroubleshootingController@getSuccessStory')->name('troubleshooting.json.get-troubleshooting')->middleware('permission:solucion-de-problemas');
+    Route::delete('troubleshooting/{solution}', 'TroubleshootingController@delete')->name('troubleshooting.delete')->middleware('permission:solucion-de-problemas');
+    Route::put('troubleshooting/{solution}', 'TroubleshootingController@update')->name('troubleshooting.update')->middleware('permission:solucion-de-problemas');
+    
 
     #Cooltura Play
     //Galería

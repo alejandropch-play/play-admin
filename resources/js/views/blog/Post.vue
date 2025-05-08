@@ -428,7 +428,7 @@
 
                  <vue-dropzone
                   ref="ref_thumbnail"
-                  @vdropzone-file-added="$validatethumbnailDropzone($event,$refs.ref_thumbnail.dropzone,1,102400,'100kb')"
+                  @vdropzone-file-added="$validatethumbnailDropzone($event,$refs.ref_thumbnail.dropzone,1,512000,'500kb')"
                   id="id_thumbnail"
                   :options="dropzoneOptions"
                   :duplicateCheck="true"

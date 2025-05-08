@@ -90,7 +90,7 @@ class MasterSectionsTableSeeder extends Seeder
                 'master_page_id'     => 2,
             ],
             [
-                'name' 		=> 'Qué hacemos?',
+                'name' 		=> 'Metodología',
                 'master_page_id'     => 2,
             ],
             [
@@ -98,7 +98,7 @@ class MasterSectionsTableSeeder extends Seeder
                 'master_page_id'     => 2,
             ],
             [
-                'name' 		=> 'Clientes',
+                'name' 		=> 'Solución de Problemas',
                 'master_page_id'     => 2,
             ],
             [
@@ -111,7 +111,7 @@ class MasterSectionsTableSeeder extends Seeder
                 'master_page_id'     => 3,
             ],
             [
-                'name' 		=> 'Qué hacemos?',
+                'name' 		=> 'Metodología',
                 'master_page_id'     => 3,
             ],
             [
@@ -119,7 +119,7 @@ class MasterSectionsTableSeeder extends Seeder
                 'master_page_id'     => 3,
             ],
             [
-                'name' 		=> 'Clientes',
+                'name' 		=> 'Solución de Problemas',
                 'master_page_id'     => 3,
             ],
             [
@@ -132,7 +132,7 @@ class MasterSectionsTableSeeder extends Seeder
                 'master_page_id'     => 4,
             ],
             [
-                'name' 		=> 'Qué hacemos?',
+                'name' 		=> 'Metodología',
                 'master_page_id'     => 4,
             ],
             [
@@ -140,7 +140,7 @@ class MasterSectionsTableSeeder extends Seeder
                 'master_page_id'     => 4,
             ],
             [
-                'name' 		=> 'Clientes',
+                'name' 		=> 'Solución de Problemas',
                 'master_page_id'     => 4,
             ],
             [

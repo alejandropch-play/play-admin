@@ -39,6 +39,7 @@ const app = new Vue({
         'applicants': () => import('./views/Applicants.vue' /* webpackChunkName: "js/applicants" */),
 
         'success-stories': () => import('./views/SuccessStories.vue' /* webpackChunkName: "js/success-stories" */),
+        'troubleshooting': () => import('./views/Troubleshooting.vue' /* webpackChunkName: "js/troubleshooting" */),
         'pages': () => import('./views/info/Pages.vue' /* webpackChunkName: "js/pages" */),
         'cooltura-gallery': () => import('./views/cooltura/Gallery.vue' /* webpackChunkName: "js/gallery" */),
         'cooltura-adn': () => import('./views/cooltura/ADN.vue' /* webpackChunkName: "js/adn" */),

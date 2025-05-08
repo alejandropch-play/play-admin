@@ -176,6 +176,14 @@
                       </div>
                     </div>
                     <div class="col-12 p-0 text-right">
+                        <!-- Botón "Agregar más" visible solo para ciertos IDs -->
+                    <button
+                      v-if="[20, 25, 30].includes(section.id)"
+                      type="button"
+                      class="btn btn-success ml-2"
+                      @click.prevent="agregarMas(section.id,section.name,page.id)"
+                    >Agregar más
+                    </button>
                       <Button
                         :text="'Actualizar'"
                         :classes="['btn-primary']"
@@ -288,13 +296,28 @@ export default {
       const fd = new FormData();
       fd.append("section_id", this.section.id);
       fd.append("content", JSON.stringify(this.fields));
-      if (
-        this.$refs.ref_image &&
-        this.$refs.ref_image.length > 0 &&
-        this.$refs.ref_image[0].dropzone.files[0]
-      ) {
-        fd.append("image", this.$refs.ref_image[0].dropzone.files[0]);
-      }
+
+      this.fields.forEach((field) => {
+        const refName = `ref_${field.variable}`;
+        const ref = this.$refs[refName];
+
+        if (
+          field.type === 'image' &&
+          ref &&
+          ref.length > 0 &&
+          ref[0].dropzone.files.length > 0
+        ) {
+          fd.append(field.variable, ref[0].dropzone.files[0]);
+        }
+      });
+
+      // if (
+      //   this.$refs.ref_image &&
+      //   this.$refs.ref_image.length > 0 &&
+      //   this.$refs.ref_image[0].dropzone.files[0]
+      // ) {
+      //   fd.append("image", this.$refs.ref_image[0].dropzone.files[0]);
+      // }
 
       if (
         this.$refs.ref_image_responsive &&
@@ -358,6 +381,16 @@ export default {
           });
         });
     },
+    agregarMas(id,name,idPage) {
+     axios
+        .post("json/pages/agregar/" + id)
+      .then(response => {
+          this.getSection(id,name,idPage);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
     restorePage() {
       if (this.elementBlock) {
         this.elementBlock = false;
@@ -373,10 +406,9 @@ export default {
       }
     },
     getSection(id, name, idPage) {
-      console.log(id);
-      console.log(name);
-      console.log(idPage);
+ 
       this.page = this.pages.find(x => x.id === idPage);
+     
       axios
         .get("json/pages/section/" + id)
         .then(response => {

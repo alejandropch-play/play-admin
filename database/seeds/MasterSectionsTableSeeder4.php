@@ -22,6 +22,19 @@ class MasterSectionsTableSeeder4 extends Seeder
                 'name' 		=> 'Libro de Reclamaciones',
                 'master_page_id'     => 10,
             ],
+            #DI, CH, SW
+            [
+                'name' 		=> 'Objetivos Empresariales',
+                'master_page_id'     => 2,
+            ],
+            [
+                'name' 		=> 'Objetivos Empresariales',
+                'master_page_id'     => 3,
+            ],
+            [
+                'name' 		=> 'Objetivos Empresariales',
+                'master_page_id'     => 4,
+            ],
         ]);
     }
 }

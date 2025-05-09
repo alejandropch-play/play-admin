@@ -21,6 +21,7 @@ Route::namespace('Api')->group(function() {
     Route::get('layout', 'ApiController@layout');
     Route::get('paginate/blog', 'ApiController@paginateBlog');
     Route::get('paginate/success-stories', 'ApiController@paginateSuccessStories');
+    Route::get('paginate/troubleshooting', 'ApiController@getTroubleshooting');
     Route::prefix('lead')->group(function() {
         Route::post('save', 'LeadController@save');
         Route::post('save-landing', 'LeadController@saveLanding');

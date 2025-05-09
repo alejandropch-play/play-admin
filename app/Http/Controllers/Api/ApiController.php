@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Troubleshooting;
 use Illuminate\Http\Request;
 
 use App\Http\Traits\ApiTrait;
@@ -75,4 +76,20 @@ class ApiController extends Controller
         );
         return $this->sendResponse($data);
     }
+
+    public function getTroubleshooting(Request $request){
+        $master_page = MasterPage::where('slug',$request->department)->first();
+        if(!$master_page){
+            return $this->sendError("Not found");
+        }
+        $troubleshooting = Troubleshooting::where('department_id',$master_page->department_id)->orderBy('index')->get();
+        if($troubleshooting->isEmpty()){
+            return $this->sendResponse(array());
+        }
+        $data = array(
+            "troubleshooting" => $troubleshooting
+        );
+        return $this->sendResponse($data);
+    }
+
 }

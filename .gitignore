@@ -14,5 +14,5 @@ credentials/gc/project-account_service.json
 package-*.json
 public.zip
 yarn.lock
-
+.php-version
 

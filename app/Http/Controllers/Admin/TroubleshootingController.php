@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\troubleshootingRequest;
 use App\Http\Traits\AdminTrait;
-use Illuminate\Http\Request;
 use App\Troubleshooting;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Storage;
 
 class TroubleshootingController extends Controller
@@ -45,6 +47,7 @@ class TroubleshootingController extends Controller
     }
 
     public function getSuccessStories(Request $request){
+      
       $solution = Troubleshooting::where('department_id',$request->department)->orderBy('index')->get();
       return response()->json($solution);
     }

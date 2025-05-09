@@ -336,7 +336,7 @@
         <h2 class="mb-0 text-uppercase text-primary">Eliminar Caso de Éxito</h2>
       </template>
       <p class="mb-0">Esta seguro que desea eliminar el caso de éxito?</p>
-      <template slot="modal-footer" slot-scope="{ ok, cancel }">
+      <template slot="modal-footer" slot-scope="{ cancel }">
         <Button
           :classes="['btn-danger']"
           :text="'Eliminar'"

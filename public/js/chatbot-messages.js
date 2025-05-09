@@ -855,7 +855,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.chat__profile[data-v-60f79a24] {\r\n  background-image: url(https://storage.googleapis.com/playgroup-web/bot/images/LID-pf.png);\r\n  height: 35px;\r\n  width: 35px;\r\n  background-position: center;\r\n  display: inline-block;\r\n  background-size: 135%;\r\n  background-repeat: no-repeat;\r\n  border-radius: 50%;\r\n  margin-right: 7px;\r\n  background-color: white;\n}\r\n", ""]);
+exports.push([module.i, "\n.chat__profile[data-v-60f79a24] {\n  background-image: url(https://storage.googleapis.com/playgroup-web/bot/images/LID-pf.png);\n  height: 35px;\n  width: 35px;\n  background-position: center;\n  display: inline-block;\n  background-size: 135%;\n  background-repeat: no-repeat;\n  border-radius: 50%;\n  margin-right: 7px;\n  background-color: white;\n}\n", ""]);
 
 // exports
 
@@ -874,7 +874,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.VueCarousel-slide {\r\n  position: relative;\r\n  color: #fff;\r\n  text-align: center;\r\n  min-height: 100px;\n}\r\n", ""]);
+exports.push([module.i, "\n.VueCarousel-slide {\n  position: relative;\n  color: #fff;\n  text-align: center;\n  min-height: 100px;\n}\n", ""]);
 
 // exports
 
@@ -893,7 +893,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.button-fecha .btn.dropdown-toggle{\r\n  padding: 6px 10px !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.button-fecha .btn.dropdown-toggle{\n  padding: 6px 10px !important;\n}\n", ""]);
 
 // exports
 

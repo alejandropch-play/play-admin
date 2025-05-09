@@ -1506,7 +1506,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n@media (min-width: 992px) {\n.modal-lg {\r\n    max-width: 1140px !important;\n}\n}\r\n", ""]);
+exports.push([module.i, "\n@media (min-width: 992px) {\n.modal-lg {\n    max-width: 1140px !important;\n}\n}\n", ""]);
 
 // exports
 

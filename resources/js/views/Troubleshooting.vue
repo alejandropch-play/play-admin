@@ -299,7 +299,7 @@
         <h2 class="mb-0 text-uppercase text-primary">Eliminar Solución de Problema</h2>
       </template>
       <p class="mb-0">Esta seguro que desea eliminar la solución de problema?</p>
-      <template slot="modal-footer" slot-scope="{ ok, cancel }">
+      <template slot="modal-footer" slot-scope="{ cancel }">
         <Button
           :classes="['btn-danger']"
           :text="'Eliminar'"
@@ -463,11 +463,11 @@ export default {
         fd.append("image", "");
       }
 
-      if (this.$refs.ref_logo.dropzone.files[0]) {
-        fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
-      } else {
-        fd.append("logo", "");
-      }
+      // if (this.$refs.ref_logo.dropzone.files[0]) {
+      //   fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
+      // } else {
+      //   fd.append("logo", "");
+      // }
       
       axios
         .post("troubleshooting", fd)

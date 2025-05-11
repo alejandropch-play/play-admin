@@ -28,6 +28,10 @@ class CreateLeadsMediumTable extends Migration
      */
     public function down()
     {
+        Schema::table('leads', function (Blueprint $table) {
+            $table->dropForeign(['lead_medium_id']);
+        });
+
         Schema::dropIfExists('leads_medium');
     }
 }

@@ -72,59 +72,150 @@ class MasterFieldsTableSeeder4 extends Seeder
 
             ###
             [
-                'name' => 'Titulo ',
+                'name' => 'Titulo Objetivo 1',
                 'variable' => 'title',
                 'type' => 'input',
                 'master_section_id' => 37
             ],
             [
-                'name' => 'Descripción',
+                'name' => 'Descripción del objetivo 1',
                 'variable' => 'description',
                 'type' => 'input',
                 'master_section_id' => 37
             ],
             [
-                'name' => 'Imagen',
-                'variable' => 'image',
-                'type' => 'image',
+                'name' => 'Titulo Objetivo 2',
+                'variable' => 'title_2',
+                'type' => 'input',
                 'master_section_id' => 37
             ],
+            [
+                'name' => 'Descripción del objetivo 2',
+                'variable' => 'description_2',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Titulo Objetivo 3',
+                'variable' => 'title_3',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Descripción del objetivo 3',
+                'variable' => 'description_3',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Titulo Objetivo 4',
+                'variable' => 'title_4',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Descripción del objetivo 4',
+                'variable' => 'description_4',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+           
             ###
             [
-                'name' => 'Titulo ',
+                'name' => 'Titulo Objetivo 1',
                 'variable' => 'title',
                 'type' => 'input',
                 'master_section_id' => 38
             ],
             [
-                'name' => 'Descripción',
+                'name' => 'Descripción del objetivo 1',
                 'variable' => 'description',
                 'type' => 'input',
                 'master_section_id' => 38
             ],
             [
-                'name' => 'Imagen',
-                'variable' => 'image',
-                'type' => 'image',
+                'name' => 'Titulo Objetivo 2',
+                'variable' => 'title_2',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción del objetivo 2',
+                'variable' => 'description_2',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Titulo Objetivo 3',
+                'variable' => 'title_3',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción del objetivo 3',
+                'variable' => 'description_3',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Titulo Objetivo 4',
+                'variable' => 'title_4',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción del objetivo 4',
+                'variable' => 'description_4',
+                'type' => 'input',
                 'master_section_id' => 38
             ],
             ###
             [
-                'name' => 'Titulo ',
+                'name' => 'Titulo Objetivo 1',
                 'variable' => 'title',
                 'type' => 'input',
                 'master_section_id' => 39
             ],
             [
-                'name' => 'Descripción',
+                'name' => 'Descripción del objetivo 1',
                 'variable' => 'description',
                 'type' => 'input',
                 'master_section_id' => 39
             ],
             [
-                'name' => 'Imagen',
-                'variable' => 'image',
-                'type' => 'image',
+                'name' => 'Titulo Objetivo 2',
+                'variable' => 'title_2',
+                'type' => 'input',
+                'master_section_id' => 39
+            ],
+            [
+                'name' => 'Descripción del objetivo 2',
+                'variable' => 'description_2',
+                'type' => 'input',
+                'master_section_id' => 39
+            ],
+            [
+                'name' => 'Titulo Objetivo 3',
+                'variable' => 'title_3',
+                'type' => 'input',
+                'master_section_id' => 39
+            ],
+            [
+                'name' => 'Descripción del objetivo 3',
+                'variable' => 'description_3',
+                'type' => 'input',
+                'master_section_id' => 39
+            ],
+            [
+                'name' => 'Titulo Objetivo 4',
+                'variable' => 'title_4',
+                'type' => 'input',
+                'master_section_id' => 39
+            ],
+            [
+                'name' => 'Descripción del objetivo 4',
+                'variable' => 'description_4',
+                'type' => 'input',
                 'master_section_id' => 39
             ],
         ]);

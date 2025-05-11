@@ -28,7 +28,10 @@ class AddDepartmentsTypeToEmailDestinationTable extends Migration
     public function down()
     {
         Schema::table('email_destination', function (Blueprint $table) {
-            //
+            // Elimina la foreign key antes de eliminar la tabla
+            $table->dropForeign(['department_id']);
+            $table->dropColumn('department_id');
+            $table->dropColumn('type');
         });
     }
 }

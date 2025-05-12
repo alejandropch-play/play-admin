@@ -32,6 +32,11 @@ class PageController extends Controller
             return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')]) ],500);
         }
     }
+    public function getAwards(){
+        $awards = Award::select('name','image','position','category')->orderBy('index')->get();
+        $data = array("awards"=> $awards);
+        return $this->sendResponse($data);
+    }
     public function home(){
 
         $page = $this->getSeoPage(NULL);
@@ -76,7 +81,7 @@ class PageController extends Controller
         );
         return $this->sendResponse($data);
     }
-    
+
     public function successStory(){
         $master_sections_ids = [];
 

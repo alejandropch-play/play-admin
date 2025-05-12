@@ -28,6 +28,6 @@ class CreateEmailDestinationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_email_destination');
+        Schema::dropIfExists('email_destination');
     }
 }

@@ -84,7 +84,9 @@ class ApiController extends Controller
         }
         $troubleshooting = Troubleshooting::where('department_id',$master_page->department_id)->orderBy('index')->get();
         if($troubleshooting->isEmpty()){
-            return $this->sendResponse(array());
+            return $this->sendResponse(array(
+                "troubleshooting" => array()
+            ));
         }
         $data = array(
             "troubleshooting" => $troubleshooting

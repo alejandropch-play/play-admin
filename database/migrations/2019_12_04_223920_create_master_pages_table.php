@@ -43,6 +43,14 @@ class CreateMasterPagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+    
+        Schema::table('master_pages', function (Blueprint $table) {
+            // Elimina la foreign key antes de eliminar la tabla
+            $table->dropForeign(['department_id']);
+        });
+    
+        
+        Schema::dropIfExists('master_pages');
+
     }
 }

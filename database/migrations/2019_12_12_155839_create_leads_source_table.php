@@ -27,6 +27,10 @@ class CreateLeadsSourceTable extends Migration
      */
     public function down()
     {
+        Schema::table('leads', function (Blueprint $table) {
+            $table->dropForeign(['lead_source_id']);
+        });
+        
         Schema::dropIfExists('leads_source');
     }
 }

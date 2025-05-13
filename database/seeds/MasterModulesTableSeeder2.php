@@ -64,8 +64,21 @@ class MasterModulesTableSeeder2 extends Seeder
                     'parent' 	=> 0,
                     'icon' 		=> 'fas fa-question-circle',
                     'index'    => 16
-            ]    
-
+            ],
+            [
+                    'name' 	=> 'Logos Linea de Negocio',
+                    'slug' 		=> 'logos-linea-de-negocio',
+                    'parent' 	=> 0,
+                    'icon' 		=> 'fas fa-question-circle',
+                    'index'    => 17
+            ]  ,
+            [
+                'name' 	=> 'Porque Nosotros',
+                'slug' 		=> 'por-que-nosotros',
+                'parent' 	=> 0,
+                'icon' 		=> 'fas fa-question-circle',
+                'index'    => 18
+            ]  
         ]);
     }
 }

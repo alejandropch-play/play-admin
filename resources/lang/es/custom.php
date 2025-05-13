@@ -22,7 +22,9 @@ return [
         'testimonial' => 'El testimonio',
         'partner' => 'El socio',
         'award' => 'El premio',
-        'lead' => 'El lead'
+        'lead' => 'El lead',
+        'business_line_logo' => 'El logo de la línea de negocio',
+        'why-us'=> 'El por qué elegirnos',
     ],
     'title' => [
         'error' => 'Error',

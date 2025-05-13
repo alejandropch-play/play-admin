@@ -22,6 +22,8 @@ Route::namespace('Api')->group(function() {
     Route::get('paginate/blog', 'ApiController@paginateBlog');
     Route::get('paginate/success-stories', 'ApiController@paginateSuccessStories');
     Route::get('paginate/troubleshooting', 'ApiController@getTroubleshooting');
+    Route::get('business-line-logos', 'ApiController@getBusinessLineLogos');
+    Route::get('why-us', 'ApiController@getWhyUs');
     Route::prefix('lead')->group(function() {
         Route::post('save', 'LeadController@save');
         Route::post('save-landing', 'LeadController@saveLanding');
@@ -31,7 +33,7 @@ Route::namespace('Api')->group(function() {
     });
     Route::prefix('applicant')->group(function() {
         Route::post('save', 'ApplicantController@save');
-    });
+    });    
     Route::prefix('page')->group(function() {
         Route::get('home', 'PageController@home');
         Route::get('client-logos', 'PageController@getClientLogos');

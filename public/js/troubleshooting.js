@@ -210,11 +210,13 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         fd.append("image", "");
       }
-      if (this.$refs.ref_logo.dropzone.files[0]) {
-        fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
-      } else {
-        fd.append("logo", "");
-      }
+
+      // if (this.$refs.ref_logo.dropzone.files[0]) {
+      //   fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
+      // } else {
+      //   fd.append("logo", "");
+      // }
+
       axios.post("troubleshooting", fd).then(function (response) {
         _this2.requestServer = false;
         _this2.restorePage();
@@ -805,8 +807,7 @@ var render = function render() {
     scopedSlots: _vm._u([{
       key: "modal-footer",
       fn: function fn(_ref) {
-        var ok = _ref.ok,
-          cancel = _ref.cancel;
+        var cancel = _ref.cancel;
         return [_c("Button", {
           attrs: {
             classes: ["btn-danger"],

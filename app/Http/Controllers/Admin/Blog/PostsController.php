@@ -156,12 +156,12 @@ class PostsController extends Controller
 
         $tags = json_decode($request->tags);
         try{
-            $tag = Tag::where('post_id',$post->id)->delete();
+            Tag::where('post_id',$post->id)->delete();
             foreach ($tags as $key => $value) {
-                $exist = $tag = NULL;
+                $exist = NULL;
                 $exist = Tag::where('post_id',$post->id)->where('name',$value->text)->get();
                 if(count($exist) < 1){
-                    $tag = Tag::UpdateOrCreate(["post_id" => $post->id, "name" => $value->text]);
+                  Tag::UpdateOrCreate(["post_id" => $post->id, "name" => $value->text]);
                 }
             }
             return response()->json(['title'=> trans('custom.title.success'), 'message'=> trans('custom.message.update.success', ['name' => trans('custom.attribute.post')])],200);

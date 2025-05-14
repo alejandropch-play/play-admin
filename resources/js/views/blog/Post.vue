@@ -602,11 +602,6 @@
         </div>
         <template slot="modal-footer" slot-scope="{ ok, cancel }">
           <button type="button" class="btn btn-primary" @click="ok()">OK</button>
-          <!--<button
-            type="button"
-            class="btn btn-danger"
-            @click="() => { restoreEl();cancel(); }"
-          >Cancelar</button>-->
         </template>
       </b-modal>
     </div>
@@ -819,7 +814,7 @@ export default {
         content: "",
         published: true,
         image: "",
-         thumbnail: "",
+        thumbnail: "",
         category: {},
         category_id: {},
         tags: '',

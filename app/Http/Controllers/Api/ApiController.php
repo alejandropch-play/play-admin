@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\BusinessLineLogo;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Troubleshooting;
@@ -16,6 +17,7 @@ use App\Post;
 use App\Partner;
 use App\SuccessStory;
 use App\LeadMedium;
+use App\WhyUs;
 
 class ApiController extends Controller
 {
@@ -93,5 +95,27 @@ class ApiController extends Controller
         );
         return $this->sendResponse($data);
     }
+    
+    public function getBusinessLineLogos(Request $request){
+        $master_page = MasterPage::where('slug',$request->department)->first();
+        if(!$master_page){
+            return $this->sendError("Not found");
+        }
+        $business_line_logos = BusinessLineLogo::where('department_id',$master_page->department_id)->orderBy('index')->get();
+        if($business_line_logos->isEmpty()){
+            return $this->sendResponse(array());
+        }
+        
+        return $this->sendResponse($business_line_logos);
+    }
 
+    public function getWhyUs(){
+        $why_us = WhyUs::orderBy('index')->get();
+
+        if($why_us->isEmpty()){
+            return $this->sendResponse(array());
+        }
+        
+        return $this->sendResponse($why_us);
+    }
 }

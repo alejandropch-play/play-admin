@@ -57,6 +57,25 @@ class MasterPermissionsTableSeeder2 extends Seeder
                 'role_id' => 2,
                 'module_id' => 30
             ],
+            # Linea de Negocios Logo
+            [
+                'role_id' => 1,
+                'module_id' => 31
+            ],
+            [
+                'role_id' => 2,
+                'module_id' => 31
+            ],
+
+            # Porque Nosotros
+            [
+                'role_id' => 1,
+                'module_id' => 32
+            ],
+            [
+                'role_id' => 2,
+                'module_id' => 32
+            ],
 
         ]);
     }

@@ -379,7 +379,7 @@ export default {
     actualizarInformacion() {
       this.requestServer = true;
 
-      fetch('https://apirestful.playgroup.pe/api/admin/update_general_info_countries', {
+      fetch('http://localhost:5001/api/admin/update_general_info_countries', {
             method: 'PUT',
             headers: {
           "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S",
@@ -388,11 +388,14 @@ export default {
         body: JSON.stringify({
           ...this.informacion
         })
-          }).then(response => {
+          })
+          .then(response => response.json()) 
+          .then(response => {
+            console.log('aca',response);
             this.restablecerPagina();
           Swal.fire({
-            title: response.data.title,
-            text: response.data.message,
+            title: response?.title,
+            text: response?.message,
             type: "success",
             confirmButtonText: "Ok",
             buttonsStyling: false,
@@ -459,7 +462,7 @@ export default {
         .then(response => {
           this.informacion = response.data;
 
-          fetch('https://apirestful.playgroup.pe/api/admin/update_general_info_countries', {
+          fetch('http://localhost:5001/api/admin/update_general_info_countries', {
             method: 'GET',
             headers: {
           "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S",

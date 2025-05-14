@@ -180,6 +180,25 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::put('troubleshooting/{solution}', 'TroubleshootingController@update')->name('troubleshooting.update')->middleware('permission:solucion-de-problemas');
 
 
+    #BusinessLineLogo
+    Route::get('logos-linea-de-negocio', 'BusinessLineLogoController@index')->name('business-line-logo')->middleware('permission:logos-linea-de-negocio');
+    Route::post('business-line-logo', 'BusinessLineLogoController@create')->name('business-line-logo.create')->middleware('permission:logos-linea-de-negocio');
+    Route::get('json/business-line-logo ', 'BusinessLineLogoController@getBusinessLineLogos')->name('business-line-logo.json.get-business-line-logos')->middleware('permission:logos-linea-de-negocio');
+    Route::put('business-line-logo/order', 'BusinessLineLogoController@order')->name('business-line-logo.order')->middleware('permission:logos-linea-de-negocio');
+    Route::get('json/business-line-logo/{solution}', 'BusinessLineLogoController@getBusinessLineLogo')->name('business-line-logo.json.get-business-line-logo')->middleware('permission:logos-linea-de-negocio');
+    Route::delete('business-line-logo/{solution}', 'BusinessLineLogoController@delete')->name('business-line-logo.delete')->middleware('permission:logos-linea-de-negocio');
+    Route::put('business-line-logo/{solution}', 'BusinessLineLogoController@update')->name('business-line-logo.update')->middleware('permission:logos-linea-de-negocio');
+
+    #WhyUs
+    Route::get('por-que-nosotros', 'WhyUsController@index')->name('why-us')->middleware('permission:por-que-nosotros');
+    Route::post('why-us', 'WhyUsController@create')->name('why-us.create')->middleware('permission:por-que-nosotros');
+    Route::get('json/why-us ', 'WhyUsController@getAllWhyUs')->name('why-us.json.get-all-why-us')->middleware('permission:por-que-nosotros');
+    Route::put('why-us/order', 'WhyUsController@order')->name('why-us.order')->middleware('permission:por-que-nosotros');
+    Route::get('json/why-us/{solution}', 'WhyUsController@getWhyUs')->name('why-us.json.get-why-us')->middleware('permission:por-que-nosotros');
+    Route::delete('why-us/{solution}', 'WhyUsController@delete')->name('why-us.delete')->middleware('permission:por-que-nosotros');
+    Route::put('why-us/{solution}', 'WhyUsController@update')->name('why-us.update')->middleware('permission:por-que-nosotros');
+        
+
     #Cooltura Play
     //Galería
     Route::get('cooltura-play/galeria', 'Cooltura\GalleryController@index')->name('cooltura-play.galery')->middleware('permission:cooltura-play/galeria');

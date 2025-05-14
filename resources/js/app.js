@@ -40,6 +40,8 @@ const app = new Vue({
 
         'success-stories': () => import('./views/SuccessStories.vue' /* webpackChunkName: "js/success-stories" */),
         'troubleshooting': () => import('./views/Troubleshooting.vue' /* webpackChunkName: "js/troubleshooting" */),
+        'business-line-logos': () => import('./views/BusinessLineLogos.vue' /* webpackChunkName: "js/business-line-logos" */),
+        'why-us': () => import('./views/WhyUs.vue' /* webpackChunkName: "js/why-us" */),
         'pages': () => import('./views/info/Pages.vue' /* webpackChunkName: "js/pages" */),
         'cooltura-gallery': () => import('./views/cooltura/Gallery.vue' /* webpackChunkName: "js/gallery" */),
         'cooltura-adn': () => import('./views/cooltura/ADN.vue' /* webpackChunkName: "js/adn" */),

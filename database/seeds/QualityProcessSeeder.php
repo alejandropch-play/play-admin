@@ -26,7 +26,7 @@ class QualityProcessSeeder extends Seeder
             ],
             [
                 'name' => "Imagen de Slide 1",
-                'variable' => "image",
+                'variable' => "image_1",
                 'type' => "image",
                 'master_section_id' => 40,
             ],

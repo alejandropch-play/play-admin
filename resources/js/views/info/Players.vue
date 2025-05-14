@@ -74,7 +74,7 @@
                 </div>
               </div>
 
-              <div class="col-12">
+              <div class="col-12 col-lg-6">
                 <div class="form-group">
                   <label class="font-weight-bold" for="id_department">Especialidad:</label>
                   <Departments
@@ -93,7 +93,23 @@
 
               <div class="col-12 col-lg-6">
                 <div class="form-group">
-                  <label class="font-weight-bold mb-0" for="id_image_1">Imagen</label>
+                  <label class="font-weight-bold" for="id_linkedIn">LinkedIn</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-alternative"
+                    v-model="service.linkedIn"
+                    id="id_linkedIn"
+                  />
+                  <label
+                    v-if="errors && errors.linkedIn"
+                    class="mt-2 text-danger text-sm"
+                    for="id_position"
+                  >{{ errors.linkedIn[0] }}</label>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="form-group">
+                  <label class="font-weight-bold mb-0" for="id_image_1">Imagen:</label>
                   <!-- <small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: 400×400px</small> -->
                   <div class="row">
                     <div class="col-3">
@@ -219,7 +235,7 @@
                   >{{ errors.job[0] }}</label>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12 col-lg-6">
                 <div class="form-group">
                   <label class="font-weight-bold" for="id_department">Especialidad:</label>
                   <Departments
@@ -232,6 +248,22 @@
                     class="mt-2 text-danger text-sm"
                     for="id_department"
                   >{{ errors.department_id[0] }}</label>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="form-group">
+                  <label class="font-weight-bold" for="id_linkedIn">LinkedIn</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-alternative"
+                    v-model="service.linkedIn"
+                    id="id_linkedIn"
+                  />
+                  <label
+                    v-if="errors && errors.linkedIn"
+                    class="mt-2 text-danger text-sm"
+                    for="id_position"
+                  >{{ errors.linkedIn[0] }}</label>
                 </div>
               </div>
               <div class="col-12 col-lg-6">
@@ -330,6 +362,7 @@ export default {
       editBlock: false,
       service: {
         full_name: "",
+        linkedIn: "",
         job: "",
         department_id: "",
         image_1: "",
@@ -363,6 +396,9 @@ export default {
       fd.append("id", this.service.id);
       if (this.service.full_name) {
         fd.append("full_name", this.service.full_name);
+      }
+      if (this.service.linkedIn) {
+        fd.append("linkedIn", this.service.linkedIn);
       }
       if (this.service.job) {
         fd.append("job", this.service.job);
@@ -413,7 +449,6 @@ export default {
         });
     },
     editPlayer(id) {
-      console.log(id)
       this.editBlock = true;
       this.startBlock = false;
       this.getService(id);
@@ -430,6 +465,7 @@ export default {
       this.service = {
         full_name: "",
         job: "",
+        linkedIn: "",
         department_id: "",
         image_1: "",
         image_2: ""
@@ -445,6 +481,9 @@ export default {
       }
       if (this.service.job) {
         fd.append("job", this.service.job);
+      }
+      if (this.service.linkedIn) {
+        fd.append("linkedIn", this.service.linkedIn);
       }
       if (this.service.department_id) {
         fd.append("department_id", this.service.department_id);

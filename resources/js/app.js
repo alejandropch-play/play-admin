@@ -48,6 +48,7 @@ const app = new Vue({
 
         'testimonials': () => import('./views/Testimonials.vue' /* webpackChunkName: "js/testimonials" */),
         'awards': () => import('./views/Awards.vue' /* webpackChunkName: "js/awards" */),
+        'hiplay': () => import('./views/Hiplay.vue' /* webpackChunkName: "js/awards" */),
 
         'reset': () => import('./views/auth/Reset.vue' /* webpackChunkName: "js/reset" */),
         'chatbot-messages': () => import('./views/ChatbotMessages.vue' /* webpackChunkName: "js/chatbot-messages" */),

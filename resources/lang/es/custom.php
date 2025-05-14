@@ -12,6 +12,7 @@ return [
         'element' => 'El elemento',
         'category' => 'La categoría',
         'post' => 'El post',
+        'podcast' => 'El podcast',
         'department' => 'La especialidad',
         'profile' => 'El perfil',
         'customer' => 'El cliente',
@@ -44,12 +45,20 @@ return [
             'success' => ':name se ha creado.',
             'error' => "Lo sentimos. :name no se pudo crear debido a un error.",
         ],
+        'get' => [
+            'success' => 'se le hizo fetch a :name',
+            'error' => "Lo sentimos. :name no se pudo traer debido a un error.",
+            'plural' => [
+                'success' => ':name se ha actualizado.',
+                'error' => "Lo sentimos. :name no se pudieron traer debido a un error.",
+            ]
+        ],
         'update' => [
             'success' => ':name se ha actualizado.',
             'error' => "Lo sentimos. :name no se pudo actualizar debido a un error.",
             'plural' => [
                 'success' => ':name se han actualizado.',
-                'error' => "Lo sentimos. :name no se pudieron actualizar debido a un error.",   
+                'error' => "Lo sentimos. :name no se pudieron actualizar debido a un error.",
             ]
         ],
         'delete' => [

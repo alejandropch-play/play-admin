@@ -48,7 +48,7 @@
                   <!--<small class="mb-2 d-block">Tamaño Recomendado</small>-->
                   <vue-dropzone
                     ref="ref_image"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,124000,'100kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,102400,'100kb')"
                     id="id_image"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -80,26 +80,24 @@
                         v-model="element.name"
                         id="id_name"
                       />-->
-                      <small class="mb-2 d-block text-muted">Tamaño Recomendado: Alto máximo 25px</small>
                       <file-upload
-                                                extensions="jpg,jpeg,png"
-                                                accept="image/png,image/jpeg,image/jpg"
-                                                class="d-none"
-                                                :drop="false"
-                                                :multiple="true"
-                                                v-model="element.images"
-                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','awards')"
-                                                ref="ref_images"
-                                                input-id="id_images">
-                                            </file-upload>
+                        extensions="jpg,jpeg,png"
+                        accept="image/png,image/jpeg,image/jpg"
+                        class="d-none"
+                        :drop="false"
+                        :multiple="true"
+                        v-model="element.images"
+                        @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','awards')"
+                        ref="ref_images"
+                        input-id="id_images">
+                      </file-upload>
 
-                        <quill-Editor
-                          @keydown.enter.prevent
-                          v-model="element.name"
-                          placeholder="Nombre"
-                          :options="editorOptions"
-                          ref="ref_content"
-                        ></quill-Editor>
+                      <input
+                        type="text"
+                        class="form-control form-control-alternative"
+                        v-model="element.name"
+                        id="id_category"
+                      />
                       <label
                         v-if="errors && errors.name"
                         class="mt-2 text-danger text-sm"
@@ -124,25 +122,22 @@
                       >{{ errors.category[0] }}</label>
                     </div>
                   </div>
-
                   <div class="col-12">
                     <div class="form-group">
-                      <label class="font-weight-bold" for="id_position">Posición - Puesto</label>
+                      <label class="font-weight-bold" for="id_category">LinkedIn</label>
                       <input
                         type="text"
                         class="form-control form-control-alternative"
-                        v-model="element.position"
-                        id="id_position"
+                        v-model="element.linkedIn"
+                        id="id_linkedIn"
                       />
                       <label
-                        v-if="errors && errors.position"
+                        v-if="errors && errors.linkedIn"
                         class="mt-2 text-danger text-sm"
-                        for="id_position"
-                      >{{ errors.position[0] }}</label>
+                        for="id_category"
+                      >{{ errors.category[0] }}</label>
                     </div>
                   </div>
-
-                  
                 </div>
               </div>
 
@@ -214,7 +209,6 @@
                         v-model="element.name"
                         id="id_name"
                       />-->
-                      <small class="mb-2 d-block text-muted">Tamaño Recomendado: Alto máximo 25px</small>
                       <file-upload
                                                 extensions="jpg,jpeg,png"
                                                 accept="image/png,image/jpeg,image/jpg"
@@ -227,13 +221,12 @@
                                                 input-id="id_images">
                                             </file-upload>
 
-                        <quill-Editor
-                          @keydown.enter.prevent
-                          v-model="element.name"
-                          placeholder="Nombre"
-                          :options="editorOptions"
-                          ref="ref_content"
-                        ></quill-Editor>
+                      <input
+                        type="text"
+                        class="form-control form-control-alternative"
+                        v-model="element.name"
+                        id="id_name"
+                      />
                       <label
                         v-if="errors && errors.name"
                         class="mt-2 text-danger text-sm"
@@ -261,25 +254,25 @@
 
                   <div class="col-12">
                     <div class="form-group">
-                      <label class="font-weight-bold" for="id_position">Posición - Puesto</label>
+                      <label class="font-weight-bold" for="id_linkedIn">LinkedIn</label>
                       <input
                         type="text"
                         class="form-control form-control-alternative"
-                        v-model="element.position"
-                        id="id_position"
+                        v-model="element.linkedIn"
+                        id="id_linkedIn"
                       />
                       <label
-                        v-if="errors && errors.position"
+                        v-if="errors && errors.linkedIn"
                         class="mt-2 text-danger text-sm"
                         for="id_position"
-                      >{{ errors.position[0] }}</label>
+                      >{{ errors.linkedIn[0] }}</label>
                     </div>
                   </div>
 
-                  
+
                 </div>
               </div>
-              
+
 
               <div class="col-12 text-right">
                 <Button
@@ -328,6 +321,7 @@ export default {
         image: "",
         index: "",
         name: "",
+        linkedIn: "",
         position: "",
         category: ""
       },
@@ -351,11 +345,10 @@ export default {
         modules: {
           toolbar: {
             handlers: {
-                            image: function(value) {
-                                document.getElementById('id_images').click();
-                            }
-                        },
-                        
+                image: function(value) {
+                    document.getElementById('id_images').click();
+                }
+            },
             container: [
               ["bold", "italic", "underline", "strike"],
               ["blockquote"],
@@ -389,11 +382,11 @@ export default {
       this.startBlock = true;
       (this.errors = {}),
         (this.element = {
-          image: "",
-        index: "",
-        name: "",
-        position: "",
-        category: ""
+            image: "",
+            index: "",
+            name: "",
+            linkedIn: "",
+            category: ""
         });
       this.$refs["modal-delete"].hide();
     },
@@ -463,6 +456,7 @@ export default {
         index: "",
         name: "",
         position: "",
+        linkedIn: "",
         category: ""
       };
     },
@@ -485,9 +479,9 @@ export default {
       this.element.category
         ? fd.append("category", this.element.category)
         : fd.append("category", "");
-      this.element.position
-        ? fd.append("position", this.element.position)
-        : fd.append("position", "");
+      this.element.linkedIn
+        ? fd.append("linkedIn", this.element.linkedIn)
+        : fd.append("linekdIn", "");
 
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);
@@ -539,10 +533,9 @@ export default {
       this.element.category
         ? fd.append("category", this.element.category)
         : fd.append("category", "");
-      this.element.position
-        ? fd.append("position", this.element.position)
-        : fd.append("position", "");
-      
+      this.element.linkedIn
+        ? fd.append("linkedIn", this.element.linkedIn)
+        : fd.append("linekdIn", "");
 
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);

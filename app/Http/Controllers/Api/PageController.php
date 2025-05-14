@@ -17,6 +17,7 @@ use App\Comment;
 use App\CoolturaADN;
 use App\Cooltura;
 use App\Player;
+use App\Podcast;
 use App\Testimonial;
 use Illuminate\Support\Facades\Log;
 
@@ -32,10 +33,44 @@ class PageController extends Controller
             return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')]) ],500);
         }
     }
+    public function getPodcasts(){
+        try{
+
+
+            $podcasts = Podcast::select('id','url')
+            ->where('published', 1)
+            ->with('tags:id,name,podcast_id')
+            ->orderBy('created_at','desc')
+            ->first();  // for now we only will support a podcast. TODO: add functionality to accept more
+            $podcasts = $podcasts->unsetRelation('date_format');
+            $podcasts = $podcasts->unsetRelation('published_format');
+            $podcasts->makeHidden(['date_format', 'published_format']);
+             if ($podcasts) {
+               preg_match('/(?:v=|\/)([0-9A-Za-z_-]{11})/', $podcasts->url, $matches);
+                $podcasts->url= $matches[1] ?? null;
+            }
+
+            $podcasts = array("podcasts" => [$podcasts]);
+            return $this->sendResponse($podcasts);
+        }catch(\Exception $e){
+            Log::error("Error:", ["err" => $e]);
+            return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.get.error', ['name' => trans('custom.attribute.podcast')]) ],500);
+        }
+    }
+    public function getPlayers(Request $request){
+        $offset = (int) $request->query('offset', 0);
+        $limit = (int) $request->query('limit', 8);
+        $players = Player::with('relDepartment:id,title')->orderBy('index','asc')
+                    ->skip($offset)
+                    ->take($limit)
+                    ->get();
+        $data = array("players"=> $players);
+        return $this->sendResponse($data);
+    }
     public function getAwards(){
         $awards = Award::select('name','image','position','category')->orderBy('index')->get();
-        $data = array("awards"=> $awards);
-        return $this->sendResponse($data);
+        $awards= array("awards"=> $awards);
+        return $this->sendResponse($awards);
     }
     public function home(){
 
@@ -43,7 +78,6 @@ class PageController extends Controller
         $awards = Award::select('name','image','position','category')->orderBy('index')->get();
         $posts = Post::select('title','slug','thumbnail','category_id')->where('published',1)->with('category:id,name,slug')->orderBy('created_at','desc')->take(6)->get();
         $customers = Customer::select('name','image')->where('status',1)->orderBy('index')->get();
-        //$departments = Department::select('logo','banner','logo_white','title','excerpt')->where('main','!=',1)->get();
         $departments = $this->getDepartments();
         $main = Department::select('excerpt','title','logo_white','logo')->where('main',1)->first();
         $content = $this->getContentPage(NULL);

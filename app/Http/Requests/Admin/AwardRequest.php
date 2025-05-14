@@ -26,16 +26,16 @@ class AwardRequest extends FormRequest
         $rules = [
             'name' => 'required|max:255',
             'category' => 'required|max:100',
-            'position' => 'required|max:100',
+            'linkedIn' => 'required',
         ];
         switch ($this->method()) {
-            case 'POST':   
+            case 'POST':
                 $rules = array_merge(
                     $rules,
                     ['image' => 'required']
                 );
             break;
-            case 'PUT':   
+            case 'PUT':
                 $rules = array_merge(
                     $rules,
                     ['image' => 'sometimes|required']

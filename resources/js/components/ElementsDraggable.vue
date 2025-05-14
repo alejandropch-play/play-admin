@@ -12,7 +12,7 @@
     <div class="col-12" v-if="!loading">
       <div class="row mb-4" v-if="object && object.length > 0">
         <div class="col-6">
-          <p class="mb-0">Arrastré los elementos en el orden que desee mostrarlos.</p>
+          <p class="mb-0">Arrastre los elementos en el orden que desee mostrarlos.</p>
         </div>
         <div class="col-6 text-right">
           {{ object.length }} entrada(s)
@@ -77,7 +77,7 @@
               <h3 class="mt-3 mb-0">{{ element.title }}</h3>
               <p>{{ element.description }}</p>
 
-              
+
             </div>
             <div class="card-footer pt-0 text-right border-0">
               <button class="btn btn-sm btn-secondary" @click.prevent="clickEdit(element.id)">
@@ -113,7 +113,7 @@
                   >
                   <i class="fas fa-trash-alt text-danger mr-1"></i>
                   Eliminar</button>
-                  
+
                 </div>
               </div>
             </div>
@@ -225,7 +225,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-auto">
-                  <h1 class="text-primary hashtag">#</h1> 
+                  <h1 class="text-primary hashtag">#</h1>
                 </div>
                 <div class="col ml--2">
                                       <span class="d-block font-weight-bold">{{ element.name}}</span>

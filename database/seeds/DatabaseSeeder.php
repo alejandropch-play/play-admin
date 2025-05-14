@@ -37,12 +37,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(MasterModulesTableSeeder2::class);
         $this->call(MasterSectionsTableSeeder4::class);
-        
+
         $this->call(MasterFieldsTableSeeder4::class);
         $this->call(MasterPermissionsTableSeeder2::class);
 
         $this->call(PressReleasePosts::class);
-        
+
         $this->call(DocumentTypeSeeder::class);
         $this->call(WellHiredSeeder::class);
         $this->call(TypeOfServiceSeeder::class);
@@ -50,7 +50,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(WorkWithUsSeeder::class);
 
+        $this->call(HiPlaySeeder::class);
 
-        
+
     }
 }

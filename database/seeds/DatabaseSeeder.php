@@ -51,6 +51,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WorkWithUsSeeder::class);
 
         $this->call(HiPlaySeeder::class);
+        $this->call(QualityProcessSeeder::class);
 
 
     }

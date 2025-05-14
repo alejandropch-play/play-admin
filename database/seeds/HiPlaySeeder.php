@@ -13,21 +13,21 @@ class HiPlaySeeder extends Seeder
     public function run()
     {
         DB::table('master_modules')->insert([
-                'id' => 31,
+                'id' => 33,
                 'name' => 'Hi,Play',
                 'slug' => 'hiplay',
                 'parent' => 0,
                 'icon' => 'fas fa-film',
-                'index' => 17
+                'index' => 19
         ]);
         DB::table('master_permissions')->insert([
                 [
                 'role_id' => 1,
-                'module_id' => 31],
+                'module_id' => 33],
 
                 [
                 'role_id' => 2,
-                'module_id' => 31]
+                'module_id' => 33]
 
         ]);
     }

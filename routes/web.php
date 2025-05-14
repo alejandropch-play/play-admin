@@ -7,13 +7,13 @@ Route::post('login/email', 'Admin\Auth\ForgotPasswordController@sendResetLinkEma
 Route::get('login/restablecer/{token}', 'Admin\Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('login/reset', 'Admin\Auth\ResetPasswordController@reset')->name('password.update');
 
-Route::middleware(['auth'])->namespace('Admin')->name('admin.')->group(function() { 
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');  
+Route::middleware(['auth'])->namespace('Admin')->name('admin.')->group(function() {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('json/dashboard', 'DashboardController@getStatistics')->name('dashboard.get-statistics');
 
     Route::get('perfil', 'ProfileController@index')->name('profile');
     Route::get('json/profile', 'ProfileController@getProfile')->name('profile.json.get-profile');
-    Route::put('profile', 'ProfileController@updateProfile')->name('profile.update-profile'); 
+    Route::put('profile', 'ProfileController@updateProfile')->name('profile.update-profile');
     Route::put('change-password', 'ProfileController@updatePassword')->name('profile.update-contrasena');
 
     #Notas de Prensa
@@ -50,7 +50,7 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::get('json/contactos', 'LeadsController@getContacts')->name('leads.json.get-contactos')->middleware('permission:leads');
     Route::get('json/contactos/{lead}', 'LeadsController@getContact')->name('leads.json.get-contacto')->middleware('permission:leads');
     Route::delete('leads/{lead}', 'LeadsController@delete')->name('leads.delete')->middleware('permission:leads');
-    Route::put('leads', 'LeadsController@update')->name('leads.update'); 
+    Route::put('leads', 'LeadsController@update')->name('leads.update');
 
     #Information
     #SEO
@@ -105,7 +105,7 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::delete('blog/categories/{category}', 'Blog\CategoriesController@delete')->name('blog.categories.delete')->middleware('permission:blog/categorias');
     Route::put('blog/categories/{category}', 'Blog\CategoriesController@update')->name('blog.categories.update')->middleware('permission:blog/categorias');
     Route::get('blog/json/categories', 'Blog\CategoriesController@getCategories')->name('blog.categories.get-categories')->middleware('permission:blog/categorias');
-    Route::get('blog/json/categories/autocomplete', 'Blog\CategoriesController@autocomplete')->name('blog.categories.get-category-autocomplete'); 
+    Route::get('blog/json/categories/autocomplete', 'Blog\CategoriesController@autocomplete')->name('blog.categories.get-category-autocomplete');
     Route::get('blog/json/categories/{category}', 'Blog\CategoriesController@getCategory')->name('blog.categories.get-category')->middleware('permission:blog/categorias');
 
     #Posts
@@ -158,7 +158,7 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     //Route::put('applicants/{applicant}', 'ApplicantsController@update')->name('applicants.update')->middleware('permission:postulantes');
     Route::delete('applicants/{applicant}', 'ApplicantsController@delete')->name('applicants.delete')->middleware('permission:postulantes');
 
-    Route::put('applicants', 'ApplicantsController@update')->name('applicants.update')->middleware('permission:postulantes'); 
+    Route::put('applicants', 'ApplicantsController@update')->name('applicants.update')->middleware('permission:postulantes');
     Route::get('applicants/json/contact-email-destination', 'ApplicantsController@getEmailDestination')->name('applicants.json.contact-email-destination')->middleware('permission:postulantes');
 
     #SuccessStories
@@ -178,7 +178,7 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::get('json/troubleshooting/{solution}', 'TroubleshootingController@getSuccessStory')->name('troubleshooting.json.get-troubleshooting')->middleware('permission:solucion-de-problemas');
     Route::delete('troubleshooting/{solution}', 'TroubleshootingController@delete')->name('troubleshooting.delete')->middleware('permission:solucion-de-problemas');
     Route::put('troubleshooting/{solution}', 'TroubleshootingController@update')->name('troubleshooting.update')->middleware('permission:solucion-de-problemas');
-    
+
 
     #Cooltura Play
     //Galería
@@ -208,6 +208,14 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::get('json/select/categories', 'AdminController@getCategories')->name('json.get-categories');
     Route::get('json/select/departments', 'AdminController@getDepartments')->name('json.get-departments');
     Route::get('json/select/departments-no-main', 'AdminController@getDepartmentsNoMain')->name('json.get-departments');
+
+    #HiPlay
+    Route::get('hiplay', 'HiPlayController@index')->name('hiplay.index')->middleware('permission:hiplay');
+    Route::post('podcast', 'HiPlayController@createPodcast')->name('hiplay.create-podcast')->middleware('permission:hiplay');
+    Route::get('json/podcasts', 'HiPlayController@getPodcasts')->name('hiplay.get-podcasts')->middleware('permission:hiplay');
+    Route::get('json/podcast/{podcast}', 'HiPlayController@getPodcast')->name('hiplay.json.get-podcast')->middleware('permission:hiplay');
+    Route::delete('podcast/{podcast}', 'HiPlayController@delete')->name('hiplay.delete-podcast')->middleware('permission:hiplay');
+    Route::post('podcast/{podcast}', 'HiPlayController@update')->name('hiplay.update-podcast')->middleware('permission:hiplay');
 });
 
 /*Route::get('mail', function () {

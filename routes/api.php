@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 
 Route::namespace('Api')->group(function() {
     Route::get('layout', 'ApiController@layout');
+    Route::get('awards', 'PageController@getAwards');
     Route::get('paginate/blog', 'ApiController@paginateBlog');
     Route::get('paginate/success-stories', 'ApiController@paginateSuccessStories');
     Route::get('paginate/troubleshooting', 'ApiController@getTroubleshooting');
@@ -33,6 +34,8 @@ Route::namespace('Api')->group(function() {
         Route::post('save', 'ApplicantController@save');
     });
     Route::prefix('page')->group(function() {
+        Route::get('nosotros/players', 'PageController@getPlayers');
+        Route::get('nosotros/podcasts', 'PageController@getPodcasts');
         Route::get('home', 'PageController@home');
         Route::get('client-logos', 'PageController@getClientLogos');
         Route::get('testimonials', 'PageController@getTestimonials');

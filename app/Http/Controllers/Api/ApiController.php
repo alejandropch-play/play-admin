@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Traits\ApiTrait;
 use App\SocialNetwork;
 use App\Department;
+use App\History;
 use App\Information;
 use App\MasterPage;
 use App\Post;
@@ -18,13 +19,14 @@ use App\Partner;
 use App\SuccessStory;
 use App\LeadMedium;
 use App\WhyUs;
+use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
     use ApiTrait;
 
     public function layout(){
-        $social_networks = SocialNetwork::select('id','url','master_social_network_id')->with('master_social_networks:id,icon,name')->orderBy('index','asc')->get();  
+        $social_networks = SocialNetwork::select('id','url','master_social_network_id')->with('master_social_networks:id,icon,name')->orderBy('index','asc')->get();
         $main = Department::select('title','logo_white')->where('main',1)->first();
         $information = Information::first();
         //$pages = MasterPage::select('name','slug')->where('slug','!=','politicas-privacidad')->where('department_id',NULL)->orWhere('slug',NULL)->get();
@@ -67,6 +69,24 @@ class ApiController extends Controller
         return $this->sendResponse($data);
     }
 
+    public function qualityProcessData(Request $request){
+        $content = MasterPage::where('slug','conocenos')->first();
+        if (!$content) {
+            return $this->sendError("El page 'conocenos' no existe");
+        }
+        $content->load(['sections' => function ($query) {
+            return $query->where('id', 40)->select('id','name','master_page_id');
+        }]);
+        $sections = $content->sections->first()->content;
+
+        if(!$sections){
+            return $this->sendError("El page 'conocenos' no existe");
+        }
+        $data = array(
+            "quality_process" => $sections
+        );
+        return $this->sendResponse($data);
+    }
     public function paginateSuccessStories(Request $request){
         $master_page = MasterPage::where('slug',$request->department)->first();
         if(!$master_page){
@@ -95,7 +115,7 @@ class ApiController extends Controller
         );
         return $this->sendResponse($data);
     }
-    
+
     public function getBusinessLineLogos(Request $request){
         $master_page = MasterPage::where('slug',$request->department)->first();
         if(!$master_page){
@@ -105,7 +125,7 @@ class ApiController extends Controller
         if($business_line_logos->isEmpty()){
             return $this->sendResponse(array());
         }
-        
+
         return $this->sendResponse($business_line_logos);
     }
 
@@ -115,7 +135,15 @@ class ApiController extends Controller
         if($why_us->isEmpty()){
             return $this->sendResponse(array());
         }
-        
+
         return $this->sendResponse($why_us);
+    }
+    public function getHistory(){
+        $history = History::orderBy('index')->get();
+
+        if($history->isEmpty()){
+            return $this->sendResponse(array());
+        }
+        return $this->sendResponse($history);
     }
 }

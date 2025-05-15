@@ -235,6 +235,16 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::get('json/podcast/{podcast}', 'HiPlayController@getPodcast')->name('hiplay.json.get-podcast')->middleware('permission:hiplay');
     Route::delete('podcast/{podcast}', 'HiPlayController@delete')->name('hiplay.delete-podcast')->middleware('permission:hiplay');
     Route::post('podcast/{podcast}', 'HiPlayController@update')->name('hiplay.update-podcast')->middleware('permission:hiplay');
+    
+    #Nuestra Historia
+    Route::get('nuestra-historia', 'HistoryController@index')->name('history.index')->middleware('permission:nuestra-historia');
+    Route::post('history', 'HistoryController@create')->name('our-story.create')->middleware('permission:nuestra-historia');
+    Route::get('json/history', 'HistoryController@getAllHistory')->name('our-story.json.get-all-our-story')->middleware('permission:nuestra-historia');
+    Route::put('history/order', 'HistoryController@order')->name('our-story.order')->middleware('permission:nuestra-historia');
+    Route::get('json/history/{story}', 'HistoryController@getHistory')->name('our-story.json.get-our-story')->middleware('permission:nuestra-historia');
+    Route::delete('history/{story}', 'HistoryController@delete')->name('our-story.delete')->middleware('permission:nuestra-historia');
+    Route::put('history/{story}', 'HistoryController@update')->name('our-story.update')->middleware('permission:nuestra-historia');
+
 });
 
 /*Route::get('mail', function () {

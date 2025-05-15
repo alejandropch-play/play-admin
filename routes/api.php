@@ -20,11 +20,13 @@ use Illuminate\Http\Request;
 Route::namespace('Api')->group(function() {
     Route::get('layout', 'ApiController@layout');
     Route::get('awards', 'PageController@getAwards');
+    Route::get('quality-process', 'ApiController@qualityProcessData');
     Route::get('paginate/blog', 'ApiController@paginateBlog');
     Route::get('paginate/success-stories', 'ApiController@paginateSuccessStories');
     Route::get('paginate/troubleshooting', 'ApiController@getTroubleshooting');
     Route::get('business-line-logos', 'ApiController@getBusinessLineLogos');
     Route::get('why-us', 'ApiController@getWhyUs');
+    Route::get('history', 'ApiController@getHistory');
     Route::prefix('lead')->group(function() {
         Route::post('save', 'LeadController@save');
         Route::post('save-landing', 'LeadController@saveLanding');

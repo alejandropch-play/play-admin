@@ -52,6 +52,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(HiPlaySeeder::class);
         $this->call(QualityProcessSeeder::class);
+        $this->call(HistorySeeder::class);
+        $this->call(BannerControllersSeeder::class);
 
 
     }

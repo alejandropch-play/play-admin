@@ -54,7 +54,7 @@
                     </div>
                   </div>
 
-                  
+
 
                 </div>
               </div>
@@ -177,23 +177,23 @@
                     </div>
                     <div class="col-12 p-0 text-right">
                         <!-- Botón "Agregar más" visible solo para ciertos IDs -->
-                    <button
-                      v-if="[20, 25, 30].includes(section.id)"
-                      type="button"
-                      class="btn btn-success ml-2"
-                      @click.prevent="agregarMas(section.id,section.name,page.id)"
-                    >Agregar más
-                    </button>
-                      <Button
-                        :text="'Actualizar'"
-                        :classes="['btn-primary']"
-                        :request-server="requestServer"
-                      ></Button>
-                      <button
-                        type="button"
-                        class="btn btn-danger"
-                        @click.prevent="restorePage"
-                      >Cancelar</button>
+                        <button
+                          v-if="[20, 25, 30, QUALITY_PROCESS_ID].includes(section.id)"
+                          type="button"
+                          class="btn btn-success ml-2"
+                          @click.prevent="agregarMas(section.id,section.name,page.id)"
+                        >Agregar más
+                        </button>
+                          <Button
+                            :text="'Actualizar'"
+                            :classes="['btn-primary']"
+                            :request-server="requestServer"
+                          ></Button>
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            @click.prevent="restorePage"
+                          >Cancelar</button>
                     </div>
                   </form>
                 </div>
@@ -287,7 +287,8 @@ export default {
       fields: {},
       image: [],
       image_responsive: [],
-      video: []
+      video: [],
+      QUALITY_PROCESS_ID: 40
     };
   },
   methods: {
@@ -406,9 +407,9 @@ export default {
       }
     },
     getSection(id, name, idPage) {
- 
+
       this.page = this.pages.find(x => x.id === idPage);
-     
+
       axios
         .get("json/pages/section/" + id)
         .then(response => {

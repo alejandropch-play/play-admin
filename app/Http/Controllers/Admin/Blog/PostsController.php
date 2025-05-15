@@ -28,7 +28,7 @@ class PostsController extends Controller
     public function storeImage(Request $request){
         $file_name = $this->setFileName('pi-',$request->file('image'));
         try{
-            $store_image = Storage::disk('gcs')->putFileAs('img/',$request->file('image'),$file_name);
+            $store_image = Storage::disk('gcs')->putFileAs('img/posts/',$request->file('image'),$file_name);
             return response()->json(['image'=>Storage::disk('gcs')->url('img/posts/'.$file_name)]);
         }
         catch(\Exception $e){

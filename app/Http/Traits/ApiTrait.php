@@ -36,13 +36,12 @@ trait ApiTrait {
         $page = MasterPage::select('id','title','seo_description','seo_keywords','seo_image','slug')->where('slug',$slug)->first()->toArray();
         return $page;
     }
-    
+
     public function getDepartments(){
         $departments = MasterPage::select('name','slug','department_id')->where('department_id','!=',NULL)
         ->with('relDepartment')->get();
         return $departments;
     }
-
     public function getContentPage($slug){
         $content = MasterPage::where('slug',$slug)->first()->load('sections:id,name,master_page_id','sections.content:id,master_section_id,field,value')->sections->toArray();
         return $content;
@@ -59,7 +58,7 @@ trait ApiTrait {
         }
 
         $limit = $request->limit ? $request->limit : 9;
-        
+
         $success_stories = SuccessStory::where('department_id',$master_page->department_id)->orderBy('index')->paginate($limit);
         return $success_stories;
     }

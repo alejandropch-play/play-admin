@@ -50,6 +50,7 @@ const app = new Vue({
         'awards': () => import('./views/Awards.vue' /* webpackChunkName: "js/awards" */),
         'hiplay': () => import('./views/Hiplay.vue' /* webpackChunkName: "js/awards" */),
 
+        'history': () => import('./views/History.vue' /* webpackChunkName: "js/why-us" */),
         'reset': () => import('./views/auth/Reset.vue' /* webpackChunkName: "js/reset" */),
         'chatbot-messages': () => import('./views/ChatbotMessages.vue' /* webpackChunkName: "js/chatbot-messages" */),
     }

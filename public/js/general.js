@@ -194,7 +194,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
     actualizarInformacion: function actualizarInformacion() {
       var _this = this;
       this.requestServer = true;
-      fetch('https://apirestful.playgroup.pe/api/admin/update_general_info_countries', {
+      fetch('http://localhost:5001/api/admin/update_general_info_countries', {
         method: 'PUT',
         headers: {
           "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S",
@@ -202,10 +202,13 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
         },
         body: JSON.stringify(_objectSpread({}, this.informacion))
       }).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        console.log('aca', response);
         _this.restablecerPagina();
         Swal.fire({
-          title: response.data.title,
-          text: response.data.message,
+          title: response === null || response === void 0 ? void 0 : response.title,
+          text: response === null || response === void 0 ? void 0 : response.message,
           type: "success",
           confirmButtonText: "Ok",
           buttonsStyling: false,
@@ -263,7 +266,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
       var _this2 = this;
       axios.get("json/informacion").then(function (response) {
         _this2.informacion = response.data;
-        fetch('https://apirestful.playgroup.pe/api/admin/update_general_info_countries', {
+        fetch('http://localhost:5001/api/admin/update_general_info_countries', {
           method: 'GET',
           headers: {
             "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S",

@@ -178,7 +178,7 @@
                     <div class="col-12 p-0 text-right">
                         <!-- Botón "Agregar más" visible solo para ciertos IDs -->
                         <button
-                          v-if="[20, 25, 30, QUALITY_PROCESS_ID].includes(section.id)"
+                          v-if="[QUALITY_PROCESS_ID].includes(section.id)"
                           type="button"
                           class="btn btn-success ml-2"
                           @click.prevent="agregarMas(section.id,section.name,page.id)"

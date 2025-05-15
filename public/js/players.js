@@ -75,6 +75,7 @@ __webpack_require__.r(__webpack_exports__);
       editBlock: false,
       service: {
         full_name: "",
+        linkedIn: "",
         job: "",
         department_id: "",
         image_1: "",
@@ -109,6 +110,9 @@ __webpack_require__.r(__webpack_exports__);
       fd.append("id", this.service.id);
       if (this.service.full_name) {
         fd.append("full_name", this.service.full_name);
+      }
+      if (this.service.linkedIn) {
+        fd.append("linkedIn", this.service.linkedIn);
       }
       if (this.service.job) {
         fd.append("job", this.service.job);
@@ -156,7 +160,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     editPlayer: function editPlayer(id) {
-      console.log(id);
       this.editBlock = true;
       this.startBlock = false;
       this.getService(id);
@@ -173,6 +176,7 @@ __webpack_require__.r(__webpack_exports__);
       this.service = {
         full_name: "",
         job: "",
+        linkedIn: "",
         department_id: "",
         image_1: "",
         image_2: ""
@@ -189,6 +193,9 @@ __webpack_require__.r(__webpack_exports__);
       }
       if (this.service.job) {
         fd.append("job", this.service.job);
+      }
+      if (this.service.linkedIn) {
+        fd.append("linkedIn", this.service.linkedIn);
       }
       if (this.service.department_id) {
         fd.append("department_id", this.service.department_id);
@@ -526,7 +533,7 @@ var render = function render() {
       "for": "id_job"
     }
   }, [_vm._v(_vm._s(_vm.errors.description[0]))]) : _vm._e()])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12"
+    staticClass: "col-12 col-lg-6"
   }, [_c("div", {
     staticClass: "form-group"
   }, [_c("label", {
@@ -555,11 +562,46 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "form-group"
   }, [_c("label", {
+    staticClass: "font-weight-bold",
+    attrs: {
+      "for": "id_linkedIn"
+    }
+  }, [_vm._v("LinkedIn")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.service.linkedIn,
+      expression: "service.linkedIn"
+    }],
+    staticClass: "form-control form-control-alternative",
+    attrs: {
+      type: "text",
+      id: "id_linkedIn"
+    },
+    domProps: {
+      value: _vm.service.linkedIn
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.service, "linkedIn", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors && _vm.errors.linkedIn ? _c("label", {
+    staticClass: "mt-2 text-danger text-sm",
+    attrs: {
+      "for": "id_position"
+    }
+  }, [_vm._v(_vm._s(_vm.errors.linkedIn[0]))]) : _vm._e()])]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
     staticClass: "font-weight-bold mb-0",
     attrs: {
       "for": "id_image_1"
     }
-  }, [_vm._v("Imagen")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Imagen:")]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-3"
@@ -741,7 +783,7 @@ var render = function render() {
       "for": "id_job"
     }
   }, [_vm._v(_vm._s(_vm.errors.job[0]))]) : _vm._e()])]), _vm._v(" "), _c("div", {
-    staticClass: "col-12"
+    staticClass: "col-12 col-lg-6"
   }, [_c("div", {
     staticClass: "form-group"
   }, [_c("label", {
@@ -765,6 +807,41 @@ var render = function render() {
       "for": "id_department"
     }
   }, [_vm._v(_vm._s(_vm.errors.department_id[0]))]) : _vm._e()], 1)]), _vm._v(" "), _c("div", {
+    staticClass: "col-12 col-lg-6"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    staticClass: "font-weight-bold",
+    attrs: {
+      "for": "id_linkedIn"
+    }
+  }, [_vm._v("LinkedIn")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.service.linkedIn,
+      expression: "service.linkedIn"
+    }],
+    staticClass: "form-control form-control-alternative",
+    attrs: {
+      type: "text",
+      id: "id_linkedIn"
+    },
+    domProps: {
+      value: _vm.service.linkedIn
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.service, "linkedIn", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors && _vm.errors.linkedIn ? _c("label", {
+    staticClass: "mt-2 text-danger text-sm",
+    attrs: {
+      "for": "id_position"
+    }
+  }, [_vm._v(_vm._s(_vm.errors.linkedIn[0]))]) : _vm._e()])]), _vm._v(" "), _c("div", {
     staticClass: "col-12 col-lg-6"
   }, [_c("div", {
     staticClass: "form-group"

@@ -390,6 +390,52 @@ var render = function render() {
       }
     }, [_c("i", {
       staticClass: "fas fa-trash-alt text-danger mr-1"
+    }), _vm._v("\n              Eliminar")])])]) : _vm._e(), _vm._v(" "), _vm.type == "why-us" ? _c("div", {
+      staticClass: "card shadow"
+    }, [_c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "row"
+    }, [_c("div", {
+      staticClass: "col-12 text-center"
+    }, [_c("img", {
+      staticClass: "img-fluid",
+      attrs: {
+        src: "https://storage.googleapis.com/playgroup-web/img/solutions/" + element.image,
+        alt: ""
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "col-12 text-center"
+    }, [_c("div", {
+      domProps: {
+        innerHTML: _vm._s(element.name)
+      }
+    }), _vm._v(" "), _c("p", {
+      staticClass: "text-muted d-inline-block mb-0"
+    }, [_vm._v(_vm._s(element.title))]), _vm._v(" "), _c("p", {
+      staticClass: "mb-0"
+    }, [_vm._v(_vm._s(element.description))])])])]), _vm._v(" "), _c("div", {
+      staticClass: "card-footer pt-0 text-right border-0"
+    }, [_c("button", {
+      staticClass: "btn btn-sm btn-secondary",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.clickEdit(element.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fas fa-pen-alt text-warning mr-1"
+    }), _vm._v(" Editar")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-sm btn-secondary",
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.clickDelete(element.id);
+        }
+      }
+    }, [_c("i", {
+      staticClass: "fas fa-trash-alt text-danger mr-1"
     }), _vm._v("\n              Eliminar")])])]) : _vm._e(), _vm._v(" "), _vm.type == "adn" ? _c("div", {
       staticClass: "card shadow"
     }, [_c("div", {
@@ -440,7 +486,7 @@ var staticRenderFns = [function () {
     staticClass: "col-6"
   }, [_c("p", {
     staticClass: "mb-0"
-  }, [_vm._v("Arrastré los elementos en el orden que desee mostrarlos.")])]);
+  }, [_vm._v("Arrastre los elementos en el orden que desee mostrarlos.")])]);
 }];
 render._withStripped = true;
 

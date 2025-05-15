@@ -331,6 +331,18 @@ class MasterFieldsTableSeeder extends Seeder
                 'type'     => 'input',
                 'master_section_id' => 19
             ],
+             [
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
+                'type'     => 'input',
+                'master_section_id' => 19
+            ],
+             [
+                'name' 		=> 'Description',
+                'variable' 		=> 'description',
+                'type'     => 'input',
+                'master_section_id' => 19
+            ],
             [
                 'name' 		=> 'Gráfica',
                 'variable'     => 'image',
@@ -339,9 +351,21 @@ class MasterFieldsTableSeeder extends Seeder
             ],
             //Casos de Éxito
             [
-                'name' => 'Descripción',
-                'variable' => 'description',
-                'type' => 'input',
+                'name' 		=> 'Título',
+                'variable' 		=> 'title',
+                'type'     => 'input',
+                'master_section_id' => 20
+            ],
+             [
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
+                'type'     => 'input',
+                'master_section_id' => 20
+            ],
+             [
+                'name' 		=> 'Description',
+                'variable' 		=> 'description',
+                'type'     => 'input',
                 'master_section_id' => 20
             ],
             //Solucion de Problemas
@@ -352,16 +376,10 @@ class MasterFieldsTableSeeder extends Seeder
                 'master_section_id' => 21
             ],
             [
-                'name' 		=> 'Descripción',
-                'variable'     => 'description',
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
                 'type'     => 'input',
-                'master_section_id'     => 21
-            ],
-            [
-                'name' 		=> 'Imagen',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 21
+                'master_section_id' => 21
             ],
             //Contáctenos
             [
@@ -422,9 +440,21 @@ class MasterFieldsTableSeeder extends Seeder
                 'master_section_id'     => 23
             ],
             //Metodologia?
-            [
+                [
                 'name' 		=> 'Título',
                 'variable' 		=> 'title',
+                'type'     => 'input',
+                'master_section_id' => 24
+            ],
+             [
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
+                'type'     => 'input',
+                'master_section_id' => 24
+            ],
+             [
+                'name' 		=> 'Description',
+                'variable' 		=> 'description',
                 'type'     => 'input',
                 'master_section_id' => 24
             ],
@@ -436,9 +466,21 @@ class MasterFieldsTableSeeder extends Seeder
             ],
             //Casos de Éxito
             [
-                'name' => 'Descripción',
-                'variable' => 'description',
-                'type' => 'input',
+                'name' 		=> 'Título',
+                'variable' 		=> 'title',
+                'type'     => 'input',
+                'master_section_id' => 25
+            ],
+             [
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
+                'type'     => 'input',
+                'master_section_id' => 25
+            ],
+             [
+                'name' 		=> 'Description',
+                'variable' 		=> 'description',
+                'type'     => 'input',
                 'master_section_id' => 25
             ],
             //Solucion de Problemas
@@ -449,16 +491,10 @@ class MasterFieldsTableSeeder extends Seeder
                 'master_section_id' => 26
             ],
             [
-                'name' 		=> 'Descripción',
-                'variable'     => 'description',
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
                 'type'     => 'input',
-                'master_section_id'     => 26
-            ],
-            [
-                'name' 		=> 'Imagen',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 26
+                'master_section_id' => 26
             ],
             //Contáctenos
             [
@@ -519,9 +555,21 @@ class MasterFieldsTableSeeder extends Seeder
                 'master_section_id'     => 28
             ],
             //Metodologia?
-            [
+               [
                 'name' 		=> 'Título',
                 'variable' 		=> 'title',
+                'type'     => 'input',
+                'master_section_id' => 29
+            ],
+             [
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
+                'type'     => 'input',
+                'master_section_id' => 29
+            ],
+             [
+                'name' 		=> 'Description',
+                'variable' 		=> 'description',
                 'type'     => 'input',
                 'master_section_id' => 29
             ],
@@ -533,9 +581,21 @@ class MasterFieldsTableSeeder extends Seeder
             ],
             //Casos de Éxito
             [
-                'name' => 'Descripción',
-                'variable' => 'description',
-                'type' => 'input',
+                'name' 		=> 'Título',
+                'variable' 		=> 'title',
+                'type'     => 'input',
+                'master_section_id' => 30
+            ],
+             [
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
+                'type'     => 'input',
+                'master_section_id' => 30
+            ],
+             [
+                'name' 		=> 'Description',
+                'variable' 		=> 'description',
+                'type'     => 'input',
                 'master_section_id' => 30
             ],
             //Solucion de Problemas
@@ -546,16 +606,10 @@ class MasterFieldsTableSeeder extends Seeder
                 'master_section_id' => 31
             ],
             [
-                'name' 		=> 'Descripción',
-                'variable'     => 'description',
+                'name' 		=> 'SubTitulo',
+                'variable' 		=> 'sub_title',
                 'type'     => 'input',
-                'master_section_id'     => 31
-            ],
-            [
-                'name' 		=> 'Imagen',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 31
+                'master_section_id' => 31
             ],
             //Contáctenos
             [

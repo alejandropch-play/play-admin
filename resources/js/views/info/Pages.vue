@@ -177,13 +177,13 @@
                     </div>
                     <div class="col-12 p-0 text-right">
                         <!-- Botón "Agregar más" visible solo para ciertos IDs -->
-                    <button
+                    <!-- <button
                       v-if="[20, 25, 30].includes(section.id)"
                       type="button"
                       class="btn btn-success ml-2"
                       @click.prevent="agregarMas(section.id,section.name,page.id)"
                     >Agregar más
-                    </button>
+                    </button> -->
                       <Button
                         :text="'Actualizar'"
                         :classes="['btn-primary']"

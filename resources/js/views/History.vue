@@ -26,7 +26,7 @@
     </div>
     <div class="container-fluid mt--6">
       <ElementsDraggable
-        v-if="startBlock"
+        v-if="startBlock && elements.length"
         type="history"
         @delete="deleteElement"
         @edit="editElement"
@@ -503,8 +503,14 @@ export default {
   },
  updated() {
   console.log("Element updated on render:");
-  console.log("Title:", this.elements);
+  console.log("updated:", this.elements);
+  console.log("updated bloc:", this.startBlock);
+},
+mounted() {
+  console.log('Elements:', this.elements); // Should not be an empty array
+  console.log("mounted block:", this.startBlock);
 }
+
 
 };
 </script>

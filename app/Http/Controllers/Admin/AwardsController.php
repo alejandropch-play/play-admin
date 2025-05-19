@@ -9,7 +9,7 @@ use App\Award;
 
 use App\Http\Requests\Admin\AwardRequest;
 use App\Http\Traits\AdminTrait;
-
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class AwardsController extends Controller
@@ -33,7 +33,7 @@ class AwardsController extends Controller
     }
 
     public function create(AwardRequest $request){
-        $award = request(["name","category","position", "linkedIn"]);
+        $award = request(["name","category","position"]);
         $image_name = $this->setFileName('a-',$request->file('image'));
         $store_image = Storage::disk('gcs')->putFileAs('img/awards/',$request->file('image'),$image_name);
         if(!$store_image){
@@ -52,6 +52,7 @@ class AwardsController extends Controller
             return response()->json(['title'=> trans('custom.title.success'), 'message'=> trans('custom.message.create.success', ['name' => trans('custom.attribute.award')])],200);
         }
         catch(\Exception $e){
+            Log::error("Err", ["e"=>$e]);
             return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.create.error', ['name' => trans('custom.attribute.award')]) ],500);
         }
     }

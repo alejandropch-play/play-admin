@@ -148,7 +148,6 @@
 
 
           <div class="card shadow" v-if="type == 'testimonials'">
-
             <div class="card-body">
               <div class="row align-items-start">
                 <div class="col-auto">
@@ -227,6 +226,39 @@
                 <div class="col-12 text-center">
                   <img
                       :src="'https://storage.googleapis.com/playgroup-web/img/solutions/'+element.image"
+                      class="img-fluid"
+                      alt
+                    />
+                </div>
+                <div class="col-12 text-center">
+                  <!--<h4 class="mb-0 d-inline-block text-dark">
+                    {{ element.name}}
+                  </h4> - -->
+                  <div v-html="element.name"></div>
+                  <p class="text-muted d-inline-block mb-0">{{ element.title}}</p>
+                  <p class="mb-0">{{ element.description }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer pt-0 text-right border-0">
+              <button class="btn btn-sm btn-secondary" @click.prevent="clickEdit(element.id)">
+                  <i class="fas fa-pen-alt text-warning mr-1"></i> Editar</button>
+                <button
+                  class="btn btn-sm btn-secondary"
+                  @click.prevent="clickDelete(element.id)"
+                >
+                <i class="fas fa-trash-alt text-danger mr-1"></i>
+                Eliminar</button>
+            </div>
+            </div>
+          <div class="card shadow" v-if="type == 'history'">
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <img
+                      :src="'https://storage.googleapis.com/playgroup-web/img/history/'+element.image"
                       class="img-fluid"
                       alt
                     />

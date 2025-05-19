@@ -75,7 +75,7 @@ class ApiController extends Controller
             return $this->sendError("El page 'conocenos' no existe");
         }
         $content->load(['sections' => function ($query) {
-            return $query->where('id', 40)->select('id','name','master_page_id');
+            return $query->where('id', 42)->select('id','name','master_page_id');
         }]);
         $sections = $content->sections->first()->content;
 

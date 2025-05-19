@@ -13,8 +13,8 @@ class QualityProcessSeeder extends Seeder
     public function run()
     {
         DB::table('master_sections')->insert([
-                'id' => 40,
-                'name'=> 'Proceso de Calidad',
+                'id' => 42,
+                'name'=> 'Proceso de Calidad (Images)',
                 'master_page_id' => 6,
         ]);
         DB::table('master_fields')->insert([
@@ -22,13 +22,13 @@ class QualityProcessSeeder extends Seeder
                 'name' => "Imagen del Certificado",
                 'variable' => "image",
                 'type' => "image",
-                'master_section_id' => 40,
+                'master_section_id' => 42,
             ],
             [
                 'name' => "Imagen de Slide 1",
                 'variable' => "image_1",
                 'type' => "image",
-                'master_section_id' => 40,
+                'master_section_id' => 42,
             ],
 
         ]);

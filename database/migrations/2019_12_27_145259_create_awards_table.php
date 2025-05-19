@@ -17,9 +17,8 @@ class CreateAwardsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image');
-            $table->string('position');
             $table->string('category');
-            $table->integer('index');    
+            $table->integer('index');
             $table->timestamps();
         });
     }

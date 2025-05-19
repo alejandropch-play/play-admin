@@ -389,13 +389,12 @@ export default {
           ...this.informacion
         })
           })
-          .then(response => response.json()) 
+          .then(response => response.json())
           .then(response => {
-            console.log('aca',response);
             this.restablecerPagina();
           Swal.fire({
-            title: response?.title,
-            text: response?.message,
+            title: response.title,
+            text: response.message,
             type: "success",
             confirmButtonText: "Ok",
             buttonsStyling: false,
@@ -410,10 +409,10 @@ export default {
         .then(response => {
           this.requestServer = false;
 
-          
 
 
-          
+
+
         })
         .catch(error => {
           this.requestServer = false;

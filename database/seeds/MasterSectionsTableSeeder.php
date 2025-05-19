@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MasterSectionsTableSeeder extends Seeder
 {
@@ -14,147 +15,151 @@ class MasterSectionsTableSeeder extends Seeder
         DB::table('master_sections')->insert([
             #Home
             [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 1,
+                'id' => 1,
+                'name' => 'Banner',
+                'master_page_id' => 1,
             ],
             [
-                'name' 		=> 'Know How',
-                'master_page_id'     => 1,
+                'id' => 2,
+                'name' => 'Lineas de Negocio',
+                'master_page_id' => 1,
             ],
             [
-                'name' 		=> 'Blog',
-                'master_page_id'     => 1,
+                'id' => 3,
+                'name' => 'Por qué Nosotros',
+                'master_page_id' => 1,
             ],
             [
-                'name' 		=> 'Contáctenos',
-                'master_page_id'     => 1,
+                'id' => 4,
+                'name' => 'Nuestros Clientes',
+                'master_page_id' => 1,
+            ],
+            [
+                'id' => 5,
+                'name' => 'Rompemos Fronteras',
+                'master_page_id' => 1,
+            ],
+            [
+                'id' => 6,
+                'name' => 'Notas de Prensa',
+                'master_page_id' => 1,
             ],
             #Blog
             [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 5,
+                'id' => 7,
+                'name' => 'Banner',
+                'master_page_id' => 5,
             ],
-            #Trabaja con Nosotros
+            #Nuestra Historia
             [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 8,
+                'id' => 8,
+                'name' => 'Banner',
+                'master_page_id' => 8,
             ],
             #Conocenos
             [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 6,
+                'id' => 9,
+                'name' => 'Banner',
+                'master_page_id' => 6,
             ],
             [
-                'name' 		=> 'Sobre Nosotros',
-                'master_page_id'     => 6,
+                'id' => 10,
+                'name' => 'Nuestra Historia',
+                'master_page_id' => 6,
             ],
             [
-                'name' 		=> '¿Qué hacemos?',
-                'master_page_id'     => 6,
+                'id' => 11,
+                'name' => 'Nuestros Trofeos',
+                'master_page_id' => 6,
             ],
             [
-                'name' 		=> '¿Hacia dónde apuntamos?',
-                'master_page_id'     => 6,
+                'id' => 12,
+                'name' => 'Nuestros Players',
+                'master_page_id' => 6,
             ],
             [
-                'name' 		=> 'Premios',
-                'master_page_id'     => 6,
+                'id' => 13,
+                'name' => 'Hi,PLAY (Presentación)',
+                'master_page_id' => 6,
             ],
             [
-                'name' 		=> 'ADN',
-                'master_page_id'     => 6,
-            ],
-            [
-                'name' 		=> 'Políticas de Calidad',
-                'master_page_id'     => 6,
-            ],
-            [
-                'name' 		=> 'Ponle PLAY a la Felicidad',
-                'master_page_id'     => 6,
-            ],
-            [
-                'name' 		=> 'PLAY Experience',
-                'master_page_id'     => 6,
-            ],
-            [
-                'name' 		=> 'Players',
-                'master_page_id'     => 6,
-            ],
-            [
-                'name' 		=> 'Contáctenos',
-                'master_page_id'     => 6,
-            ],
-            #SF
-            [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 2,
-            ],
-            [
-                'name' 		=> 'Metodología',
-                'master_page_id'     => 2,
-            ],
-            [
-                'name' 		=> 'Casos de Éxito',
-                'master_page_id'     => 2,
-            ],
-            [
-                'name' 		=> 'Solución de Problemas',
-                'master_page_id'     => 2,
-            ],
-            [
-                'name' 		=> 'Contáctenos',
-                'master_page_id'     => 2,
-            ],
-            #CH
-            [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 3,
-            ],
-            [
-                'name' 		=> 'Metodología',
-                'master_page_id'     => 3,
-            ],
-            [
-                'name' 		=> 'Casos de Éxito',
-                'master_page_id'     => 3,
-            ],
-            [
-                'name' 		=> 'Solución de Problemas',
-                'master_page_id'     => 3,
-            ],
-            [
-                'name' 		=> 'Contáctenos',
-                'master_page_id'     => 3,
+                'id' => 14,
+                'name' => 'Proceso de Calidad (Headers)',
+                'master_page_id' => 6,
             ],
             #DP
             [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 4,
+                'id' => 18,
+                'name' => 'Banner',
+                'master_page_id' => 2,
             ],
             [
-                'name' 		=> 'Metodología',
-                'master_page_id'     => 4,
+                'id' => 19,
+                'name' => 'Metodología',
+                'master_page_id' => 2,
             ],
             [
-                'name' 		=> 'Casos de Éxito',
-                'master_page_id'     => 4,
+                'id' => 20,
+                'name' => 'Casos de Éxito',
+                'master_page_id' => 2,
             ],
             [
-                'name' 		=> 'Solución de Problemas',
-                'master_page_id'     => 4,
+                'id' => 21,
+                'name' => 'Solución de Problemas',
+                'master_page_id' => 2,
+            ],
+            #CH
+            [
+                'id' => 23,
+                'name' => 'Banner',
+                'master_page_id' => 3,
             ],
             [
-                'name' 		=> 'Contáctenos',
-                'master_page_id'     => 4,
+                'id' => 24,
+                'name' => 'Metodología',
+                'master_page_id' => 3,
+            ],
+            [
+                'id' => 25,
+                'name' => 'Casos de Éxito',
+                'master_page_id' => 3,
+            ],
+            [
+                'id' => 26,
+                'name' => 'Solución de Problemas',
+                'master_page_id' => 3,
+            ],
+            #SF
+            [
+                'id' => 28,
+                'name' => 'Banner',
+                'master_page_id' => 4,
+            ],
+            [
+                'id' => 29,
+                'name' => 'Metodología',
+                'master_page_id' => 4,
+            ],
+            [
+                'id' => 30,
+                'name' => 'Casos de Éxito',
+                'master_page_id' => 4,
+            ],
+            [
+                'id' => 31,
+                'name' => 'Solución de Problemas',
+                'master_page_id' => 4,
             ],
             #Politicas
             [
-                'name' 		=> 'Banner',
-                'master_page_id'     => 7,
+                'id' => 33,
+                'name' => 'Banner',
+                'master_page_id' => 7,
             ],
             [
-                'name' 		=> 'Información',
-                'master_page_id'     => 7,
+                'id' => 34,
+                'name' => 'Información',
+                'master_page_id' => 7,
             ],
         ]);
     }

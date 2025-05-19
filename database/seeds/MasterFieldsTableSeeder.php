@@ -15,24 +15,36 @@ class MasterFieldsTableSeeder extends Seeder
             #Home
             //Banner
             [
-                'name' 		=> 'Video',
-                'variable'     => 'video',
-                'type'     => 'video',
+                'name' 		=> 'Header',
+                'variable'     => 'header',
+                'type'     => 'input',
                 'master_section_id'     => 1
             ],
             [
-                'name' 		=> 'Poster',
-                'variable'     => 'image',
+                'name' 		=> 'Title',
+                'variable'     => 'tittle',
+                'type'     => 'input',
+                'master_section_id'     => 1
+            ],
+            [
+                'name' 		=> 'Poster (para pantallas grandes)',
+                'variable'     => 'poster_image',
                 'type'     => 'image',
                 'master_section_id'     => 1
             ],
-            /*[
-                'name' 		=> 'Imagen Responsive',
-                'variable'     => 'image_responsive',
-                'type'     => 'image',
-                'master_section_id'     => 1
-            ],*/
-            //Know How
+            [
+                'name' => 'Premio',
+                'variable' => 'award_image_home',
+                'type' => 'image',
+                'master_section_id' => 1
+            ],
+            [
+                'name' => 'Personaje Play (visible solo en pantallas pequeñas)',
+                'variable' => 'play-character_image_home',
+                'type' => 'image',
+                'master_section_id' => 1
+            ],
+            //Lineas de Negocio
             [
                 'name' 		=> 'Imagen',
                 'variable'     => 'image',
@@ -41,175 +53,278 @@ class MasterFieldsTableSeeder extends Seeder
             ],
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 2
             ],
             [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
+                'name' 		=> 'Subtítulo',
+                'variable' 		=> 'sub_title',
+                'type'     => 'input',
                 'master_section_id' => 2
             ],
-            //Premios
-            //Blog
             [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 3
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 3
-            ],
-            //Contáctenos
-            [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 4
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 4
-            ],
-            [
-                'name' 		=> 'Fondo',
-                'variable'     => 'background',
+                'name' 		=> 'Imagen Digital Performance',
+                'variable'     => 'image_dp',
                 'type'     => 'image',
-                'master_section_id'     => 4
+                'master_section_id'     => 2
+            ],
+            [
+                'name' 		=> 'Texto de Digital Performance',
+                'variable' 		=> 'text_dp',
+               'type'     => 'input',
+                'master_section_id' => 2
+            ],
+            [
+                'name' 		=> 'Imagen de Creativity Hub',
+                'variable'     => 'image_ch',
+                'type'     => 'image',
+                'master_section_id'     => 2
+            ],
+            [
+                'name' 		=> 'Texto de Creativity Hub',
+                'variable' 		=> 'text_ch',
+                'type'     => 'input',
+                'master_section_id' => 2
+            ],
+            [
+                'name' 		=> 'Imagen de Software Factory',
+                'variable'     => 'image_sf',
+                'type'     => 'image',
+                'master_section_id'     => 2
+            ],
+            [
+                'name' 		=> 'Texto de Software Factory',
+                'variable' 		=> 'text_sf',
+                'type'     => 'input',
+                'master_section_id' => 2
+            ],
+            //  Por que Nosotros
+            [
+                'name' 		=> 'Título',
+                'variable' 		=> 'tittle',
+                'type'     => 'input',
+                'master_section_id' => 3
+            ],
+            [
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subitle',
+                'type'     => 'input',
+                'master_section_id' => 3
+            ],
+            //Nuestros Clientes
+            [
+                'name' 		=> 'Título',
+                'variable' 		=> 'tittle',
+                'type'     => 'input',
+                'master_section_id' => 4
+            ],
+            [
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
+                'type'     => 'input',
+                'master_section_id' => 4
+            ],
+
+            //Rompemos Fronteras
+            [
+                'name' 		=> 'Título',
+                'variable' 		=> 'tittle',
+                'type'     => 'input',
+                'master_section_id' => 5
+            ],
+            [
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
+                'type'     => 'input',
+                'master_section_id' => 5
+            ],
+
+            //Notas de Prensa
+            [
+                'name' 		=> 'Título',
+                'variable' 		=> 'tittle',
+                'type'     => 'input',
+                'master_section_id' => 6
+            ],
+            [
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
+                'type'     => 'input',
+                'master_section_id' => 6
+            ],
+            [
+                'name' 		=> 'Frase',
+                'variable' 		=> 'frase',
+                'type'     => 'input',
+                'master_section_id' => 6
             ],
             #Blog
             //Banner
             [
-                'name' 		=> 'Banner',
-                'variable'     => 'background',
-                'type'     => 'image',
-                'master_section_id'     => 5
+                'name' 		=> 'Header',
+                'variable' 		=> 'header',
+                'type'     => 'input',
+                'master_section_id' => 7
             ],
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
-                'master_section_id' => 5
+                'master_section_id' => 7
             ],
-            #Trabaja con Nosotros
-            //Banner
             [
-                'name' 		=> 'Banner',
-                'variable'     => 'background',
+                'name' 		=> 'Imagen de Fondo (visible solo en pantallas grandes)',
+                'variable'     => 'image_blog',
                 'type'     => 'image',
-                'master_section_id'     => 6
+                'master_section_id'     => 7
             ],
             [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 6
+                'name' 		=> 'Personaje Play',
+                'variable'     => 'play-character_image_home',
+                'type'     => 'image',
+                'master_section_id'     => 7
             ],
             #Conocenos
-            //Banner
-            [
-                'name' 		=> 'Fondo',
-                'variable'     => 'background',
-                'type'     => 'image',
-                'master_section_id'     => 7
-            ],
-            [
-                'name' 		=> 'Fondo Responsive',
-                'variable'     => 'image_responsive',
-                'type'     => 'image',
-                'master_section_id'     => 7
-            ],
+            //Nuestra Historia
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 7
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 7
-            ],
-            //Sobre Nosotros
-            [
-                'name' 		=> 'Bot',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 8
-            ],
-            [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 8
             ],
             [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
+                'type'     => 'input',
                 'master_section_id' => 8
             ],
-            //¿Qué hacemos?
+            #Conocenos
+            // Banner
             [
-                'name' 		=> 'Imagen',
+                'name' 		=> 'Header',
+                'variable' 		=> 'header',
+                'type'     => 'input',
+                'master_section_id' => 9
+            ],
+            [
+                'name' 		=> 'Título',
+                'variable' 		=> 'tittle',
+                'type'     => 'input',
+                'master_section_id' => 9
+            ],
+            [
+                'name' => 'Personaje Play',
+                'variable' => 'play-character_image_home',
+                'type' => 'image',
+                'master_section_id' => 9
+            ],
+            [
+                'name' 		=> 'Imagen de Fondo (visible solo en pantallas grandes)',
                 'variable'     => 'image',
                 'type'     => 'image',
                 'master_section_id'     => 9
             ],
             [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 9
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 9
-            ],
-            //¿Hacia dónde apuntamos?
-            [
-                'name' 		=> 'Imagen',
-                'variable'     => 'image',
+                'name' 		=> 'Item 1',
+                'variable' 		=> 'image_1',
                 'type'     => 'image',
-                'master_section_id'     => 10
+                'master_section_id'     => 9
             ],
             [
+                'name' 		=> 'Texto para item 1',
+                'variable' 		=> 'text_1',
+                'type'     => 'input',
+                'master_section_id' => 9
+            ],
+            [
+                'name' 		=> 'Item 2',
+                'variable'     => 'image_2',
+                'type'     => 'image',
+                'master_section_id'     => 9
+            ],
+            [
+                'name' 		=> 'Texto para item 2',
+                'variable' 		=> 'text_2',
+                'type'     => 'input',
+                'master_section_id' => 9
+            ],
+            [
+                'name' 		=> 'Item 3',
+                'variable'     => 'image_3',
+                'type'     => 'image',
+                'master_section_id'     => 9
+            ],
+            [
+                'name' 		=> 'Texto para item 3',
+                'variable' 		=> 'text_3',
+                'type'     => 'input',
+                'master_section_id' => 9
+            ],
+            [
+                'name' 		=> 'Item 4',
+                'variable'     => 'image_4',
+                'type'     => 'image',
+                'master_section_id'     => 9
+            ],
+            [
+                'name' 		=> 'Texto para item 4',
+                'variable' 		=> 'text_4',
+                'type'     => 'input',
+                'master_section_id' => 9
+            ],
+            // Nuestra Historia
+            [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 10
             ],
             [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
+                'type'     => 'input',
                 'master_section_id' => 10
             ],
-            //Premios
+            // Nuestros trofeos
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 11
             ],
-            //ADN
+            [
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
+                'type'     => 'input',
+                'master_section_id' => 11
+            ],
+            [
+                'name' 		=> 'Frase',
+                'variable' 		=> 'frase',
+                'type'     => 'input',
+                'master_section_id' => 11
+            ],
+            //Nuestros Players
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 12
             ],
-            //Políticas de Calidad
+            [
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
+                'type'     => 'input',
+                'master_section_id' => 12
+            ],
+            [
+                'name' 		=> 'Frase',
+                'variable' 		=> 'frase',
+                'type'     => 'input',
+                'master_section_id' => 12
+            ],
+            //Hi,Play
             [
                 'name' 		=> 'Imagen',
                 'variable'     => 'image',
@@ -217,86 +332,29 @@ class MasterFieldsTableSeeder extends Seeder
                 'master_section_id'     => 13
             ],
             [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'name' 		=> 'Descripción',
+                'variable' 		=> 'description',
                 'type'     => 'input',
                 'master_section_id' => 13
             ],
+            //Proceso de Calidad
             [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 13
-            ],
-            [
-                'name' 		=> 'Item 1',
-                'variable' 		=> 'item_1',
-                'type'     => 'editor_small',
-                'master_section_id' => 13
-            ],
-            [
-                'name' 		=> 'Item 2',
-                'variable' 		=> 'item_2',
-                'type'     => 'editor_small',
-                'master_section_id' => 13
-            ],
-            [
-                'name' 		=> 'Item 3',
-                'variable' 		=> 'item_3',
-                'type'     => 'editor_small',
-                'master_section_id' => 13
-            ],
-            //Ponle PLAY a la Felicidad
-            [
-                'name' 		=> 'Logo',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 14
-            ],
-            [
-                'name' 		=> 'Imagen Video',
-                'variable'     => 'image_responsive',
-                'type'     => 'image',
-                'master_section_id'     => 14
-            ],
-            [
-                'name' 		=> 'Youtube ID Video',
-                'variable' 		=> 'link',
+                'name' 		=> 'Título',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 14
             ],
-            //PLAY Experience
             [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'name' 		=> 'Subtitulo',
+                'variable' 		=> 'subtitle',
                 'type'     => 'input',
-                'master_section_id' => 15
+                'master_section_id' => 14
             ],
-            //Players
             [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'name' 		=> 'Frase',
+                'variable' 		=> 'frase',
                 'type'     => 'input',
-                'master_section_id' => 16
-            ],
-            //Contáctenos
-            [
-                'name' 		=> 'Fondo',
-                'variable'     => 'background',
-                'type'     => 'image',
-                'master_section_id'     => 17
-            ],
-            [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 17
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 17
+                'master_section_id' => 14
             ],
             #SF
             //Banner
@@ -327,7 +385,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Metodologia?
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 19
             ],
@@ -352,7 +410,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Casos de Éxito
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 20
             ],
@@ -371,7 +429,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Solucion de Problemas
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 21
             ],
@@ -381,38 +439,7 @@ class MasterFieldsTableSeeder extends Seeder
                 'type'     => 'input',
                 'master_section_id' => 21
             ],
-            //Contáctenos
-            [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 22
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 22
-            ],
-            [
-                'name' 		=> 'Fondo',
-                'variable'     => 'background',
-                'type'     => 'image',
-                'master_section_id'     => 22
-            ],
-            [
-                'name' 		=> 'Bot',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 22
-            ],
-            [
-                'name' 		=> 'Speech',
-                'variable' 		=> 'speech',
-                'type'     => 'input',
-                'master_section_id' => 22
-            ],
-            
+
             #CH
             //Banner
             [
@@ -442,7 +469,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Metodologia?
                 [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 24
             ],
@@ -467,7 +494,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Casos de Éxito
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 25
             ],
@@ -486,7 +513,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Solucion de Problemas
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 26
             ],
@@ -495,37 +522,6 @@ class MasterFieldsTableSeeder extends Seeder
                 'variable' 		=> 'sub_title',
                 'type'     => 'input',
                 'master_section_id' => 26
-            ],
-            //Contáctenos
-            [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 27
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 27
-            ],
-            [
-                'name' 		=> 'Fondo',
-                'variable'     => 'background',
-                'type'     => 'image',
-                'master_section_id'     => 27
-            ],
-            [
-                'name' 		=> 'Bot',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 27
-            ],
-            [
-                'name' 		=> 'Speech',
-                'variable' 		=> 'speech',
-                'type'     => 'input',
-                'master_section_id' => 27
             ],
 
             #DP
@@ -554,10 +550,10 @@ class MasterFieldsTableSeeder extends Seeder
                 'type'     => 'image',
                 'master_section_id'     => 28
             ],
-            //Metodologia?
+            //Metodologia Digital Performance
                [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 29
             ],
@@ -582,7 +578,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Casos de Éxito
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 30
             ],
@@ -601,7 +597,7 @@ class MasterFieldsTableSeeder extends Seeder
             //Solucion de Problemas
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 31
             ],
@@ -611,38 +607,6 @@ class MasterFieldsTableSeeder extends Seeder
                 'type'     => 'input',
                 'master_section_id' => 31
             ],
-            //Contáctenos
-            [
-                'name' 		=> 'Título',
-                'variable' 		=> 'title',
-                'type'     => 'input',
-                'master_section_id' => 32
-            ],
-            [
-                'name' 		=> 'Descripción',
-                'variable' 		=> 'description',
-                'type'     => 'editor_small',
-                'master_section_id' => 32
-            ],
-            [
-                'name' 		=> 'Fondo',
-                'variable'     => 'background',
-                'type'     => 'image',
-                'master_section_id'     => 32
-            ],
-            [
-                'name' 		=> 'Bot',
-                'variable'     => 'image',
-                'type'     => 'image',
-                'master_section_id'     => 32
-            ],
-            [
-                'name' 		=> 'Speech',
-                'variable' 		=> 'speech',
-                'type'     => 'input',
-                'master_section_id' => 32
-            ],
-
             #Politicas
             //Banner
             [
@@ -653,7 +617,7 @@ class MasterFieldsTableSeeder extends Seeder
             ],
             [
                 'name' 		=> 'Título',
-                'variable' 		=> 'title',
+                'variable' 		=> 'tittle',
                 'type'     => 'input',
                 'master_section_id' => 33
             ],
@@ -664,7 +628,157 @@ class MasterFieldsTableSeeder extends Seeder
                 'type'     => 'editor_large',
                 'master_section_id' => 34
             ],
-            
+
+            // DP
+            [
+                'name' => 'Titulo Objetivo 1',
+                'variable' => 'title_1',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+            [
+                'name' => 'Descripción del objetivo 1',
+                'variable' => 'description_1',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+            [
+                'name' => 'Titulo Objetivo 2',
+                'variable' => 'title_2',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+            [
+                'name' => 'Descripción del objetivo 2',
+                'variable' => 'description_2',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+            [
+                'name' => 'Titulo Objetivo 3',
+                'variable' => 'title_3',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+            [
+                'name' => 'Descripción del objetivo 3',
+                'variable' => 'description_3',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+            [
+                'name' => 'Titulo Objetivo 4',
+                'variable' => 'title_4',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+            [
+                'name' => 'Descripción del objetivo 4',
+                'variable' => 'description_4',
+                'type' => 'input',
+                'master_section_id' => 36
+            ],
+
+            //CH
+            [
+                'name' => 'Titulo Objetivo 1',
+                'variable' => 'title_1',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Descripción del objetivo 1',
+                'variable' => 'description_1',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Titulo Objetivo 2',
+                'variable' => 'title_2',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Descripción del objetivo 2',
+                'variable' => 'description_2',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Titulo Objetivo 3',
+                'variable' => 'title_3',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Descripción del objetivo 3',
+                'variable' => 'description_3',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Titulo Objetivo 4',
+                'variable' => 'title_4',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+            [
+                'name' => 'Descripción del objetivo 4',
+                'variable' => 'description_4',
+                'type' => 'input',
+                'master_section_id' => 37
+            ],
+
+            //SF
+            [
+                'name' => 'Titulo Objetivo 1',
+                'variable' => 'title_1',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción del objetivo 1',
+                'variable' => 'description_1',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Titulo Objetivo 2',
+                'variable' => 'title_2',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción del objetivo 2',
+                'variable' => 'description_2',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Titulo Objetivo 3',
+                'variable' => 'title_3',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción del objetivo 3',
+                'variable' => 'description_3',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Titulo Objetivo 4',
+                'variable' => 'title_4',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+            [
+                'name' => 'Descripción del objetivo 4',
+                'variable' => 'description_4',
+                'type' => 'input',
+                'master_section_id' => 38
+            ],
+
         ]);
     }
 }

@@ -13,6 +13,7 @@ class MasterPagesTableSeeder2 extends Seeder
     {
         DB::table('master_pages')->insert([
             [
+                'id' => 10,
                 'name' 		=> 'Libro de Reclamaciones',
                 'slug'     => 'libro-de-reclamaciones',
                 'title'     => 'Libro de Reclamaciones',

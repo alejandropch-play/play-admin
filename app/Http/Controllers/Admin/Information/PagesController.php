@@ -63,32 +63,42 @@ class PagesController extends Controller
     public function postAddMore(MasterSection $section)
     {
         $section = $section->load('fields');
+        if($section->id == 42){
+            $nextIndex = $section->fields->count(); // there are already 2 fields in this section by default
 
-        // Contar cuántos bloques de 3 campos (title, description, image) ya hay
-        $existingCount = floor($section->fields->count() / 3);
-        $nextIndex = $existingCount + 1; // empieza en 1 si no hay campos
+            $field_insert = [
+                    'name' => 'Imagen de Slide ' . $nextIndex,
+                    'variable' => 'image_' . $nextIndex,
+                    'type' => 'image',
+                    'master_section_id' => $section->id
+            ];
+        }else{
 
-        $field_insert = [
-            [
-                'name' => 'Título ' . $nextIndex,
-                'variable' => 'title_' . $nextIndex,
-                'type' => 'input',
-                'master_section_id' => $section->id
-            ],
-            [
-                'name' => 'Descripción ' . $nextIndex,
-                'variable' => 'description_' . $nextIndex,
-                'type' => 'input',
-                'master_section_id' => $section->id
-            ],
-            [
-                'name' => 'Imagen ' . $nextIndex,
-                'variable' => 'image_' . $nextIndex,
-                'type' => 'image',
-                'master_section_id' => $section->id
-            ],
-        ];
+            // Contar cuántos bloques de 3 campos (title, description, image) ya hay
+            $existingCount = floor($section->fields->count() / 3);
+            $nextIndex = $existingCount + 1; // empieza en 1 si no hay campos
 
+            $field_insert = [
+                [
+                    'name' => 'Título ' . $nextIndex,
+                    'variable' => 'title_' . $nextIndex,
+                    'type' => 'input',
+                    'master_section_id' => $section->id
+                ],
+                [
+                    'name' => 'Descripción ' . $nextIndex,
+                    'variable' => 'description_' . $nextIndex,
+                    'type' => 'input',
+                    'master_section_id' => $section->id
+                ],
+                [
+                    'name' => 'Imagen ' . $nextIndex,
+                    'variable' => 'image_' . $nextIndex,
+                    'type' => 'image',
+                    'master_section_id' => $section->id
+                ],
+            ];
+        }
         MasterField::insert($field_insert);
 
         return response()->json([

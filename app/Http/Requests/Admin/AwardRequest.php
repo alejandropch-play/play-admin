@@ -26,7 +26,6 @@ class AwardRequest extends FormRequest
         $rules = [
             'name' => 'required|max:255',
             'category' => 'required|max:100',
-            'linkedIn' => 'required',
         ];
         switch ($this->method()) {
             case 'POST':

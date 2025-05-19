@@ -288,7 +288,7 @@ export default {
       image: [],
       image_responsive: [],
       video: [],
-      QUALITY_PROCESS_ID: 40
+      QUALITY_PROCESS_ID: 42
     };
   },
   methods: {

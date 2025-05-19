@@ -42,7 +42,7 @@ class PageController extends Controller
             ->with('tags:id,name,podcast_id')
             ->orderBy('created_at','desc')
             ->first();  // for now we only will support a podcast. TODO: add functionality to accept more
-            $podcasts = $podcasts->unsetRelation('date_format');
+
             $podcasts = $podcasts->unsetRelation('published_format');
             $podcasts->makeHidden(['date_format', 'published_format']);
              if ($podcasts) {
@@ -68,7 +68,7 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
     public function getAwards(){
-        $awards = Award::select('name','image','position','category')->orderBy('index')->get();
+        $awards = Award::select('name','image','category')->orderBy('index')->get();
         $awards= array("awards"=> $awards);
         return $this->sendResponse($awards);
     }
@@ -343,19 +343,9 @@ class PageController extends Controller
     public function knowUs(){
         $page = $this->getSeoPage('conocenos');
         $content = $this->getContentPage('conocenos');
-        $awards = Award::select('name','image','position','category')->orderBy('index')->get();
-        $players = Player::with('relDepartment:id,title')->orderBy('index','asc')->get();
-        $adn = CoolturaADN::orderBy('index','asc')->get();
-        $cooltura = Cooltura::orderBy('index','asc')->get();
-        $main = Department::select('title','logo_white')->where('main',1)->first();
         $data = array(
             "page" => $page,
             "content" => $content,
-            "awards" => $awards,
-            "players" => $players,
-            "adn" => $adn,
-            "cooltura" => $cooltura,
-            "main" => $main
         );
         return $this->sendResponse($data);
     }

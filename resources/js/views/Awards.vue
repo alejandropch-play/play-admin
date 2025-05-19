@@ -122,22 +122,6 @@
                       >{{ errors.category[0] }}</label>
                     </div>
                   </div>
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label class="font-weight-bold" for="id_category">LinkedIn</label>
-                      <input
-                        type="text"
-                        class="form-control form-control-alternative"
-                        v-model="element.linkedIn"
-                        id="id_linkedIn"
-                      />
-                      <label
-                        v-if="errors && errors.linkedIn"
-                        class="mt-2 text-danger text-sm"
-                        for="id_category"
-                      >{{ errors.category[0] }}</label>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -252,22 +236,6 @@
                     </div>
                   </div>
 
-                  <div class="col-12">
-                    <div class="form-group">
-                      <label class="font-weight-bold" for="id_linkedIn">LinkedIn</label>
-                      <input
-                        type="text"
-                        class="form-control form-control-alternative"
-                        v-model="element.linkedIn"
-                        id="id_linkedIn"
-                      />
-                      <label
-                        v-if="errors && errors.linkedIn"
-                        class="mt-2 text-danger text-sm"
-                        for="id_position"
-                      >{{ errors.linkedIn[0] }}</label>
-                    </div>
-                  </div>
 
 
                 </div>
@@ -321,7 +289,6 @@ export default {
         image: "",
         index: "",
         name: "",
-        linkedIn: "",
         position: "",
         category: ""
       },
@@ -385,7 +352,6 @@ export default {
             image: "",
             index: "",
             name: "",
-            linkedIn: "",
             category: ""
         });
       this.$refs["modal-delete"].hide();
@@ -456,7 +422,6 @@ export default {
         index: "",
         name: "",
         position: "",
-        linkedIn: "",
         category: ""
       };
     },
@@ -479,9 +444,6 @@ export default {
       this.element.category
         ? fd.append("category", this.element.category)
         : fd.append("category", "");
-      this.element.linkedIn
-        ? fd.append("linkedIn", this.element.linkedIn)
-        : fd.append("linekdIn", "");
 
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);
@@ -533,9 +495,6 @@ export default {
       this.element.category
         ? fd.append("category", this.element.category)
         : fd.append("category", "");
-      this.element.linkedIn
-        ? fd.append("linkedIn", this.element.linkedIn)
-        : fd.append("linekdIn", "");
 
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);

@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentsTableSeeder::class);
         $this->call(MasterSocialNetworksTableSeeder::class);
         $this->call(MasterPagesTableSeeder::class);
+        $this->call(MasterPagesTableSeeder2::class);
         $this->call(MasterSectionsTableSeeder::class);
+        $this->call(MasterSectionsTableSeeder4::class);
         $this->call(MasterFieldsTableSeeder::class);
         $this->call(LeadsMediumTableSeeder::class);
         $this->call(LeadsSourceTableSeeder::class);
@@ -31,14 +33,11 @@ class DatabaseSeeder extends Seeder
 
         // Primera ejecucion
 
-        $this->call(MasterPagesTableSeeder2::class);
 
         // Segunda ejecucion
 
         $this->call(MasterModulesTableSeeder2::class);
-        $this->call(MasterSectionsTableSeeder4::class);
 
-        $this->call(MasterFieldsTableSeeder4::class);
         $this->call(MasterPermissionsTableSeeder2::class);
 
         $this->call(PressReleasePosts::class);
@@ -47,14 +46,8 @@ class DatabaseSeeder extends Seeder
         $this->call(WellHiredSeeder::class);
         $this->call(TypeOfServiceSeeder::class);
         $this->call(TypeOfClaimSeeder::class);
-
-        $this->call(WorkWithUsSeeder::class);
-
         $this->call(HiPlaySeeder::class);
         $this->call(QualityProcessSeeder::class);
         $this->call(HistorySeeder::class);
-        $this->call(BannerControllersSeeder::class);
-
-
     }
 }

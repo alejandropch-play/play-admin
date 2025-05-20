@@ -75,7 +75,7 @@ class PageController extends Controller
     public function home(){
 
         $page = $this->getSeoPage(NULL);
-        $awards = Award::select('name','image','position','category')->orderBy('index')->get();
+        $awards = Award::select('name','image','category')->orderBy('index')->get();
         $posts = Post::select('title','slug','thumbnail','category_id')->where('published',1)->with('category:id,name,slug')->orderBy('created_at','desc')->take(6)->get();
         $customers = Customer::select('name','image')->where('status',1)->orderBy('index')->get();
         $departments = $this->getDepartments();

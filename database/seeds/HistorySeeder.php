@@ -17,7 +17,7 @@ class HistorySeeder extends Seeder
                 'name' => 'Nuestra Historia',
                 'slug' => 'nuestra-historia',
                 'parent' => 0,
-                'icon' => 'fas fa-book-open-reader',
+                'icon' => 'fas fa-book-reader',
                 'index' => 20,
             ],
         ]);

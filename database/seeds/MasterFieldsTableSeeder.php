@@ -108,7 +108,7 @@ class MasterFieldsTableSeeder extends Seeder
             ],
             [
                 'name' 		=> 'Subtitulo',
-                'variable' 		=> 'subitle',
+                'variable' 		=> 'subtitle',
                 'type'     => 'input',
                 'master_section_id' => 3
             ],

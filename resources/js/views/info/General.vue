@@ -379,7 +379,7 @@ export default {
     actualizarInformacion() {
       this.requestServer = true;
 
-      fetch('http://localhost:5001/api/admin/update_general_info_countries', {
+      fetch(PG_LATAM_URL +'/api/admin/update_general_info_countries', {
             method: 'PUT',
             headers: {
           "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S",
@@ -461,7 +461,7 @@ export default {
         .then(response => {
           this.informacion = response.data;
 
-          fetch('http://localhost:5001/api/admin/update_general_info_countries', {
+          fetch(process.env.PG_LATAM_URL +'/api/admin/update_general_info_countries', {
             method: 'GET',
             headers: {
           "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S",

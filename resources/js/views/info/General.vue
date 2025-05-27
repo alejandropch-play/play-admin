@@ -133,7 +133,8 @@
               </div>
               <div class="col-12 col-md-6 col-lg-4">
                 <div class="form-group">
-                  <label class="font-weight-bold" for="id_cellphone">Móvil</label>
+                  <label class="font-weight-bold" for="id_cellphone">Número de WhatsApp</label>
+                  <label class="font-weight-light" for="id_cellphone">No colocar signos (+) Ni espacios</label>
                   <input
                     type="text"
                     placeholder="Móvil"
@@ -165,32 +166,6 @@
                   >{{ errores.email[0] }}</label>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="form-group">
-                  <label class="font-weight-bold" for="id_address_line_1">Ubicación</label>
-                  <!--<input
-                    type="text"
-                    placeholder="Ubicación Línea 1"
-                    class="form-control form-control-alternative mb-2"
-                    v-model="informacion.address_line_1"
-                    id="id_address_line_1"
-                  />-->
-                  <quill-Editor
-                          class="ql-height-25"
-                          @keydown.enter.prevent
-                          v-model="informacion.address_line_1"
-                          placeholder="Contenido"
-                          :options="editorOptions"
-                          ref="ref_content"
-                        ></quill-Editor>
-                  <label
-                    v-if="errores && errores.address_line_1"
-                    class="mt-2 mb-2 text-danger text-sm"
-                    for="id_address_line_1"
-                  >{{ errores.address_line_1[0] }}</label>
-                </div>
-              </div>
-
               <div class="col-12 col-md-6 col-lg-4">
                 <div class="form-group">
                   <label class="font-weight-bold" for="id_country_mexico">Mexico</label>
@@ -342,8 +317,6 @@ export default {
         phone: "",
         cellphone: "",
         email: "",
-        address_line_1: "",
-        address_line_2: "",
         country_mexico: "",
         country_ecuador: "",
         country_peru: "",
@@ -379,7 +352,7 @@ export default {
     actualizarInformacion() {
       this.requestServer = true;
 
-      fetch(PG_LATAM_URL +'/api/admin/update_general_info_countries', {
+      fetch(process.env.PG_LATAM_URL +'/api/admin/update_general_info_countries', {
             method: 'PUT',
             headers: {
           "Authorization": "Bearer $2a$12$sSnRcwximdTC1qC16P5SZefAJEr2XnYfWtP4c8pm1bJyyuXvrDX.S",
@@ -409,10 +382,6 @@ export default {
         .then(response => {
           this.requestServer = false;
 
-
-
-
-
         })
         .catch(error => {
           this.requestServer = false;
@@ -440,8 +409,6 @@ export default {
         phone: "",
         cellphone: "",
         email: "",
-        address_line_1: "",
-        address_line_2: "",
         country_mexico: "",
         country_ecuador: "",
         country_peru: "",

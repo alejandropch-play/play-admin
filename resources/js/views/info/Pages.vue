@@ -79,7 +79,7 @@
                       :drop="false"
                       :multiple="true"
                       v-model="section.images"
-                      @input-filter="$uploadImageUploadComponent($event,$refs.ref_content[0],250000,'500kb','pages')"
+                      @input-filter="$uploadImageUploadComponent($event,$refs.ref_content[0],2000000,'2mb','pages')"
                       ref="ref_content_images"
                       input-id="id_content_images"
                     ></file-upload>
@@ -126,7 +126,7 @@
                               <div class="col-12" :class="{'col-lg-8': field.value }">
                                 <vue-dropzone
                                   :ref="`ref_${field.variable}`"
-                                  @vdropzone-file-added="$validateImageDropzone($event,$refs['ref_'+field.variable][0].dropzone,1,250000,'250kb')"
+                                  @vdropzone-file-added="$validateImageDropzone($event,$refs['ref_'+field.variable][0].dropzone,1,2000000,'2mb')"
                                   :id="'id_'+field.variable"
                                   :options="dropzoneOptions"
                                   :duplicateCheck="true"

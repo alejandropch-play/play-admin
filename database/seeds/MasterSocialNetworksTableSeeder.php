@@ -13,28 +13,32 @@ class MasterSocialNetworksTableSeeder extends Seeder
     {
         DB::table('master_social_networks')->insert([
             [
-                'name' 		=> 'Facebook',
+                'name'         => 'Facebook',
                 'icon'     => 'facebook',
             ],
             [
-                'name' 		=> 'Twitter',
+                'name'         => 'Twitter',
                 'icon'     => 'twitter',
             ],
             [
-                'name' 		=> 'Whatsapp',
+                'name'         => 'Whatsapp',
                 'icon'     => 'whatsapp',
             ],
             [
-                'name' 		=> 'Youtube',
+                'name'         => 'Youtube',
                 'icon'     => 'youtube',
             ],
             [
-                'name' 		=> 'LinkedIn',
+                'name'         => 'LinkedIn',
                 'icon'     => 'linkedin',
             ],
             [
-                'name' 		=> 'Instragram',
+                'name'         => 'Instragram',
                 'icon'     => 'instagram',
+            ],
+            [
+                'name'         => 'TikTok',
+                'icon'     => 'tiktok',
             ],
         ]);
     }

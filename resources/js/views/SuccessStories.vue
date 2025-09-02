@@ -149,7 +149,7 @@
                     <div class="col-9">
                       <vue-dropzone
                         ref="ref_logo"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_logo.dropzone,1,512000,'500kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_logo.dropzone,1,812000,'800kb')"
                         id="id_logo"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"
@@ -189,7 +189,7 @@
                     <div class="col-9">
                       <vue-dropzone
                         ref="ref_image"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,512000,'500kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,812000,'800kb')"
                         id="id_image"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"
@@ -272,7 +272,7 @@
                   <!-- <small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: 400×400px</small> -->
                   <vue-dropzone
                     ref="ref_logo"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_logo.dropzone,1,512000,'500kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_logo.dropzone,1,812000,'800kb')"
                     id="id_logo"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -299,7 +299,7 @@
                   <!-- <small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: 400×400px</small> -->
                   <vue-dropzone
                     ref="ref_image"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,512000,'500kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,812000,'800kb')"
                     id="id_image"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"

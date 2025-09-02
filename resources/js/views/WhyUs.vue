@@ -48,7 +48,7 @@
                   <!--<small class="mb-2 d-block">Tamaño Recomendado</small>-->
                   <vue-dropzone
                     ref="ref_image"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,124000,'100kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,500000,'500kb')"
                     id="id_image"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -176,7 +176,7 @@
                       <!--<small class="mb-2 d-block">Tamaño Recomendado</small>-->
                       <vue-dropzone
                         ref="ref_image"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,100000,'100kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,500000,'500kb')"
                         id="id_image"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"

@@ -48,7 +48,7 @@
                   <!--<small class="mb-2 d-block">Tamaño Recomendado</small>-->
                   <vue-dropzone
                     ref="ref_image"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,102400,'100kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,300000,'300kb')"
                     id="id_image"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -87,7 +87,7 @@
                         :drop="false"
                         :multiple="true"
                         v-model="element.images"
-                        @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','awards')"
+                        @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,300000,'300kb','awards')"
                         ref="ref_images"
                         input-id="id_images">
                       </file-upload>
@@ -160,7 +160,7 @@
                       <!--<small class="mb-2 d-block">Tamaño Recomendado</small>-->
                       <vue-dropzone
                         ref="ref_image"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,100000,'100kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,300000,'300kb')"
                         id="id_image"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"
@@ -200,7 +200,7 @@
                                                 :drop="false"
                                                 :multiple="true"
                                                 v-model="element.images"
-                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','awards')"
+                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,300000,'300kb','awards')"
                                                 ref="ref_images"
                                                 input-id="id_images">
                                             </file-upload>

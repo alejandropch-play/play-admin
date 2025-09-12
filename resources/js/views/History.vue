@@ -46,7 +46,7 @@
                   <label class="font-weight-bold d-block mb-0">Imagen</label>
                   <vue-dropzone
                     ref="ref_image"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,124000,'100kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,300000,'300kb')"
                     id="id_image"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -135,7 +135,7 @@
                       <label class="font-weight-bold d-block mb-0">Imagen</label>
                       <vue-dropzone
                         ref="ref_image"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,100000,'100kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,300000,'300kb')"
                         id="id_image"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"

@@ -36,7 +36,7 @@
                       <!--<small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: Menor a 50kb</small>-->
                       <vue-dropzone
                         ref="ref_image"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image[0].dropzone,1,100000,'100kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image[0].dropzone,1,300000,'300kb')"
                         id="id_imagen"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"
@@ -71,7 +71,7 @@
                       <!--<small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: Menor a 50kb</small>-->
                       <vue-dropzone
                         ref="ref_logo_white"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_logo_white[0].dropzone,1,100000,'100kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_logo_white[0].dropzone,1,300000,'300kb')"
                         id="id_logo_white"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"
@@ -141,7 +141,7 @@
                   <!--<small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: Menor a 50kb</small>-->
                   <vue-dropzone
                     ref="ref_banner"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_banner[0].dropzone,1,100000,'100kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_banner[0].dropzone,1,300000,'300kb')"
                     id="id_banner"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"
@@ -169,7 +169,7 @@
                   <!--<small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: Menor a 50kb</small>-->
                   <vue-dropzone
                     ref="ref_image_menu"
-                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image_menu[0].dropzone,1,100000,'100kb')"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image_menu[0].dropzone,1,300000,'300kb')"
                     id="id_image_menu"
                     :options="dropzoneOptions"
                     :duplicateCheck="true"

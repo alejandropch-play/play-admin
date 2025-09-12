@@ -39,10 +39,10 @@
                       <div class="form-group" v-if="editBlock && pageSelected == page.id">
                           <label for="id_imagen" class="font-weight-bold mb-0">Imagen</label>
                           <small class="text-muted d-block mb-0 lh-1">Resolución recomendada: 1200x900px</small>
-                          <small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: Menor a 100kb</small>
+                          <small class="text-muted d-block mb-2 lh-1">Tamaño recomendado: Menor a 300kb</small>
                           <vue-dropzone
                             ref="ref_image"
-                            @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image[0].dropzone,1,100000,'100kb')"
+                            @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image[0].dropzone,1,300000,'300kb')"
                             id="id_imagen"
                             :options="dropzoneOptions"
                             :duplicateCheck="true"

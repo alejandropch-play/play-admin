@@ -135,7 +135,7 @@
                                                   :drop="false"
                                                   :multiple="true"
                                                   v-model="post.images"
-                                                  @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','posts')"
+                                                  @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,300000,'300kb','posts')"
                                                   ref="ref_content_images"
                                                   input-id="id_content_images">
                                               </file-upload>
@@ -247,7 +247,7 @@
 
                  <vue-dropzone
                   ref="ref_thumbnail"
-                  @vdropzone-file-added="$validatethumbnailDropzone($event,$refs.ref_thumbnail.dropzone,1,100000,'100kb')"
+                  @vdropzone-file-added="$validatethumbnailDropzone($event,$refs.ref_thumbnail.dropzone,1,300000,'300kb')"
                   id="id_thumbnail"
                   :options="dropzoneOptions"
                   :duplicateCheck="true"

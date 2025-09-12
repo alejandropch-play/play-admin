@@ -83,7 +83,7 @@
                                                 :drop="false"
                                                 :multiple="true"
                                                 v-model="element.images"
-                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','awards')"
+                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,300000,'300kb','awards')"
                                                 ref="ref_images"
                                                 input-id="id_images">
                                             </file-upload>
@@ -211,7 +211,7 @@
                                                 :drop="false"
                                                 :multiple="true"
                                                 v-model="element.images"
-                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,100000,'100kb','awards')"
+                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,300000,'300kb','awards')"
                                                 ref="ref_images"
                                                 input-id="id_images">
                                             </file-upload>

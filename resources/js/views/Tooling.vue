@@ -20,7 +20,7 @@
               <a
                 href="#"
                 class="btn btn-icon btn-neutral"
-                @click.prevent="newStory"
+                @click.prevent="newTool"
                 v-if="showBlock"
               >
                 <span class="btn-inner--icon">
@@ -43,7 +43,7 @@
           v-for="department in departments"
           :key="department.id"
         >
-          <a href="#" @click.prevent="getSuccessStories(department.id)">
+          <a href="#" @click.prevent="getTooling(department.id)">
             <div class="card shadow">
               <div class="card-body" v-if="department.logo">
                 <div class="text-center">
@@ -83,8 +83,8 @@
           type="tooling"
           @delete="deleteStory"
           @edit="editStory"
-          @drag="orderStories"
-          :object.sync="stories"
+          @drag="orderTooling"
+          :object.sync="tooling"
           :classes="['col-6','col-lg-3','mb-4']"
         ></ElementsDraggable>
       </div>
@@ -94,7 +94,7 @@
           <h2 class="mb-0 text-uppercase text-primary">Actualizar Herramienta</h2>
         </div>
         <div class="card-body">
-          <form @submit.prevent="updateStory">
+          <form @submit.prevent="updateTool">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
@@ -121,7 +121,7 @@
                       <img
                         class="img-fluid shadow mx-auto d-block"
                         v-if="service.logo"
-                        :src="'https://storage.googleapis.com/playgroup-web/img/stories/'+service.logo"
+                        :src="'https://storage.googleapis.com/playgroup-web/img/tooling/'+service.logo"
                         :alt="service.logo"
                       />
                     </div>
@@ -167,7 +167,7 @@
           <h2 class="mb-0 text-uppercase text-primary">Crear Herramienta</h2>
         </div>
         <div class="card-body">
-          <form @submit.prevent="createStory">
+          <form @submit.prevent="createTool">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
@@ -266,7 +266,7 @@ export default {
       },
       errors: {},
       departments: [],
-      stories: [],
+      tooling: [],
       dropzoneOptions: {
         url: "/",
         maxFiles: 1,
@@ -287,7 +287,7 @@ export default {
     draggable
   },
   methods: {
-    updateStory() {
+    updateTool() {
       this.requestServer = true;
       const fd = new FormData();
       fd.append("id", this.service.id);
@@ -338,16 +338,16 @@ export default {
     editStory(id) {
       this.editBlock = true;
       this.startBlock = this.showBlock = false;
-      this.getStory(id);
+      this.getTool(id);
     },
-    newStory() {
+    newTool() {
       this.newBlock = true;
       this.startBlock = this.showBlock = false;
     },
     restoreDepartments(){
       this.showBlock = false;
       this.startBlock = true;
-      this.stories = [];
+      this.tooling = [];
     },
     restorePage() {
       this.errors = {};
@@ -360,10 +360,10 @@ export default {
         department_id: "",
       };
 
-      this.stories = [];
-      this.getSuccessStories(this.department.id);
+      this.tooling = [];
+      this.getTooling(this.department.id);
     },
-    createStory() {
+    createTool() {
       this.requestServer = true;
       const fd = new FormData();
       if (this.service.title) {
@@ -411,7 +411,7 @@ export default {
           });
         });
     },
-    getSuccessStories(id) {
+    getTooling(id) {
       this.showBlock = true;
       this.startBlock = false;
       this.department = this.departments.find(x => x.id === id);
@@ -422,14 +422,14 @@ export default {
           }
         })
         .then(response => {
-          this.stories = response.data;
+          this.tooling = response.data;
         })
         .catch(error => {});
     },
     setDepartment(id) {
       this.service.department_id = id;
     },
-    orderStories(elements) {
+    orderTooling(elements) {
       axios
         .put("tooling/order", elements)
         .then(response => {
@@ -491,7 +491,7 @@ export default {
           });
         });
     },
-    getStory(id) {
+    getTool(id) {
       axios
         .get("json/tooling/" + id)
         .then(response => {
@@ -502,7 +502,7 @@ export default {
     deleteStory(id) {
       this.$refs["modal-delete"].show();
       //console.log(id);
-      this.getStory(id);
+      this.getTool(id);
     },
     getDepartments() {
       axios
@@ -514,7 +514,6 @@ export default {
     }
   },
   created() {
-    //this.getSuccessStories();
     this.getDepartments();
   }
 };

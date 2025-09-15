@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["js/business-line-logos"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[5],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form/Departments.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
@@ -78,10 +78,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/BusinessLineLogos.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/BusinessLineLogos.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Tooling.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Tooling.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -339,75 +339,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -427,12 +359,11 @@ __webpack_require__.r(__webpack_exports__);
       service: {
         title: "",
         logo: "",
-        department_id: "",
-        image: ""
+        department_id: ""
       },
       errors: {},
       departments: [],
-      stories: [],
+      tooling: [],
       dropzoneOptions: {
         url: "/",
         maxFiles: 1,
@@ -453,39 +384,22 @@ __webpack_require__.r(__webpack_exports__);
     draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_2___default.a
   },
   methods: {
-    updateStory: function updateStory() {
+    updateTool: function updateTool() {
       var _this = this;
-
       this.requestServer = true;
       var fd = new FormData();
       fd.append("id", this.service.id);
-
       if (this.service.title) {
         fd.append("title", this.service.title);
-      } // if (this.service.description) {
-      //   fd.append("description", this.service.description);
-      // }
-
-      /*if (this.service.department_id) {
-        fd.append("department_id", this.service.department_id);
-      }*/
-
-
+      }
       fd.append("department_id", this.department.id);
-
-      if (this.$refs.ref_image.dropzone.files[0]) {
-        fd.append("image", this.$refs.ref_image.dropzone.files[0]);
-      } // if (this.$refs.ref_logo.dropzone.files[0]) {
-      //   fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
-      // }
-
-
+      if (this.$refs.ref_logo.dropzone.files[0]) {
+        fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
+      }
       fd.append("_method", "PUT");
-      axios.post("business-line-logo/" + this.service.id, fd).then(function (response) {
+      axios.post("tooling/" + this.service.id, fd).then(function (response) {
         _this.requestServer = false;
-
         _this.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -498,14 +412,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this.requestServer = false;
-
         if (error.response.status === 422) {
           _this.errors = error.response.data.errors || {};
           return;
         }
-
         _this.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -518,69 +429,49 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    editStory: function editStory(id) {
+    editTooling: function editTooling(id) {
       this.editBlock = true;
       this.startBlock = this.showBlock = false;
-      this.getStory(id);
+      this.getTool(id);
     },
-    newStory: function newStory() {
+    newTool: function newTool() {
       this.newBlock = true;
       this.startBlock = this.showBlock = false;
     },
     restoreDepartments: function restoreDepartments() {
       this.showBlock = false;
       this.startBlock = true;
-      this.stories = [];
+      this.tooling = [];
     },
     restorePage: function restorePage() {
       this.errors = {};
       this.requestServer = false;
-      /*this.newBlock = this.detailBlock = this.editBlock = false;
-      this.startBlock = true;*/
-
       this.newBlock = this.editBlock = this.editBlock = false;
       this.showBlock = true;
       this.service = {
         title: "",
         logo: "",
-        department_id: "",
-        image: "" // description: ""
-
+        department_id: ""
       };
-      this.stories = [];
-      this.getSuccessStories(this.department.id);
+      this.tooling = [];
+      this.getTooling(this.department.id);
     },
-    createStory: function createStory() {
+    createTool: function createTool() {
       var _this2 = this;
-
       this.requestServer = true;
       var fd = new FormData();
-
       if (this.service.title) {
         fd.append("title", this.service.title);
-      } //  if (this.service.description) {
-      //   fd.append("description", this.service.description);
-      // }
-
-
+      }
       fd.append("department_id", this.department.id);
-
-      if (this.$refs.ref_image.dropzone.files[0]) {
-        fd.append("image", this.$refs.ref_image.dropzone.files[0]);
+      if (this.$refs.ref_logo.dropzone.files[0]) {
+        fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
       } else {
-        fd.append("image", "");
-      } // if (this.$refs.ref_logo.dropzone.files[0]) {
-      //   fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
-      // } else {
-      //   fd.append("logo", "");
-      // }
-
-
-      axios.post("business-line-logo", fd).then(function (response) {
+        fd.append("logo", "");
+      }
+      axios.post("tooling", fd).then(function (response) {
         _this2.requestServer = false;
-
         _this2.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -593,14 +484,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this2.requestServer = false;
-
         if (error.response.status === 422) {
           _this2.errors = error.response.data.errors || {};
           return;
         }
-
         _this2.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -613,31 +501,28 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    getSuccessStories: function getSuccessStories(id) {
+    getTooling: function getTooling(id) {
       var _this3 = this;
-
       this.showBlock = true;
       this.startBlock = false;
       this.department = this.departments.find(function (x) {
         return x.id === id;
       });
-      axios.get("json/business-line-logo", {
+      axios.get("json/tooling", {
         params: {
           department: id
         }
       }).then(function (response) {
-        _this3.stories = response.data;
+        _this3.tooling = response.data;
       })["catch"](function (error) {});
     },
     setDepartment: function setDepartment(id) {
       this.service.department_id = id;
     },
-    orderStories: function orderStories(elements) {
+    orderTooling: function orderTooling(elements) {
       var _this4 = this;
-
-      axios.put("business-line-logo/order", elements).then(function (response) {
+      axios.put("tooling/order", elements).then(function (response) {
         _this4.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -663,13 +548,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteStoryConfirm: function deleteStoryConfirm() {
       var _this5 = this;
-
       this.requestServer = true;
-      axios["delete"]("business-line-logo/" + this.service.id).then(function (response) {
+      axios["delete"]("tooling/" + this.service.id).then(function (response) {
         _this5.$refs["modal-delete"].hide();
-
         _this5.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -682,9 +564,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this5.$refs["modal-delete"].hide();
-
         _this5.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -697,28 +577,27 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    getStory: function getStory(id) {
+    getTool: function getTool(id) {
       var _this6 = this;
-
-      axios.get("json/business-line-logo/" + id).then(function (response) {
+      console.log(id);
+      axios.get("json/tooling/" + id).then(function (response) {
+        console.log(response.data);
         _this6.service = response.data;
       })["catch"](function (error) {});
     },
-    deleteStory: function deleteStory(id) {
-      this.$refs["modal-delete"].show(); //console.log(id);
-
-      this.getStory(id);
+    deleteTooling: function deleteTooling(id) {
+      this.$refs["modal-delete"].show();
+      //console.log(id);
+      this.getTool(id);
     },
     getDepartments: function getDepartments() {
       var _this7 = this;
-
       axios.get("/json/select/departments-no-main").then(function (response) {
         _this7.departments = response.data;
       })["catch"](function (error) {});
     }
   },
   created: function created() {
-    //this.getSuccessStories();
     this.getDepartments();
   }
 });
@@ -853,10 +732,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/BusinessLineLogos.vue?vue&type=template&id=42ee20b6&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/BusinessLineLogos.vue?vue&type=template&id=42ee20b6& ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Tooling.vue?vue&type=template&id=0f3c867b&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Tooling.vue?vue&type=template&id=0f3c867b& ***!
+  \*****************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -884,8 +763,8 @@ var render = function () {
                   [
                     _c("BreadCrumb", {
                       attrs: {
-                        title: "Solución de Problemas",
-                        active: "Solución de Problemas",
+                        title: "Casos de Éxito",
+                        active: "Casos de Éxito",
                       },
                     }),
                   ],
@@ -923,7 +802,7 @@ var render = function () {
                           on: {
                             click: function ($event) {
                               $event.preventDefault()
-                              return _vm.newStory($event)
+                              return _vm.newTool($event)
                             },
                           },
                         },
@@ -931,7 +810,7 @@ var render = function () {
                           _vm._m(0),
                           _vm._v(" "),
                           _c("span", { staticClass: "btn-inner--text" }, [
-                            _vm._v("Nuevo Logo"),
+                            _vm._v("Nuevo Herramienta"),
                           ]),
                         ]
                       )
@@ -966,7 +845,7 @@ var render = function () {
                           on: {
                             click: function ($event) {
                               $event.preventDefault()
-                              return _vm.getSuccessStories(department.id)
+                              return _vm.getTooling(department.id)
                             },
                           },
                         },
@@ -1037,16 +916,16 @@ var render = function () {
                 _vm._v(" "),
                 _c("ElementsDraggable", {
                   attrs: {
-                    type: "success-stories",
-                    object: _vm.stories,
+                    type: "tooling",
+                    object: _vm.tooling,
                     classes: ["col-6", "col-lg-3", "mb-4"],
                   },
                   on: {
-                    delete: _vm.deleteStory,
-                    edit: _vm.editStory,
-                    drag: _vm.orderStories,
+                    delete: _vm.deleteTooling,
+                    edit: _vm.editTooling,
+                    drag: _vm.orderTooling,
                     "update:object": function ($event) {
-                      _vm.stories = $event
+                      _vm.tooling = $event
                     },
                   },
                 }),
@@ -1066,7 +945,7 @@ var render = function () {
                     on: {
                       submit: function ($event) {
                         $event.preventDefault()
-                        return _vm.updateStory($event)
+                        return _vm.updateTool($event)
                       },
                     },
                   },
@@ -1080,7 +959,7 @@ var render = function () {
                               staticClass: "font-weight-bold",
                               attrs: { for: "id_title" },
                             },
-                            [_vm._v("Cliente")]
+                            [_vm._v("Nombre")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -1123,28 +1002,28 @@ var render = function () {
                         ]),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
+                      _c("div", { staticClass: "col-12 col-lg-6" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c(
                             "label",
                             {
                               staticClass: "font-weight-bold mb-0",
-                              attrs: { for: "id_image" },
+                              attrs: { for: "id_logo" },
                             },
-                            [_vm._v("Imagen")]
+                            [_vm._v("Logo")]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "row" }, [
                             _c("div", { staticClass: "col-3" }, [
-                              _vm.service.image
+                              _vm.service.logo
                                 ? _c("img", {
                                     staticClass:
                                       "img-fluid shadow mx-auto d-block",
                                     attrs: {
                                       src:
-                                        "https://storage.googleapis.com/playgroup-web/img/solutions/" +
-                                        _vm.service.image,
-                                      alt: _vm.service.image,
+                                        "https://storage.googleapis.com/playgroup-web/img/tooling/" +
+                                        _vm.service.logo,
+                                      alt: _vm.service.logo,
                                     },
                                   })
                                 : _vm._e(),
@@ -1157,9 +1036,9 @@ var render = function () {
                                 _c(
                                   "vue-dropzone",
                                   {
-                                    ref: "ref_image",
+                                    ref: "ref_logo",
                                     attrs: {
-                                      id: "id_image",
+                                      id: "id_logo",
                                       options: _vm.dropzoneOptions,
                                       duplicateCheck: true,
                                       useCustomSlot: true,
@@ -1170,10 +1049,10 @@ var render = function () {
                                       ) {
                                         return _vm.$validateImageDropzone(
                                           $event,
-                                          _vm.$refs.ref_image.dropzone,
+                                          _vm.$refs.ref_logo.dropzone,
                                           1,
-                                          812000,
-                                          "800kb"
+                                          300000,
+                                          "300kb"
                                         )
                                       },
                                     },
@@ -1206,15 +1085,15 @@ var render = function () {
                             ),
                           ]),
                           _vm._v(" "),
-                          _vm.errors && _vm.errors.image
+                          _vm.errors && _vm.errors.logo
                             ? _c(
                                 "label",
                                 {
                                   staticClass:
                                     "text-danger text-sm d-block mt-2",
-                                  attrs: { for: "id_image" },
+                                  attrs: { for: "id_logo" },
                                 },
-                                [_vm._v(_vm._s(_vm.errors.image[0]))]
+                                [_vm._v(_vm._s(_vm.errors.logo[0]))]
                               )
                             : _vm._e(),
                         ]),
@@ -1267,7 +1146,7 @@ var render = function () {
                     on: {
                       submit: function ($event) {
                         $event.preventDefault()
-                        return _vm.createStory($event)
+                        return _vm.createTool($event)
                       },
                     },
                   },
@@ -1281,7 +1160,7 @@ var render = function () {
                               staticClass: "font-weight-bold",
                               attrs: { for: "id_title" },
                             },
-                            [_vm._v("Cliente:")]
+                            [_vm._v("Nombre:")]
                           ),
                           _vm._v(" "),
                           _c("input", {
@@ -1328,7 +1207,7 @@ var render = function () {
                         ]),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
+                      _c("div", { staticClass: "col-12 col-lg-6" }, [
                         _c(
                           "div",
                           { staticClass: "form-group" },
@@ -1337,17 +1216,17 @@ var render = function () {
                               "label",
                               {
                                 staticClass: "font-weight-bold mb-0",
-                                attrs: { for: "id_image" },
+                                attrs: { for: "id_logo" },
                               },
-                              [_vm._v("Imagen:")]
+                              [_vm._v("Logo Herramienta:")]
                             ),
                             _vm._v(" "),
                             _c(
                               "vue-dropzone",
                               {
-                                ref: "ref_image",
+                                ref: "ref_logo",
                                 attrs: {
-                                  id: "id_image",
+                                  id: "id_logo",
                                   options: _vm.dropzoneOptions,
                                   duplicateCheck: true,
                                   useCustomSlot: true,
@@ -1356,10 +1235,10 @@ var render = function () {
                                   "vdropzone-file-added": function ($event) {
                                     return _vm.$validateImageDropzone(
                                       $event,
-                                      _vm.$refs.ref_image.dropzone,
+                                      _vm.$refs.ref_logo.dropzone,
                                       1,
-                                      812000,
-                                      "800kb"
+                                      300000,
+                                      "300kb"
                                     )
                                   },
                                 },
@@ -1386,15 +1265,15 @@ var render = function () {
                               ]
                             ),
                             _vm._v(" "),
-                            _vm.errors && _vm.errors.image
+                            _vm.errors && _vm.errors.logo
                               ? _c(
                                   "label",
                                   {
                                     staticClass:
                                       "text-danger text-sm d-block mt-2",
-                                    attrs: { for: "id_image" },
+                                    attrs: { for: "id_logo" },
                                   },
-                                  [_vm._v(_vm._s(_vm.errors.image[0]))]
+                                  [_vm._v(_vm._s(_vm.errors.logo[0]))]
                                 )
                               : _vm._e(),
                           ],
@@ -1484,12 +1363,12 @@ var render = function () {
         [
           _c("template", { slot: "modal-title" }, [
             _c("h2", { staticClass: "mb-0 text-uppercase text-primary" }, [
-              _vm._v("Eliminar Solución de Problema"),
+              _vm._v("Eliminar Herramienta"),
             ]),
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "mb-0" }, [
-            _vm._v("Esta seguro que desea eliminar la solución de problema?"),
+            _vm._v("Esta seguro que desea eliminar el caso de éxito?"),
           ]),
         ],
         2
@@ -1523,7 +1402,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header border-0" }, [
       _c("h2", { staticClass: "mb-0 text-uppercase text-primary" }, [
-        _vm._v("Actualizar Caso de Éxito"),
+        _vm._v("Actualizar Herramienta"),
       ]),
     ])
   },
@@ -1533,7 +1412,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header border-0" }, [
       _c("h2", { staticClass: "mb-0 text-uppercase text-primary" }, [
-        _vm._v("Crear Caso de Éxito"),
+        _vm._v("Crear Herramienta"),
       ]),
     ])
   },
@@ -1631,17 +1510,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/BusinessLineLogos.vue":
-/*!**************************************************!*\
-  !*** ./resources/js/views/BusinessLineLogos.vue ***!
-  \**************************************************/
+/***/ "./resources/js/views/Tooling.vue":
+/*!****************************************!*\
+  !*** ./resources/js/views/Tooling.vue ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _BusinessLineLogos_vue_vue_type_template_id_42ee20b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BusinessLineLogos.vue?vue&type=template&id=42ee20b6& */ "./resources/js/views/BusinessLineLogos.vue?vue&type=template&id=42ee20b6&");
-/* harmony import */ var _BusinessLineLogos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BusinessLineLogos.vue?vue&type=script&lang=js& */ "./resources/js/views/BusinessLineLogos.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Tooling_vue_vue_type_template_id_0f3c867b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tooling.vue?vue&type=template&id=0f3c867b& */ "./resources/js/views/Tooling.vue?vue&type=template&id=0f3c867b&");
+/* harmony import */ var _Tooling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tooling.vue?vue&type=script&lang=js& */ "./resources/js/views/Tooling.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1651,9 +1530,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _BusinessLineLogos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _BusinessLineLogos_vue_vue_type_template_id_42ee20b6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _BusinessLineLogos_vue_vue_type_template_id_42ee20b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Tooling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Tooling_vue_vue_type_template_id_0f3c867b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Tooling_vue_vue_type_template_id_0f3c867b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1663,38 +1542,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/views/BusinessLineLogos.vue"
+component.options.__file = "resources/js/views/Tooling.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/views/BusinessLineLogos.vue?vue&type=script&lang=js&":
-/*!***************************************************************************!*\
-  !*** ./resources/js/views/BusinessLineLogos.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************/
+/***/ "./resources/js/views/Tooling.vue?vue&type=script&lang=js&":
+/*!*****************************************************************!*\
+  !*** ./resources/js/views/Tooling.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BusinessLineLogos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./BusinessLineLogos.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/BusinessLineLogos.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BusinessLineLogos_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Tooling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Tooling.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Tooling.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Tooling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/views/BusinessLineLogos.vue?vue&type=template&id=42ee20b6&":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/views/BusinessLineLogos.vue?vue&type=template&id=42ee20b6& ***!
-  \*********************************************************************************/
+/***/ "./resources/js/views/Tooling.vue?vue&type=template&id=0f3c867b&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/views/Tooling.vue?vue&type=template&id=0f3c867b& ***!
+  \***********************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BusinessLineLogos_vue_vue_type_template_id_42ee20b6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./BusinessLineLogos.vue?vue&type=template&id=42ee20b6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/BusinessLineLogos.vue?vue&type=template&id=42ee20b6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BusinessLineLogos_vue_vue_type_template_id_42ee20b6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tooling_vue_vue_type_template_id_0f3c867b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Tooling.vue?vue&type=template&id=0f3c867b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Tooling.vue?vue&type=template&id=0f3c867b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tooling_vue_vue_type_template_id_0f3c867b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BusinessLineLogos_vue_vue_type_template_id_42ee20b6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tooling_vue_vue_type_template_id_0f3c867b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

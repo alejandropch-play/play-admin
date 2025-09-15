@@ -418,14 +418,9 @@ export default {
     return {
       index: "",
       loading: false,
-      orderElements: this.object || []
+      orderElements: []
     };
   },
-  mounted() {
-    console.log("object prop received:", this.object);
-    console.log("object type received:", this.type);
-  },
-
   watch: {
     object: function(newValue, oldValue) {
       if (newValue) {
@@ -433,7 +428,14 @@ export default {
         this.loading = false;
         this.index = "";
       }
-      
+      if (
+        newValue &&
+        newValue.length == 0 &&
+        this.oldValue &&
+        this.oldValue.length == 1
+      ) {
+        this.loading = false;
+      }
     }
   }
 };

@@ -60,6 +60,26 @@
               </div>
             </div>
           </div>
+          <div class="card shadow" v-if="type == 'tooling'">
+            <div class="card-body position-relative">
+                <img
+                  :src="'https://storage.googleapis.com/playgroup-web/img/tooling/'+element.logo"
+                  class="img-fluid card-img-top"
+                  alt
+                />
+              <h3 class="mt-3 mb-0">{{ element.title }}</h3>
+            </div>
+            <div class="card-footer pt-0 text-right border-0">
+              <button class="btn btn-sm btn-secondary" @click.prevent="clickEdit(element.id)">
+                  <i class="fas fa-pen-alt text-warning mr-1"></i> Editar</button>
+                <button
+                  class="btn btn-sm btn-secondary"
+                  @click.prevent="clickDelete(element.id)"
+                >
+                <i class="fas fa-trash-alt text-danger mr-1"></i>
+                Eliminar</button>
+            </div>
+          </div>
 
           <div class="card shadow" v-if="type == 'success-stories'">
             <div class="card-body position-relative">

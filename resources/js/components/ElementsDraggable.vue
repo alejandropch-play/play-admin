@@ -418,9 +418,14 @@ export default {
     return {
       index: "",
       loading: false,
-      orderElements: []
+      orderElements: this.object || []
     };
   },
+  mounted() {
+    console.log("object prop received:", this.object);
+    console.log("object type received:", this.type);
+  },
+
   watch: {
     object: function(newValue, oldValue) {
       if (newValue) {

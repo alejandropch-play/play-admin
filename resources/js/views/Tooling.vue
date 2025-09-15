@@ -81,8 +81,8 @@
         </div>
         <ElementsDraggable
           type="tooling"
-          @delete="deleteStory"
-          @edit="editStory"
+          @delete="deleteTooling"
+          @edit="editTooling"
           @drag="orderTooling"
           :object.sync="tooling"
           :classes="['col-6','col-lg-3','mb-4']"
@@ -335,7 +335,7 @@ export default {
           });
         });
     },
-    editStory(id) {
+    editTooling(id) {
       this.editBlock = true;
       this.startBlock = this.showBlock = false;
       this.getTool(id);
@@ -499,7 +499,7 @@ export default {
         })
         .catch(error => {});
     },
-    deleteStory(id) {
+    deleteTooling(id) {
       this.$refs["modal-delete"].show();
       //console.log(id);
       this.getTool(id);

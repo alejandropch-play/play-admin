@@ -428,14 +428,7 @@ export default {
         this.loading = false;
         this.index = "";
       }
-      if (
-        newValue &&
-        newValue.length == 0 &&
-        this.oldValue &&
-        this.oldValue.length == 1
-      ) {
-        this.loading = false;
-      }
+      
     }
   }
 };

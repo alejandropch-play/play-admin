@@ -39,6 +39,7 @@ const app = new Vue({
         'applicants': () => import('./views/Applicants.vue' /* webpackChunkName: "js/applicants" */),
 
         'success-stories': () => import('./views/SuccessStories.vue' /* webpackChunkName: "js/success-stories" */),
+        'tooling': () => import('./views/Tooling.vue'),
         'troubleshooting': () => import('./views/Troubleshooting.vue' /* webpackChunkName: "js/troubleshooting" */),
         'business-line-logos': () => import('./views/BusinessLineLogos.vue' /* webpackChunkName: "js/business-line-logos" */),
         'why-us': () => import('./views/WhyUs.vue' /* webpackChunkName: "js/why-us" */),

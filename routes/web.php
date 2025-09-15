@@ -171,13 +171,13 @@ Route::get('trabaja-con-nosotros/puestos', 'WorkWithUs\JobController@index')->na
     Route::put('success-stories/{story}', 'SuccessStoriesController@update')->name('success-stories.update')->middleware('permission:casos-de-exito');
 
     #Tooling
-    Route::get('herramientas', 'ToolingController@index')->name('tooling')->middleware('permission:herramientas');
-    Route::post('tooling', 'ToolingController@create')->name('tooling.create')->middleware('permission:herramientas');
-    Route::get('json/tooling', 'ToolingController@getToolings')->name('tooling.json.get-tooling')->middleware('permission:herramientas');
-    Route::put('tooling/order', 'ToolingController@order')->name('tooling.order')->middleware('permission:herramientas');
-    Route::get('json/tooling/{tool}', 'ToolingController@getTool')->name('tooling.json.get-tool')->middleware('permission:herramientas');
-    Route::delete('tooling/{tool}', 'ToolingController@delete')->name('tooling.delete')->middleware('permission:herramientas');
-    Route::put('tooling/{tool}', 'ToolingController@update')->name('tooling.update')->middleware('permission:herramientas');
+    Route::get('tooling', 'ToolingController@index')->name('tooling')->middleware('permission:tooling');
+    Route::post('tooling', 'ToolingController@create')->name('tooling.create')->middleware('permission:tooling');
+    Route::get('json/tooling', 'ToolingController@getToolings')->name('tooling.json.get-tooling')->middleware('permission:tooling');
+    Route::put('tooling/order', 'ToolingController@order')->name('tooling.order')->middleware('permission:tooling');
+    Route::get('json/tooling/{tool}', 'ToolingController@getTool')->name('tooling.json.get-tool')->middleware('permission:tooling');
+    Route::delete('tooling/{tool}', 'ToolingController@delete')->name('tooling.delete')->middleware('permission:tooling');
+    Route::put('tooling/{tool}', 'ToolingController@update')->name('tooling.update')->middleware('permission:tooling');
 
     #SuccessStories
     Route::get('solucion-de-problemas', 'TroubleshootingController@index')->name('troubleshooting')->middleware('permission:solucion-de-problemas');

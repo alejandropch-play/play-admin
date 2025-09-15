@@ -50,8 +50,9 @@ class ToolingController extends Controller
         return response()->json($toolings);
     }
 
-    public function getTool(Tooling $tooling)
+    public function getTool(string $id)
     {
+        $tooling = Tooling::find($id);
         return response()->json($tooling);
     }
 

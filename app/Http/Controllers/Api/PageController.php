@@ -19,67 +19,73 @@ use App\Cooltura;
 use App\Player;
 use App\Podcast;
 use App\Testimonial;
+use App\Tooling;
 use Illuminate\Support\Facades\Log;
 
 class PageController extends Controller
 {
     use ApiTrait;
-    public function getClientLogos(){
-        try{
-            $customers = Customer::select('name','image')->where('status',1)->orderBy('index')->get();
+    public function getClientLogos()
+    {
+        try {
+            $customers = Customer::select('name', 'image')->where('status', 1)->orderBy('index')->get();
             return $this->sendResponse($customers);
-        }catch(\Exception $e){
-            Log::error("Error:", ["err"=>$e]);
-            return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')]) ],500);
+        } catch (\Exception $e) {
+            Log::error("Error:", ["err" => $e]);
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')])], 500);
         }
     }
-    public function getPodcasts(){
-        try{
+    public function getPodcasts()
+    {
+        try {
 
 
-            $podcasts = Podcast::select('id','url')
-            ->where('published', 1)
-            ->with('tags:id,name,podcast_id')
-            ->orderBy('created_at','desc')
-            ->first();  // for now we only will support a podcast. TODO: add functionality to accept more
+            $podcasts = Podcast::select('id', 'url')
+                ->where('published', 1)
+                ->with('tags:id,name,podcast_id')
+                ->orderBy('created_at', 'desc')
+                ->first();  // for now we only will support a podcast. TODO: add functionality to accept more
 
             $podcasts = $podcasts->unsetRelation('published_format');
             $podcasts->makeHidden(['date_format', 'published_format']);
-             if ($podcasts) {
-               preg_match('/(?:v=|\/)([0-9A-Za-z_-]{11})/', $podcasts->url, $matches);
-                $podcasts->url= $matches[1] ?? null;
+            if ($podcasts) {
+                preg_match('/(?:v=|\/)([0-9A-Za-z_-]{11})/', $podcasts->url, $matches);
+                $podcasts->url = $matches[1] ?? null;
             }
 
             $podcasts = array("podcasts" => [$podcasts]);
             return $this->sendResponse($podcasts);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error("Error:", ["err" => $e]);
-            return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.get.error', ['name' => trans('custom.attribute.podcast')]) ],500);
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.get.error', ['name' => trans('custom.attribute.podcast')])], 500);
         }
     }
-    public function getPlayers(Request $request){
+    public function getPlayers(Request $request)
+    {
         $offset = (int) $request->query('offset', 0);
         $limit = (int) $request->query('limit', 8);
-        $players = Player::with('relDepartment:id,title')->orderBy('index','asc')
-                    ->skip($offset)
-                    ->take($limit)
-                    ->get();
-        $data = array("players"=> $players);
+        $players = Player::with('relDepartment:id,title')->orderBy('index', 'asc')
+            ->skip($offset)
+            ->take($limit)
+            ->get();
+        $data = array("players" => $players);
         return $this->sendResponse($data);
     }
-    public function getAwards(){
-        $awards = Award::select('name','image','category')->orderBy('index')->get();
-        $awards= array("awards"=> $awards);
+    public function getAwards()
+    {
+        $awards = Award::select('name', 'image', 'category')->orderBy('index')->get();
+        $awards = array("awards" => $awards);
         return $this->sendResponse($awards);
     }
-    public function home(){
+    public function home()
+    {
 
         $page = $this->getSeoPage(NULL);
-        $awards = Award::select('name','image','category')->orderBy('index')->get();
-        $posts = Post::select('title','slug','thumbnail','category_id')->where('published',1)->with('category:id,name,slug')->orderBy('created_at','desc')->take(6)->get();
-        $customers = Customer::select('name','image')->where('status',1)->orderBy('index')->get();
+        $awards = Award::select('name', 'image', 'category')->orderBy('index')->get();
+        $posts = Post::select('title', 'slug', 'thumbnail', 'category_id')->where('published', 1)->with('category:id,name,slug')->orderBy('created_at', 'desc')->take(6)->get();
+        $customers = Customer::select('name', 'image')->where('status', 1)->orderBy('index')->get();
         $departments = $this->getDepartments();
-        $main = Department::select('excerpt','title','logo_white','logo')->where('main',1)->first();
+        $main = Department::select('excerpt', 'title', 'logo_white', 'logo')->where('main', 1)->first();
         $content = $this->getContentPage(NULL);
         $data = array(
             "page" => $page,
@@ -93,14 +99,16 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function getTestimonials(){
+    public function getTestimonials()
+    {
         $testimonials = Testimonial::orderBy('index')->get();
         return $this->sendResponse($testimonials);
     }
 
-    public function department(Request $request){
-        $master_page = MasterPage::where('slug',$request->department)->first();
-        if(!$master_page){
+    public function department(Request $request)
+    {
+        $master_page = MasterPage::where('slug', $request->department)->first();
+        if (!$master_page) {
             return $this->sendError("Not found");
         }
         $page = $this->getSeoPage($request->department);
@@ -115,13 +123,19 @@ class PageController extends Controller
         );
         return $this->sendResponse($data);
     }
+    public function tooling(Request $request)
+    {
+        $toolings = Tooling::where('department_id', $request->department)->orderBy('index')->get();
+        return $this->sendResponse($toolings);
+    }
 
-    public function successStory(){
+    public function successStory()
+    {
         $master_sections_ids = [];
 
         $page = $this->getSeoPage('success-stories');
         $content = $this->getContentPage('success-stories');
-        $main = Department::select('excerpt','title','logo_white','logo')->where('main',1)->first();
+        $main = Department::select('excerpt', 'title', 'logo_white', 'logo')->where('main', 1)->first();
         $data = array(
             "page" => $page,
             "content" => $content,
@@ -130,25 +144,27 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function getPosts(Request $request){
+    public function getPosts(Request $request)
+    {
         $search = $request->search;
         $select = 'posts.id as post_id, posts.title as title,
         categories.slug as category_slug,posts.excerpt,posts.slug,posts.published';
         $posts = Post::selectRaw($select)
-        ->join('categories','categories.id','posts.category_id')
-        ->where('posts.title','like','%'.$search.'%')
-        ->where('posts.published', 1)
-        ->orderBy('posts.created_at','desc')
-        ->paginate(4);
+            ->join('categories', 'categories.id', 'posts.category_id')
+            ->where('posts.title', 'like', '%' . $search . '%')
+            ->where('posts.published', 1)
+            ->orderBy('posts.created_at', 'desc')
+            ->paginate(4);
 
         return $this->sendResponse($posts->items());
     }
 
-    public function getCategories(){
-        $categories = Category::select('id','name','slug')->has('post')->get();
+    public function getCategories()
+    {
+        $categories = Category::select('id', 'name', 'slug')->has('post')->get();
         $count = 0;
         foreach ($categories as $key => $category) {
-            $categories[$count++]["count"] = Post::where('category_id',$category->id)->count();
+            $categories[$count++]["count"] = Post::where('category_id', $category->id)->count();
         }
         $data = array(
             "categories" => $categories,
@@ -156,14 +172,15 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function blog(){
+    public function blog()
+    {
         $page = $this->getSeoPage('blog');
-        $posts = Post::select('id','title','slug','thumbnail','image','excerpt','published','category_id','author','created_at')->where('published',1)->with('category:id,name,slug')->with('tags:id,name,post_id')->orderBy('created_at','desc')->paginate(6);
-        $categories = Category::select('id','name','slug')->has('post')->get();
-        $content = $this->getContentPage( "blog");
+        $posts = Post::select('id', 'title', 'slug', 'thumbnail', 'image', 'excerpt', 'published', 'category_id', 'author', 'created_at')->where('published', 1)->with('category:id,name,slug')->with('tags:id,name,post_id')->orderBy('created_at', 'desc')->paginate(6);
+        $categories = Category::select('id', 'name', 'slug')->has('post')->get();
+        $content = $this->getContentPage("blog");
         $count = 0;
         foreach ($categories as $key => $category) {
-            $categories[$count++]["count"] = Post::where('category_id',$category->id)->count();
+            $categories[$count++]["count"] = Post::where('category_id', $category->id)->count();
         }
         $data = array(
             "page" => $page,
@@ -174,18 +191,19 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function blogCategory(Request $request){
-        $category = Category::select('id','name','slug')->where('slug',$request->category)->first();
-        if(!$category){
+    public function blogCategory(Request $request)
+    {
+        $category = Category::select('id', 'name', 'slug')->where('slug', $request->category)->first();
+        if (!$category) {
             return $this->sendError("Not found");
         }
         $page = $this->getSeoPage('blog');
-        $posts = Post::select('id','title','slug','thumbnail','image','excerpt','published','category_id','author','created_at')->where('published',1)->where('category_id',$category->id)->with('category:id,name,slug')->with('tags:id,name,post_id')->orderBy('created_at','desc')->paginate(6);
-        $categories = Category::select('id','name','slug')->has('post')->get();
+        $posts = Post::select('id', 'title', 'slug', 'thumbnail', 'image', 'excerpt', 'published', 'category_id', 'author', 'created_at')->where('published', 1)->where('category_id', $category->id)->with('category:id,name,slug')->with('tags:id,name,post_id')->orderBy('created_at', 'desc')->paginate(6);
+        $categories = Category::select('id', 'name', 'slug')->has('post')->get();
         $count = 0;
-        $content = $this->getContentPage( "blog");
+        $content = $this->getContentPage("blog");
         foreach ($categories as $key => $item) {
-            $categories[$count++]["count"] = Post::where('category_id',$item->id)->count();
+            $categories[$count++]["count"] = Post::where('category_id', $item->id)->count();
         }
         $data = array(
             "page" => $page,
@@ -197,32 +215,33 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function blogCategoryPost(Request $request){
-        $category = Category::select('id','name','slug')->where('slug',$request->category)->first();
-        if(!$category){
+    public function blogCategoryPost(Request $request)
+    {
+        $category = Category::select('id', 'name', 'slug')->where('slug', $request->category)->first();
+        if (!$category) {
             return $this->sendError("Not found");
         }
-        $post = Post::where('slug',$request->post)->where('category_id',$category->id)->where('published',1)->first();
-        $post = Post::select('id','title','slug','image','excerpt','category_id','author', 'content','created_at')
-                ->where('published',1)
-                ->where('category_id',$category->id)
-                ->where('slug', $request->post)
-                ->with('category:id,name,slug')
-                ->with('tags:id,name,post_id')
-                ->first();
+        $post = Post::where('slug', $request->post)->where('category_id', $category->id)->where('published', 1)->first();
+        $post = Post::select('id', 'title', 'slug', 'image', 'excerpt', 'category_id', 'author', 'content', 'created_at')
+            ->where('published', 1)
+            ->where('category_id', $category->id)
+            ->where('slug', $request->post)
+            ->with('category:id,name,slug')
+            ->with('tags:id,name,post_id')
+            ->first();
 
-        if(!$post){
+        if (!$post) {
             return $this->sendError("Not found");
         }
         $page = $this->getSeoPage('blog');
-        $categories = Category::select('id','name','slug')->has('post')->get();
+        $categories = Category::select('id', 'name', 'slug')->has('post')->get();
         $count = 0;
         foreach ($categories as $key => $item) {
-            $categories[$count++]["count"] = Post::where('category_id',$item->id)->count();
+            $categories[$count++]["count"] = Post::where('category_id', $item->id)->count();
         }
-        $content = $this->getContentPage( "blog");
+        $content = $this->getContentPage("blog");
         //$posts =
-        $posts = Post::where('published',1)->where('id','!=',$post->id)->with('category:id,name,slug')->inRandomOrder()->take(4)->get();
+        $posts = Post::where('published', 1)->where('id', '!=', $post->id)->with('category:id,name,slug')->inRandomOrder()->take(4)->get();
         $data = array(
             "page" => $page,
             "category" => $category,
@@ -234,33 +253,30 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function getBlogComments(Request $request){
-        try{
-            $comments = Comment::where('post_id',$request->post_id)->get();
+    public function getBlogComments(Request $request)
+    {
+        try {
+            $comments = Comment::where('post_id', $request->post_id)->get();
             $data = array(
                 "comments" => $comments
             );
             return $this->sendResponse($data);
-        }
-        catch(\Exception $e){
-            Log::error("Error:", ["err"=>$e]);
-            return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')]) ],500);
+        } catch (\Exception $e) {
+            Log::error("Error:", ["err" => $e]);
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')])], 500);
         }
     }
 
-    public function blogCommentPost(Request $request){
+    public function blogCommentPost(Request $request)
+    {
 
         $comment = $request->all();
-        Log::info("R:", ["comment"=>$comment]);
-
-        try{
+        try {
             Comment::Create($comment);
-            return response()->json(['message'=> "created"],200);
-        }
-        catch(\Exception $e){
-            Log::error("EEG:", ["err"=>$e]);
-            return response()->json(['title'=> trans('custom.title.error'), 'message'=> trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')]) ],500);
-
+            return response()->json(['message' => "created"], 200);
+        } catch (\Exception $e) {
+            Log::error("EEG:", ["err" => $e]);
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.create.error', ['name' => trans('custom.attribute.customer')])], 500);
         }
         /* $category = Category::select('id','name','slug')->where('slug',$request->category)->first();
         if(!$category){
@@ -296,10 +312,11 @@ class PageController extends Controller
         );
         return $this->sendResponse($data);*/
     }
-    public function privacityPolicy(){
+    public function privacityPolicy()
+    {
         $page = $this->getSeoPage('politicas-privacidad');
         $content = $this->getContentPage('politicas-privacidad');
-        $main = Department::select('excerpt','title','logo_white','logo')->where('main',1)->first();
+        $main = Department::select('excerpt', 'title', 'logo_white', 'logo')->where('main', 1)->first();
         $data = array(
             "page" => $page,
             "content" => $content,
@@ -308,10 +325,11 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function contactUs(){
+    public function contactUs()
+    {
         $page = $this->getSeoPage('conversemos');
         $content = $this->getContentPage('conversemos');
-        $main = Department::select('excerpt','title','logo_white','logo')->where('main',1)->first();
+        $main = Department::select('excerpt', 'title', 'logo_white', 'logo')->where('main', 1)->first();
         $data = array(
             "page" => $page,
             "content" => $content,
@@ -320,10 +338,11 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function workWithUs(){
+    public function workWithUs()
+    {
         $page = $this->getSeoPage('trabaja-con-nosotros');
         $content = $this->getContentPage('trabaja-con-nosotros');
-        $main = Department::select('excerpt','title','logo_white','logo')->where('main',1)->first();
+        $main = Department::select('excerpt', 'title', 'logo_white', 'logo')->where('main', 1)->first();
         $data = array(
             "page" => $page,
             "content" => $content,
@@ -332,7 +351,8 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function complaintsBook(){
+    public function complaintsBook()
+    {
         $page = $this->getSeoPage('libro-de-reclamaciones');
         $data = array(
             "page" => $page
@@ -340,7 +360,8 @@ class PageController extends Controller
         return $this->sendResponse($data);
     }
 
-    public function knowUs(){
+    public function knowUs()
+    {
         $page = $this->getSeoPage('conocenos');
         $content = $this->getContentPage('conocenos');
         $data = array(

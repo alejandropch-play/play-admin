@@ -45,6 +45,7 @@ Route::namespace('Api')->group(function() {
         Route::get('testimonials', 'PageController@getTestimonials');
         Route::get('department/{department}', 'PageController@department');
         Route::get('department/{department}/success-story', 'PageController@successStory');
+        Route::get('department/{department}/tooling', 'PageController@tooling');
         Route::get('blog', 'PageController@blog');
         Route::get('blog/json', 'PageController@getPosts');
         Route::get('blog/category', 'PageController@getCategories');

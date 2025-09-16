@@ -70,10 +70,12 @@ class TroubleshootingController extends Controller
     {
 
         $image = $solution->image;
+        $responsive_image = $solution->responsive_image;
         try {
             $solution_delete = $solution->delete();
             if ($solution_delete) {
                 Storage::disk('private')->delete('files/img/story/' . $image);
+                Storage::disk('private')->delete('files/img/story/responsive/' . $responsive_image);
             }
             return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.delete.success', ['name' => trans('custom.attribute.troubleshooting')])], 200);
         } catch (\Exception $e) {
@@ -124,8 +126,8 @@ class TroubleshootingController extends Controller
                 $request_solution = array_merge($request_solution, ["responsive_image" => $solution->responsive_image]);
             }
 
-            if ($request->hasFile('responsive_image') && $solution->image) {
-                Storage::disk('gcs')->delete('img/solutions/' . $solution->image);
+            if ($request->hasFile('responsive_image') && $solution->responsive_image) {
+                Storage::disk('gcs')->delete('img/solutions/responsive' . $solution->responsive_image);
             }
             $solution = Troubleshooting::UpdateOrCreate(["id" => $solution->id], $request_solution);
             return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.update.success', ['name' => trans('custom.attribute.troubleshooting')])], 200);

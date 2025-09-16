@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageResponsiveToTroubleshootingTable extends Migration
+class AddImageResponsiveToWhyUsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddImageResponsiveToTroubleshootingTable extends Migration
      */
     public function up()
     {
-        Schema::table('troubleshooting', function (Blueprint $table) {
+        Schema::table('why_us', function (Blueprint $table) {
             $table->string('responsive_image')->nullable()->after('image');
         });
     }
@@ -25,7 +25,7 @@ class AddImageResponsiveToTroubleshootingTable extends Migration
      */
     public function down()
     {
-        Schema::table('troubleshooting', function (Blueprint $table) {
+        Schema::table('why_us', function (Blueprint $table) {
             $table->dropColumn('responsive_image');
         });
     }

@@ -67,42 +67,34 @@
                     for="id_image"
                   >{{ errors.image[0] }}</label>
                 </div>
+                <div class="form-group">
+                  <label class="font-weight-bold d-block mb-0">Responsive Imagen</label>
+                  <!--<small class="mb-2 d-block">Tamaño Recomendado</small>-->
+                  <vue-dropzone
+                    ref="ref_responsive_image"
+                    @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_responsive_image.dropzone,1,300000,'300kb')"
+                    id="id_responsive_image"
+                    :options="dropzoneOptions"
+                    :duplicateCheck="true"
+                    :useCustomSlot="true"
+                  >
+                    <div class="dropzone-custom-content">
+                      <h5
+                        class="dropzone-custom-title text-primary"
+                      >Suelte los archivos aquí o haga click para cargarlos.</h5>
+                    </div>
+                  </vue-dropzone>
+
+                  <label
+                    v-if="errors && errors.responsive_image"
+                    class="text-danger text-sm mt-2 d-block"
+                    for="id_responsive_image"
+                  >{{ errors.responsive_image[0] }}</label>
+                </div>
               </div>
 
               <div class="col-12 col-lg-9">
                 <div class="row">
-                  <!-- <div class="col-12">
-                    <div class="form-group">
-                      <label class="font-weight-bold mb-0" for="id_name">Nombre</label>
-                 
-                      <small class="mb-2 d-block text-muted">Tamaño Recomendado: Alto máximo 25px</small>
-                      <file-upload
-                                                extensions="jpg,jpeg,png"
-                                                accept="image/png,image/jpeg,image/jpg"
-                                                class="d-none"
-                                                :drop="false"
-                                                :multiple="true"
-                                                v-model="element.images"
-                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,300000,'300kb','awards')"
-                                                ref="ref_images"
-                                                input-id="id_images">
-                                            </file-upload>
-
-                        <quill-Editor
-                          @keydown.enter.prevent
-                          v-model="element.name"
-                          placeholder="Nombre"
-                          :options="editorOptions"
-                          ref="ref_content"
-                        ></quill-Editor>
-                      <label
-                        v-if="errors && errors.name"
-                        class="mt-2 text-danger text-sm"
-                        for="id_name"
-                      >{{ errors.name[0] }}</label>
-                    </div>
-                  </div> -->
-
                   <div class="col-12">
                     <div class="form-group">
                       <label class="font-weight-bold" for="id_title">Titulo</label>
@@ -196,41 +188,45 @@
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-3">
+                    <img
+                      class="img-fluid mx-auto d-block"
+                      v-if="element.responsive_image"
+                      :src="'https://storage.googleapis.com/playgroup-web/img/solutions/responsive/'+element.responsive_image"
+                      :alt="element.responsive_image"
+                    />
+                  </div>
+                  <div class="col-9">
+                    <div class="form-group">
+                      <label class="font-weight-bold d-block mb-0">Imagen Responsive</label>
+                      <!--<small class="mb-2 d-block">Tamaño Recomendado</small>-->
+                      <vue-dropzone
+                        ref="ref_responsive_image"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_responsive_image.dropzone,1,300000,'300kb')"
+                        id="id_responsive_image"
+                        :options="dropzoneOptions"
+                        :duplicateCheck="true"
+                        :useCustomSlot="true"
+                      >
+                        <div class="dropzone-custom-content">
+                          <h3
+                            class="dropzone-custom-title text-primary"
+                          >Suelte el archivo aquí o haga click para cargarlo.</h3>
+                        </div>
+                      </vue-dropzone>
+                      <label
+                        v-if="errors && errors.image"
+                        class="text-danger text-sm d-block"
+                        for="id_image"
+                      >{{ errors.responsive_image[0] }}</label>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="col-12 col-lg-9">
                 <div class="row">
-                  <!-- <div class="col-12">
-                    <div class="form-group">
-                      <label class="font-weight-bold mb-0" for="id_name">Nombre</label>
-                      <small class="mb-2 d-block text-muted">Tamaño Recomendado: Alto máximo 25px</small>
-                      <file-upload
-                                                extensions="jpg,jpeg,png"
-                                                accept="image/png,image/jpeg,image/jpg"
-                                                class="d-none"
-                                                :drop="false"
-                                                :multiple="true"
-                                                v-model="element.images"
-                                                @input-filter="$uploadImageUploadComponent($event,$refs.ref_content,300000,'300kb','awards')"
-                                                ref="ref_images"
-                                                input-id="id_images">
-                                            </file-upload>
-
-                        <quill-Editor
-                          @keydown.enter.prevent
-                          v-model="element.name"
-                          placeholder="Nombre"
-                          :options="editorOptions"
-                          ref="ref_content"
-                        ></quill-Editor>
-                      <label
-                        v-if="errors && errors.name"
-                        class="mt-2 text-danger text-sm"
-                        for="id_name"
-                      >{{ errors.name[0] }}</label>
-                    </div>
-                  </div> -->
-
                   <div class="col-12">
                     <div class="form-group">
                       <label class="font-weight-bold" for="id_title">Titulo</label>
@@ -315,6 +311,8 @@ export default {
       errors: {},
       element: {
         image: "",
+        responsive_image: "",
+
         index: "",
         // name: "",
         description: "",
@@ -441,6 +439,7 @@ export default {
     },
     restorePage() {
       this.image = [];
+      this.responsive_image = [];
       this.startBlock = true;
       this.newBlock = this.editBlock = this.requestServer = false;
       this.errors = {};
@@ -449,6 +448,7 @@ export default {
       this.$refs["modal-delete"].hide();
       this.element = {
         image: "",
+        responsive_image: "",
         index: "",
         // name: "",
         description: "",
@@ -478,9 +478,12 @@ export default {
         ? fd.append("description", this.element.description)
         : fd.append("description", "");
 
-      if (this.$refs.ref_image.dropzone.files[0]) {
-        fd.append("image", this.$refs.ref_image.dropzone.files[0]);
-      }
+        if (this.$refs.ref_image.dropzone.files[0]) {
+          fd.append("image", this.$refs.ref_image.dropzone.files[0]);
+        }
+        if (this.$refs.ref_responsive_image.dropzone.files[0]) {
+          fd.append("responsive_image", this.$refs.ref_responsive_image.dropzone.files[0]);
+        }
 
       fd.append("_method", "PUT");
       axios
@@ -535,6 +538,9 @@ export default {
 
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);
+      }
+      if (this.$refs.ref_responsive_image.dropzone.files[0]) {
+        fd.append("responsive_image", this.$refs.ref_responsive_image.dropzone.files[0]);
       }
 
       axios

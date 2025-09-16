@@ -579,9 +579,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getTool: function getTool(id) {
       var _this6 = this;
-      console.log(id);
       axios.get("json/tooling/" + id).then(function (response) {
-        console.log(response.data);
         _this6.service = response.data;
       })["catch"](function (error) {});
     },
@@ -762,10 +760,7 @@ var render = function () {
                   { staticClass: "col-4 col-md-4" },
                   [
                     _c("BreadCrumb", {
-                      attrs: {
-                        title: "Casos de Éxito",
-                        active: "Casos de Éxito",
-                      },
+                      attrs: { title: "Tooling", active: "Tooling" },
                     }),
                   ],
                   1
@@ -1176,7 +1171,7 @@ var render = function () {
                               "form-control form-control-alternative",
                             attrs: {
                               type: "text",
-                              placeholder: "Título",
+                              placeholder: "Nombre",
                               id: "id_title",
                             },
                             domProps: { value: _vm.service.title },
@@ -1368,7 +1363,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "mb-0" }, [
-            _vm._v("Esta seguro que desea eliminar el caso de éxito?"),
+            _vm._v("Esta seguro que desea eliminar la herramienta?"),
           ]),
         ],
         2

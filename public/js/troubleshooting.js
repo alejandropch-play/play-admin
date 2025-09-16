@@ -408,6 +408,179 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -429,7 +602,8 @@ __webpack_require__.r(__webpack_exports__);
         logo: "",
         department_id: "",
         image: "",
-        description: ''
+        responsive_image: "",
+        description: ""
       },
       errors: {},
       departments: [],
@@ -456,38 +630,33 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     updateStory: function updateStory() {
       var _this = this;
-
       this.requestServer = true;
       var fd = new FormData();
       fd.append("id", this.service.id);
-
       if (this.service.title) {
         fd.append("title", this.service.title);
       }
-
       if (this.service.description) {
         fd.append("description", this.service.description);
       }
       /*if (this.service.department_id) {
-        fd.append("department_id", this.service.department_id);
+      fd.append("department_id", this.service.department_id);
       }*/
-
-
       fd.append("department_id", this.department.id);
-
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);
-      } // if (this.$refs.ref_logo.dropzone.files[0]) {
+      }
+      if (this.$refs.ref_responsive_image.dropzone.files[0]) {
+        fd.append("responsive_image", this.$refs.ref_responsive_image.dropzone.files[0]);
+      }
+      // if (this.$refs.ref_logo.dropzone.files[0]) {
       //   fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
       // }
-
 
       fd.append("_method", "PUT");
       axios.post("troubleshooting/" + this.service.id, fd).then(function (response) {
         _this.requestServer = false;
-
         _this.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -500,14 +669,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this.requestServer = false;
-
         if (error.response.status === 422) {
           _this.errors = error.response.data.errors || {};
           return;
         }
-
         _this.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -539,51 +705,50 @@ __webpack_require__.r(__webpack_exports__);
       this.requestServer = false;
       /*this.newBlock = this.detailBlock = this.editBlock = false;
       this.startBlock = true;*/
-
       this.newBlock = this.editBlock = this.editBlock = false;
       this.showBlock = true;
       this.service = {
         title: "",
         logo: "",
         department_id: "",
+        responsive_image: "",
         image: "",
         description: ""
       };
       this.stories = [];
-      this.getSuccessStories(this.department.id);
+      this.getTroubleshootings(this.department.id);
     },
-    createStory: function createStory() {
+    createTroubleshooting: function createTroubleshooting() {
       var _this2 = this;
-
       this.requestServer = true;
       var fd = new FormData();
-
       if (this.service.title) {
         fd.append("title", this.service.title);
       }
-
       if (this.service.description) {
         fd.append("description", this.service.description);
       }
-
       fd.append("department_id", this.department.id);
-
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);
       } else {
         fd.append("image", "");
-      } // if (this.$refs.ref_logo.dropzone.files[0]) {
+      }
+      if (this.$refs.ref_responsive_image.dropzone.files[0]) {
+        fd.append("responsive_image", this.$refs.ref_responsive_image.dropzone.files[0]);
+      } else {
+        fd.append("responsive_image", "");
+      }
+
+      // if (this.$refs.ref_logo.dropzone.files[0]) {
       //   fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
       // } else {
       //   fd.append("logo", "");
       // }
 
-
       axios.post("troubleshooting", fd).then(function (response) {
         _this2.requestServer = false;
-
         _this2.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -596,14 +761,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this2.requestServer = false;
-
         if (error.response.status === 422) {
           _this2.errors = error.response.data.errors || {};
           return;
         }
-
         _this2.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -616,9 +778,8 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    getSuccessStories: function getSuccessStories(id) {
+    getTroubleshootings: function getTroubleshootings(id) {
       var _this3 = this;
-
       this.showBlock = true;
       this.startBlock = false;
       this.department = this.departments.find(function (x) {
@@ -637,10 +798,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     orderStories: function orderStories(elements) {
       var _this4 = this;
-
       axios.put("troubleshooting/order", elements).then(function (response) {
         _this4.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -666,13 +825,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     deleteStoryConfirm: function deleteStoryConfirm() {
       var _this5 = this;
-
       this.requestServer = true;
       axios["delete"]("troubleshooting/" + this.service.id).then(function (response) {
         _this5.$refs["modal-delete"].hide();
-
         _this5.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -685,9 +841,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this5.$refs["modal-delete"].hide();
-
         _this5.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -702,26 +856,25 @@ __webpack_require__.r(__webpack_exports__);
     },
     getStory: function getStory(id) {
       var _this6 = this;
-
       axios.get("json/troubleshooting/" + id).then(function (response) {
+        console.log(response.data);
         _this6.service = response.data;
       })["catch"](function (error) {});
     },
     deleteStory: function deleteStory(id) {
-      this.$refs["modal-delete"].show(); //console.log(id);
-
+      this.$refs["modal-delete"].show();
+      //console.log(id);
       this.getStory(id);
     },
     getDepartments: function getDepartments() {
       var _this7 = this;
-
       axios.get("/json/select/departments-no-main").then(function (response) {
         _this7.departments = response.data;
       })["catch"](function (error) {});
     }
   },
   created: function created() {
-    //this.getSuccessStories();
+    //this.getTroubleshootings();
     this.getDepartments();
   }
 });
@@ -911,7 +1064,7 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n              Ver Departamentos\n            "
+                            "\n                            Ver Departamentos\n                        "
                           ),
                         ]
                       )
@@ -969,7 +1122,7 @@ var render = function () {
                           on: {
                             click: function ($event) {
                               $event.preventDefault()
-                              return _vm.getSuccessStories(department.id)
+                              return _vm.getTroubleshootings(department.id)
                             },
                           },
                         },
@@ -1000,7 +1153,11 @@ var render = function () {
                               },
                               [
                                 _c("h2", { staticClass: "mb-0 text-center" }, [
-                                  _vm._v(_vm._s(department.title)),
+                                  _vm._v(
+                                    "\n                                " +
+                                      _vm._s(department.title) +
+                                      "\n                            "
+                                  ),
                                 ]),
                               ]
                             ),
@@ -1033,7 +1190,11 @@ var render = function () {
                           },
                         })
                       : _c("h2", { staticClass: "mb-0 text-center" }, [
-                          _vm._v(_vm._s(_vm.department.title)),
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(_vm.department.title) +
+                              "\n                    "
+                          ),
                         ]),
                   ]),
                 ]),
@@ -1247,7 +1408,7 @@ var render = function () {
                                           },
                                           [
                                             _vm._v(
-                                              "Suelte los archivos aquí o haga click para cargarlos."
+                                              "\n                                                    Suelte los archivos aquí\n                                                    o haga click para\n                                                    cargarlos.\n                                                "
                                             ),
                                           ]
                                         ),
@@ -1269,6 +1430,104 @@ var render = function () {
                                   attrs: { for: "id_image" },
                                 },
                                 [_vm._v(_vm._s(_vm.errors.image[0]))]
+                              )
+                            : _vm._e(),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "font-weight-bold mb-0",
+                              attrs: { for: "id_responsive_image" },
+                            },
+                            [_vm._v("Imagen Responsive")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-3" }, [
+                              _vm.service.responsive_image
+                                ? _c("img", {
+                                    staticClass:
+                                      "img-fluid shadow mx-auto d-block",
+                                    attrs: {
+                                      src:
+                                        "https://storage.googleapis.com/playgroup-web/img/solutions/responsive/" +
+                                        _vm.service.responsive_image,
+                                      alt: _vm.service.responsive_image,
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-9" },
+                              [
+                                _c(
+                                  "vue-dropzone",
+                                  {
+                                    ref: "ref_responsive_image",
+                                    attrs: {
+                                      id: "id_responsive_image",
+                                      options: _vm.dropzoneOptions,
+                                      duplicateCheck: true,
+                                      useCustomSlot: true,
+                                    },
+                                    on: {
+                                      "vdropzone-file-added": function (
+                                        $event
+                                      ) {
+                                        return _vm.$validateImageDropzone(
+                                          $event,
+                                          _vm.$refs.ref_responsive_image
+                                            .dropzone,
+                                          1,
+                                          312000,
+                                          "300kb"
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "dropzone-custom-content",
+                                      },
+                                      [
+                                        _c(
+                                          "h5",
+                                          {
+                                            staticClass:
+                                              "dropzone-custom-title text-primary",
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                    Suelte los archivos aquí\n                                                    o haga click para\n                                                    cargarlos.\n                                                "
+                                            ),
+                                          ]
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ],
+                              1
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _vm.errors && _vm.errors.responsive_image
+                            ? _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "text-danger text-sm d-block mt-2",
+                                  attrs: { for: "id_responsive_image" },
+                                },
+                                [_vm._v(_vm._s(_vm.errors.responsive_image[0]))]
                               )
                             : _vm._e(),
                         ]),
@@ -1298,7 +1557,11 @@ var render = function () {
                                 },
                               },
                             },
-                            [_vm._v("Cancelar")]
+                            [
+                              _vm._v(
+                                "\n                                Cancelar\n                            "
+                              ),
+                            ]
                           ),
                         ],
                         1
@@ -1321,7 +1584,7 @@ var render = function () {
                     on: {
                       submit: function ($event) {
                         $event.preventDefault()
-                        return _vm.createStory($event)
+                        return _vm.createTroubleshooting($event)
                       },
                     },
                   },
@@ -1482,7 +1745,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "Suelte los archivos aquí o haga click para cargarlos."
+                                          "\n                                            Suelte los archivos aquí o haga\n                                            click para cargarlos.\n                                        "
                                         ),
                                       ]
                                     ),
@@ -1500,6 +1763,84 @@ var render = function () {
                                     attrs: { for: "id_image" },
                                   },
                                   [_vm._v(_vm._s(_vm.errors.image[0]))]
+                                )
+                              : _vm._e(),
+                          ],
+                          1
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "font-weight-bold mb-0",
+                                attrs: { for: "id_responsive_image" },
+                              },
+                              [_vm._v("Imagen Responsive")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "vue-dropzone",
+                              {
+                                ref: "ref_responsive_image",
+                                attrs: {
+                                  id: "id_responsive_image",
+                                  options: _vm.dropzoneOptions,
+                                  duplicateCheck: true,
+                                  useCustomSlot: true,
+                                },
+                                on: {
+                                  "vdropzone-file-added": function ($event) {
+                                    return _vm.$validateImageDropzone(
+                                      $event,
+                                      _vm.$refs.ref_responsive_image.dropzone,
+                                      1,
+                                      312000,
+                                      "300kb"
+                                    )
+                                  },
+                                },
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "dropzone-custom-content" },
+                                  [
+                                    _c(
+                                      "h5",
+                                      {
+                                        staticClass:
+                                          "dropzone-custom-title text-primary",
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                            Suelte los archivos aquí o haga\n                                            click para cargarlos.\n                                        "
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.errors && _vm.errors.responsiveImage
+                              ? _c(
+                                  "label",
+                                  {
+                                    staticClass:
+                                      "text-danger text-sm d-block mt-2",
+                                    attrs: { for: "id_responsive_image" },
+                                  },
+                                  [
+                                    _vm._v(
+                                      _vm._s(_vm.errors.responsiveImage[0])
+                                    ),
+                                  ]
                                 )
                               : _vm._e(),
                           ],
@@ -1531,7 +1872,11 @@ var render = function () {
                                 },
                               },
                             },
-                            [_vm._v("Cancelar")]
+                            [
+                              _vm._v(
+                                "\n                                Cancelar\n                            "
+                              ),
+                            ]
                           ),
                         ],
                         1
@@ -1579,7 +1924,7 @@ var render = function () {
                         },
                       },
                     },
-                    [_vm._v("Cancelar")]
+                    [_vm._v("\n                Cancelar\n            ")]
                   ),
                 ]
               },
@@ -1589,12 +1934,16 @@ var render = function () {
         [
           _c("template", { slot: "modal-title" }, [
             _c("h2", { staticClass: "mb-0 text-uppercase text-primary" }, [
-              _vm._v("Eliminar Solución de Problema"),
+              _vm._v(
+                "\n                Eliminar Solución de Problema\n            "
+              ),
             ]),
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "mb-0" }, [
-            _vm._v("Esta seguro que desea eliminar la solución de problema?"),
+            _vm._v(
+              "\n            Esta seguro que desea eliminar la solución de problema?\n        "
+            ),
           ]),
         ],
         2
@@ -1618,7 +1967,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12" }, [
       _c("p", { staticClass: "mb-4 font-weight-bold" }, [
-        _vm._v("Seleccione el departamento."),
+        _vm._v(
+          "\n                    Seleccione el departamento.\n                "
+        ),
       ]),
     ])
   },
@@ -1628,7 +1979,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header border-0" }, [
       _c("h2", { staticClass: "mb-0 text-uppercase text-primary" }, [
-        _vm._v("Actualizar Caso de Éxito"),
+        _vm._v(
+          "\n                    Actualizar Caso de Éxito\n                "
+        ),
       ]),
     ])
   },
@@ -1638,7 +1991,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header border-0" }, [
       _c("h2", { staticClass: "mb-0 text-uppercase text-primary" }, [
-        _vm._v("Crear Caso de Éxito"),
+        _vm._v("\n                    Crear Caso de Éxito\n                "),
       ]),
     ])
   },

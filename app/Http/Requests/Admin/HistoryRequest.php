@@ -25,6 +25,7 @@ class HistoryRequest extends FormRequest
     {
         return [
             'image' => 'sometimes|required',
+            'responsive_image' => 'sometimes|required',
             'title' => 'required|max:120',
             'description' => 'required',
         ];

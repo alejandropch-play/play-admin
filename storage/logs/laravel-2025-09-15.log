@@ -1,3 +1,0 @@
-[2025-09-15 19:43:50] local.INFO: tooling: []  
-[2025-09-15 19:43:50] local.ERROR: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'logo' cannot be null (SQL: insert into `tooling` (`id`, `title`, `department_id`, `logo`, `updated_at`, `created_at`) values (?, t1fasfas, 2, ?, 2025-09-15 19:43:50, 2025-09-15 19:43:50))  
-[2025-09-15 19:44:47] local.INFO: tooling: {"id":1,"title":"t1","logo":"ssl-175798235068c8ae8e07490.png","department_id":2,"index":1,"created_at":"2025-09-15 19:25:50","updated_at":"2025-09-15 19:25:50"}  

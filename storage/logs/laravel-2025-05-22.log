@@ -1,9 +1,0 @@
-[2025-05-22 15:28:26] local.ERROR: Command "hot" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"hot\" is not defined. at /home/alejandro/play-work/play-admin/vendor/symfony/console/Application.php:678)
-[stacktrace]
-#0 /home/alejandro/play-work/play-admin/vendor/symfony/console/Application.php(237): Symfony\\Component\\Console\\Application->find()
-#1 /home/alejandro/play-work/play-admin/vendor/symfony/console/Application.php(149): Symfony\\Component\\Console\\Application->doRun()
-#2 /home/alejandro/play-work/play-admin/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run()
-#3 /home/alejandro/play-work/play-admin/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(131): Illuminate\\Console\\Application->run()
-#4 /home/alejandro/play-work/play-admin/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
-#5 {main}
-"} 

@@ -243,6 +243,63 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -255,6 +312,7 @@ __webpack_require__.r(__webpack_exports__);
       errors: {},
       element: {
         image: "",
+        responsive_image: "",
         index: "",
         description: "",
         title: ""
@@ -313,24 +371,22 @@ __webpack_require__.r(__webpack_exports__);
         image: "",
         index: "",
         description: "",
-        title: ""
+        title: "",
+        responsive_image: ""
       };
       this.$refs["modal-delete"].hide();
     },
     getElement: function getElement(id) {
       var _this = this;
-
       axios.get("json/history/" + id).then(function (response) {
         _this.element = response.data;
       })["catch"](function (error) {});
     },
     deleteElementConfirm: function deleteElementConfirm() {
       var _this2 = this;
-
       this.requestServer = true;
       axios["delete"]("history/" + this.element.id).then(function (response) {
         _this2.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -343,7 +399,6 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this2.restoreEl();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -379,6 +434,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs["modal-delete"].hide();
       this.element = {
         image: "",
+        responsive_image: "",
         index: "",
         description: "",
         title: ""
@@ -386,30 +442,27 @@ __webpack_require__.r(__webpack_exports__);
     },
     getElements: function getElements() {
       var _this3 = this;
-
       axios.get("json/history").then(function (response) {
         _this3.elements = response.data;
       })["catch"](function (error) {});
     },
     updateElement: function updateElement() {
       var _this4 = this;
-
       this.requestServer = true;
       var fd = new FormData();
       fd.append("id", this.element.id);
       this.element.title ? fd.append("title", this.element.title) : fd.append("title", "");
       this.element.description ? fd.append("description", this.element.description) : fd.append("description", "");
-
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);
       }
-
+      if (this.$refs.ref_responsive_image.dropzone.files[0]) {
+        fd.append("responsive_image", this.$refs.ref_responsive_image.dropzone.files[0]);
+      }
       fd.append("_method", "PUT");
       axios.post("history/" + this.element.id, fd).then(function (response) {
         _this4.requestServer = false;
-
         _this4.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -422,14 +475,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this4.requestServer = false;
-
         if (error.response.status === 422) {
           _this4.errors = error.response.data.errors || {};
           return;
         }
-
         _this4.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -444,21 +494,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     createElement: function createElement() {
       var _this5 = this;
-
       this.requestServer = true;
       var fd = new FormData();
       this.element.title ? fd.append("title", this.element.title) : fd.append("title", "");
       this.element.description ? fd.append("description", this.element.description) : fd.append("description", "");
-
       if (this.$refs.ref_image.dropzone.files[0]) {
         fd.append("image", this.$refs.ref_image.dropzone.files[0]);
       }
-
+      if (this.$refs.ref_responsive_image.dropzone.files[0]) {
+        fd.append("responsive_image", this.$refs.ref_responsive_image.dropzone.files[0]);
+      }
       axios.post("history", fd).then(function (response) {
         _this5.requestServer = false;
-
         _this5.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -471,14 +519,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (error) {
         _this5.requestServer = false;
-
         if (error.response.status === 422) {
           _this5.errors = error.response.data.errors || {};
           return;
         }
-
         _this5.restorePage();
-
         Swal.fire({
           title: error.response.data.title,
           text: error.response.data.message,
@@ -493,10 +538,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     orderElements: function orderElements(elements) {
       var _this6 = this;
-
       axios.put("history/order", elements).then(function (response) {
         _this6.restorePage();
-
         Swal.fire({
           title: response.data.title,
           text: response.data.message,
@@ -531,7 +574,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('Elements:', this.elements); // Should not be an empty array
-
     console.log("mounted block:", this.startBlock);
   }
 });
@@ -1287,8 +1329,8 @@ var render = function () {
                                         $event,
                                         _vm.$refs.ref_image.dropzone,
                                         1,
-                                        300000,
-                                        "300kb"
+                                        512000,
+                                        "500kb"
                                       )
                                     },
                                   },
@@ -1324,6 +1366,81 @@ var render = function () {
                                       attrs: { for: "id_image" },
                                     },
                                     [_vm._v(_vm._s(_vm.errors.image[0]))]
+                                  )
+                                : _vm._e(),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "form-group" },
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "font-weight-bold d-block mb-0",
+                                },
+                                [_vm._v("Imagen Responsive")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "vue-dropzone",
+                                {
+                                  ref: "ref_responsive_image",
+                                  attrs: {
+                                    id: "id_responsive_image",
+                                    options: _vm.dropzoneOptions,
+                                    duplicateCheck: true,
+                                    useCustomSlot: true,
+                                  },
+                                  on: {
+                                    "vdropzone-file-added": function ($event) {
+                                      return _vm.$validateImageDropzone(
+                                        $event,
+                                        _vm.$refs.ref_responsive_image.dropzone,
+                                        1,
+                                        300000,
+                                        "300kb"
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "dropzone-custom-content" },
+                                    [
+                                      _c(
+                                        "h5",
+                                        {
+                                          staticClass:
+                                            "dropzone-custom-title text-primary",
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Suelte los archivos aquí o haga click para cargarlos."
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm.errors && _vm.errors.responsive_image
+                                ? _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "text-danger text-sm mt-2 d-block",
+                                      attrs: { for: "id_responsive_image" },
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(_vm.errors.responsive_image[0])
+                                      ),
+                                    ]
                                   )
                                 : _vm._e(),
                             ],
@@ -1582,6 +1699,108 @@ var render = function () {
                                           attrs: { for: "id_image" },
                                         },
                                         [_vm._v(_vm._s(_vm.errors.image[0]))]
+                                      )
+                                    : _vm._e(),
+                                ],
+                                1
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-3" }, [
+                              _vm.element.responsive_image
+                                ? _c("img", {
+                                    staticClass: "img-fluid mx-auto d-block",
+                                    attrs: {
+                                      src:
+                                        "https://storage.googleapis.com/playgroup-web/img/history/responsive/" +
+                                        _vm.element.responsive_image,
+                                      alt: _vm.element.responsive_image,
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-9" }, [
+                              _c(
+                                "div",
+                                { staticClass: "form-group" },
+                                [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass:
+                                        "font-weight-bold d-block mb-0",
+                                    },
+                                    [_vm._v("Imagen Responsive")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "vue-dropzone",
+                                    {
+                                      ref: "ref_responsive_image",
+                                      attrs: {
+                                        id: "id_responsive_image",
+                                        options: _vm.dropzoneOptions,
+                                        duplicateCheck: true,
+                                        useCustomSlot: true,
+                                      },
+                                      on: {
+                                        "vdropzone-file-added": function (
+                                          $event
+                                        ) {
+                                          return _vm.$validateImageDropzone(
+                                            $event,
+                                            _vm.$refs.ref_responsive_image
+                                              .dropzone,
+                                            1,
+                                            300000,
+                                            "300kb"
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "dropzone-custom-content",
+                                        },
+                                        [
+                                          _c(
+                                            "h3",
+                                            {
+                                              staticClass:
+                                                "dropzone-custom-title text-primary",
+                                            },
+                                            [
+                                              _vm._v(
+                                                "Suelte el archivo aquí o haga click para cargarlo."
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.errors && _vm.errors.responsive_image
+                                    ? _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "text-danger text-sm d-block",
+                                          attrs: { for: "id_responsive_image" },
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              _vm.errors.responsive_image[0]
+                                            )
+                                          ),
+                                        ]
                                       )
                                     : _vm._e(),
                                 ],

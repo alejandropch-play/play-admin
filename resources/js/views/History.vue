@@ -157,7 +157,7 @@
                       <label class="font-weight-bold d-block mb-0">Imagen</label>
                       <vue-dropzone
                         ref="ref_image"
-                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,300000,'300kb')"
+                        @vdropzone-file-added="$validateImageDropzone($event,$refs.ref_image.dropzone,1,500000,'500kb')"
                         id="id_image"
                         :options="dropzoneOptions"
                         :duplicateCheck="true"

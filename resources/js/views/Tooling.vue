@@ -5,7 +5,7 @@
         <div class="header-body">
           <div class="row align-items-center pt-0 pt-md-2 pb-4">
             <div class="col-4 col-md-4">
-              <BreadCrumb title="Casos de Éxito" active="Casos de Éxito"></BreadCrumb>
+              <BreadCrumb title="Tooling" active="Tooling"></BreadCrumb>
             </div>
             <div class="col-8 col-md-8 text-right">
               <a
@@ -176,7 +176,7 @@
                     type="text"
                     class="form-control form-control-alternative"
                     v-model="service.title"
-                    placeholder="Título"
+                    placeholder="Nombre"
                     id="id_title"
                   />
                   <label
@@ -229,7 +229,7 @@
       <template slot="modal-title">
         <h2 class="mb-0 text-uppercase text-primary">Eliminar Herramienta</h2>
       </template>
-      <p class="mb-0">Esta seguro que desea eliminar el caso de éxito?</p>
+      <p class="mb-0">Esta seguro que desea eliminar la herramienta?</p>
       <template slot="modal-footer" slot-scope="{ cancel }">
         <Button
           :classes="['btn-danger']"
@@ -298,7 +298,6 @@ export default {
       if (this.$refs.ref_logo.dropzone.files[0]) {
         fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
       }
-      
       fd.append("_method", "PUT");
       axios
         .post("tooling/" + this.service.id, fd)

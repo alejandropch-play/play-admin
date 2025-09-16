@@ -76,7 +76,7 @@ class MasterPermissionsTableSeeder2 extends Seeder
                 'role_id' => 2,
                 'module_id' => 32
             ],
-
+            
         ]);
     }
 }

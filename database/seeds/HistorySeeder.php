@@ -20,6 +20,15 @@ class HistorySeeder extends Seeder
                 'icon' => 'fas fa-book-reader',
                 'index' => 20,
             ],
+            [
+                'id' => 35,
+                'name'     => 'Tooling',
+                'slug'         => 'tooling',
+                'parent'     => 0,
+                'icon'         => 'fas fa-wrench',
+                'index'    => 21
+            ],
+
         ]);
         DB::table('master_permissions')->insert([
             [
@@ -32,6 +41,18 @@ class HistorySeeder extends Seeder
                 'role_id' => 1,
                 'module_id' => 34
             ],
+            # Tooling
+            [
+                'id' => 65,
+                'role_id' => 1,
+                'module_id' => 35
+            ],
+            [
+                'id' => 66,
+                'role_id' => 2,
+                'module_id' => 35
+            ],
+
         ]);
     }
 }

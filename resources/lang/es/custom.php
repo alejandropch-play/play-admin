@@ -26,6 +26,8 @@ return [
         'lead' => 'El lead',
         'business_line_logo' => 'El logo de la línea de negocio',
         'why-us'=> 'El por qué elegirnos',
+        'tooling' => 'La herramienta',
+        'troubleshooting' => 'La solución de problema',
     ],
     'title' => [
         'error' => 'Error',

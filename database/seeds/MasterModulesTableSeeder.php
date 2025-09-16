@@ -167,14 +167,6 @@ class MasterModulesTableSeeder extends Seeder
                 'index'    => 13
             ],
             [
-                'id' => 35,
-                'name'     => 'Tooling',
-                'slug'         => 'tooling',
-                'parent'     => 0,
-                'icon'         => 'fas fa-wrench',
-                'index'    => 21
-            ],
-            [
                 'name'     => 'Configuración',
                 'slug'         => NULL,
                 'parent'     => 0,

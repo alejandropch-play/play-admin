@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\SuccessStoryRequest;
 use App\Http\Requests\Admin\ToolingRequest;
 use App\Tooling;
+use Illuminate\Support\Facades\Log;
 
 class ToolingController extends Controller
 {
@@ -38,9 +39,9 @@ class ToolingController extends Controller
         }
         try {
             $tooling = Tooling::UpdateOrCreate($tooling);
-            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.create.success', ['name' => trans('custom.attribute.story')])], 200);
+            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.create.success', ['name' => trans('custom.attribute.tooling')])], 200);
         } catch (\Exception $e) {
-            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.create.error', ['name' => trans('custom.attribute.story')])], 500);
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.create.error', ['name' => trans('custom.attribute.tooling')])], 500);
         }
     }
 
@@ -64,9 +65,9 @@ class ToolingController extends Controller
             if ($story_delete) {
                 Storage::disk('private')->delete('files/img/tooling/' . $logo);
             }
-            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.delete.success', ['name' => trans('custom.attribute.story')])], 200);
+            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.delete.success', ['name' => trans('custom.attribute.tooling')])], 200);
         } catch (\Exception $e) {
-            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.delete.error', ['name' => trans('custom.attribute.story')])], 500);
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.delete.error', ['name' => trans('custom.attribute.tooling')])], 500);
         }
     }
     public function order(Request $request)
@@ -76,33 +77,35 @@ class ToolingController extends Controller
             for ($i = 0; $i < count($toolings); $i++) {
                 Tooling::UpdateOrCreate(["id" => $toolings[$i]["id"]], ["index" => $i + 1]);
             }
-            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.update.success', ['name' => trans('custom.attribute.story')])], 200);
+            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.update.success', ['name' => trans('custom.attribute.tooling')])], 200);
         } catch (\Exception $e) {
-            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.update.error', ['name' => trans('custom.attribute.story')])], 500);
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.update.error', ['name' => trans('custom.attribute.tooling')])], 500);
         }
     }
 
-    public function update(SuccessStoryRequest $request, Tooling $tooling)
+    public function update(ToolingRequest $request, Tooling $tooling)
     {
-        $request_tool = request(["title", "department_id"]);
-        if ($request->hasFile('logo')) {
-            $logo_name = $this->setFileName('ssi-', $request->file('logo'));
-            $store_logo = Storage::disk('gcs')->putFileAs('img/tooling/', $request->file('logo'), $logo_name);
-            if (!$store_logo) {
-                return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.errors.image')], 500);
-            }
-            $request_tool = array_merge($request_tool, ["logo" => $logo_name]);
-        } else {
-            $request_tool = array_merge($request_tool, ["logo" => $tooling->logo]);
-        }
-        if ($request->hasFile('logo') && $tooling->logo) {
-            Storage::disk('gcs')->delete('img/tooling/' . $tooling->logo);
-        }
         try {
+            $request_tool = request(["title", "department_id"]);
+            if ($request->hasFile('logo')) {
+                $logo_name = $this->setFileName('ssi-', $request->file('logo'));
+                $store_logo = Storage::disk('gcs')->putFileAs('img/tooling/', $request->file('logo'), $logo_name);
+                if (!$store_logo) {
+                    return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.errors.image')], 500);
+                }
+                $request_tool = array_merge($request_tool, ["logo" => $logo_name]);
+            } else {
+                Log::info('tooling: ' . $tooling);
+                $request_tool = array_merge($request_tool, ["logo" => $tooling->logo]);
+            }
+            if ($request->hasFile('logo') && $tooling->logo) {
+                Storage::disk('gcs')->delete('img/tooling/' . $tooling->logo);
+            }
             $tooling = Tooling::UpdateOrCreate(["id" => $tooling->id], $request_tool);
-            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.update.success', ['name' => trans('custom.attribute.story')])], 200);
+            return response()->json(['title' => trans('custom.title.success'), 'message' => trans('custom.message.update.success', ['name' => trans('custom.attribute.tooling')])], 200);
         } catch (\Exception $e) {
-            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.update.error', ['name' => trans('custom.attribute.story')])], 500);
+            Log::error($e->getMessage());
+            return response()->json(['title' => trans('custom.title.error'), 'message' => trans('custom.message.update.error', ['name' => trans('custom.attribute.tooling')])], 500);
         }
     }
 }

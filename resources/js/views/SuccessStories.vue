@@ -76,7 +76,7 @@
                   />
                    <h2 class="mb-0 text-center" v-else>{{ department.title }}</h2>
 
-            
+
           </div>
         </div>
         <ElementsDraggable
@@ -378,7 +378,7 @@ export default {
       dropzoneOptions: {
         url: "/",
         maxFiles: 1,
-        acceptedFiles: "image/png,image/jpeg,image/jpg,image/svg+xml",
+        acceptedFiles: "image/png,image/gif,image/jpeg,image/jpg,image/svg+xml",
         autoProcessQueue: false,
         thumbnailWidth: 250,
         addRemoveLinks: true,
@@ -415,7 +415,7 @@ export default {
       if (this.$refs.ref_logo.dropzone.files[0]) {
         fd.append("logo", this.$refs.ref_logo.dropzone.files[0]);
       }
-      
+
       fd.append("_method", "PUT");
       axios
         .post("success-stories/" + this.service.id, fd)
@@ -505,7 +505,7 @@ export default {
       } else {
         fd.append("logo", "");
       }
-      
+
       axios
         .post("success-stories", fd)
         .then(response => {

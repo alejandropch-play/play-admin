@@ -1,10 +1,10 @@
 const Validation = {}
 Validation.install = function (Vue, options) {
     Vue.prototype.$validateImageDropzone = function (file,ref,maxFile,maxFileSize,maxFileSizeText) {
-        if (!/\.(jpg|jpeg|png|svg)$/i.test(file.name)) {
+        if (!/\.(jpg|jpeg|png|svg|gif)$/i.test(file.name)) {
             Swal.fire({
                 title: "Error",
-                text: 'Debe seleccionar una imagen svg, jpg, jpeg o png',
+                text: 'Debe seleccionar una imagen svg, jpg, jpeg, png o gif',
                 type: "error",
                 confirmButtonText: "OK",
                 buttonsStyling: false,
@@ -37,7 +37,7 @@ Validation.install = function (Vue, options) {
                 file.previewElement.parentNode.classList.remove("dz-started");
             }
             file.previewElement.parentNode.removeChild(file.previewElement);
-        }  
+        }
         if(ref.files.length > maxFile){
             Swal.fire({
                 title: "Error",
@@ -51,8 +51,8 @@ Validation.install = function (Vue, options) {
               });
             ref.files.pop();
             if(ref.files.length)
-            file.previewElement.parentNode.removeChild(file.previewElement);    
-        } 
+            file.previewElement.parentNode.removeChild(file.previewElement);
+        }
     }
 
     Vue.prototype.$validateVideoDropzone = function (file,ref,maxFile,maxFileSize,maxFileSizeText) {
@@ -92,7 +92,7 @@ Validation.install = function (Vue, options) {
               file.previewElement.parentNode.classList.remove("dz-started");
           }
           file.previewElement.parentNode.removeChild(file.previewElement);
-      }  
+      }
       if(ref.files.length > maxFile){
           Swal.fire({
               title: "Error",
@@ -106,8 +106,8 @@ Validation.install = function (Vue, options) {
             });
           ref.files.pop();
           if(ref.files.length)
-          file.previewElement.parentNode.removeChild(file.previewElement);    
-      } 
+          file.previewElement.parentNode.removeChild(file.previewElement);
+      }
   }
 
     Vue.prototype.$uploadImageUploadComponent = function (file, ref,maxFileSize,maxFileSizeText,url) {
@@ -150,7 +150,7 @@ Validation.install = function (Vue, options) {
                 }
               });
             return;
-        } 
+        }
         if (file) {
             file.url = ''
             let URL = window.URL || window.webkitURL
@@ -160,7 +160,7 @@ Validation.install = function (Vue, options) {
                 let quill = ref.quill;
                 //Get Lenght of text on Editor
                 let length = quill.getSelection().index;
-                const fd = new FormData();   
+                const fd = new FormData();
                 fd.append('image',file.file);
                 /*options.app.$bvToast.toast('La imagen se esta subiendo, espere por favor', {
                     title: "Info",
@@ -169,7 +169,7 @@ Validation.install = function (Vue, options) {
                     variant: 'info',
                     toaster: 'b-toaster-top-right'
                 })*/
-                
+
                   Swal.fire({
                     title: 'Info',
                     text: 'Subiendo imagen...' ,
